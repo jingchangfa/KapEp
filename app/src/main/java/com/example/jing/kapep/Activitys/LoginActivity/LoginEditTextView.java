@@ -36,7 +36,7 @@ public class LoginEditTextView extends LinearLayout {
         AttributeSetingHelper.setImageResource(imageView,a,R.styleable.LoginEditTextView_custom_image);
         AttributeSetingHelper.setTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_textColor);
         AttributeSetingHelper.setHintTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_hintColor);
-        AttributeSetingHelper.setBackgroundColor(context,editText,a,R.styleable.LoginEditTextView_custom_backColor);
+        AttributeSetingHelper.setBackgroundColor(context,this,a,R.styleable.LoginEditTextView_custom_backColor);
         lineView.setVisibility(AttributeSetingHelper.getVisibility(a,R.styleable.LoginEditTextView_custom_lineIsShow));
         a.recycle();
     }
