@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_small_v" />
+    <TextView
+        android:id="@+id/alertshow_titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_bar_title_textsize"
+        android:textAlignment="center"
+        android:text="请输入您的邮箱"
+        android:textColor="@color/BANK_GRAY_9b9b9b"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_small_v" />
+</LinearLayout>

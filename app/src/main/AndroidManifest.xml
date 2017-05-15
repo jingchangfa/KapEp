@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.example.jing.kapep">
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  <!-- 获取设备信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取MAC地址-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 写sdcard，storage等等 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/><!-- 读sdcard，storage等等 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+
+    <application
+        android:name=".Application.KapApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activitys.LoginActivity.KapLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.CommentActivity.KapCommentActivity"/>
+        <activity android:name=".Activitys.ContentDetailActivity.KapContentDetailActivity"/>
+        <activity android:name=".Activitys.ForgetPasswordActivity.KapForgetPasswordActivity"/>
+        <activity android:name=".Activitys.HomePageActivity.KapHomePageActivity"/>
+        <activity android:name=".Activitys.ImageCutActivity.KapImageCutActivity"/>
+        <activity android:name=".Activitys.ImageShowActivity.KapImageShowActivity"/>
+        <activity android:name=".Activitys.ListenerActivity.KapListenerActivity"/>
+        <activity android:name=".Activitys.MakeContentActivity.KapMakeContentActivity"/>
+        <activity android:name=".Activitys.MessageActivity.KapMessageActivity"/>
+        <activity android:name=".Activitys.MineAccountActivity.AboutUs.KapAboutUsActivity"/>
+        <activity android:name=".Activitys.MineAccountActivity.AccountDetail.KapAccountDetailActivity"/>
+        <activity android:name=".Activitys.MineAccountActivity.MineCenter.KapMineCenterActivity"/>
+        <activity android:name=".Activitys.MineAccountActivity.MineSet.KapMineSetActivity"/>
+        <activity android:name=".Activitys.OtherDetailActivity.KapOtherDetailActivity"/>
+        <activity android:name=".Activitys.RecommendListenerActivity.KapRecommendListenerActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.AboutOccupation.KapAboutOccupationActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.BindEmail.KapBindEmailActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.ChangeOccupation.KapChangeOccupationActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.CompleteMaterial.KapCompleteMaterialActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.InvitationCode.KapInvitationCodeActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.PasswordSet.KapPasswordSetActivity"/>
+        <activity android:name=".Activitys.RegisteredActivity.Regist.KapRegistActivity"/>
+        <activity android:name=".Activitys.SearchFriendsActivity.KapSearchFriendsActivity"/>
+    </application>
+</manifest>

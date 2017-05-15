@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_bigsmall_v" />
+    <View
+        android:id="@+id/alert_lineview"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="@color/BANK_GRAY_515151"/>
+    <Button
+        android:id="@+id/big_change_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alertview_title_height"
+        android:textSize="@dimen/customview_textSize"
+        android:textColor="@color/Bank_Blue_2f95fb"
+        android:text="确定"
+        android:background="@null"/>
+</LinearLayout>

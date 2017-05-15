@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/corners_bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/login_edittext_image"
+            android:src="@mipmap/login_place_w"
+            android:scaleType="center"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/login_edittext_height"
+            android:layout_height="@dimen/login_edittext_height" />
+        <EditText
+            android:id="@+id/login_edittext_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_edittext_height"
+            android:background="@null"
+            android:textColor="@color/Bank_White_ffffff"
+            android:textColorHint="@color/BANK_GRAY_9b9b9b"
+            android:textSize="@dimen/customview_textSize"
+            android:hint="选择国家"
+            android:text=""/>
+    </LinearLayout>
+    <View
+        android:id="@+id/login_edittext_lineview"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="@color/Bank_White_ffffff"/>
+</LinearLayout>

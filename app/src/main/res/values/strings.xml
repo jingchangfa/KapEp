@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">KapEp</string>
+    <string name="title">title</string>
+    <string name="please_change_controy">请选择国家</string>
+    <string name="please_number">请输入手机号</string>
+    <string name="please_password">请输入密码</string>
+    <string name="please_code">请输入验证码</string>
+
+    <string name="login">登录</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="regist">注册</string>
+    //忘记密码页面
+    <string name="please_put_email">忘记密码</string>
+    <string name="yes">确定</string>
+    <string name="next">下一步</string>
+
+</resources>

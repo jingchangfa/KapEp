@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // 注意都加上 custom前置  防止冲突
+    // 密码账号输入框
+    <declare-styleable name="LoginEditTextView">
+        <attr name="custom_image" format="reference"/>
+        <attr name="custom_text" format="string|reference"/>
+        <attr name="custom_placeholdText" format="string|reference"/>
+        <attr name="custom_backColor" format="reference"/>
+        <attr name="custom_textColor" format="reference"/>
+        <attr name="custom_hintColor" format="reference"/>
+        <attr name="custom_lineIsShow" format="boolean"/>
+
+    </declare-styleable>
+    // 登录下一步按钮
+    <declare-styleable name="KapBigChangeButton">
+        <attr name="custom_text_normal" format="reference"/>
+        <attr name="custom_text_select" format="reference"/>
+        <attr name="custom_text_disable" format="reference"/>
+
+        <attr name="custom_backColor_normal" format="reference"/>
+        <attr name="custom_backColor_select" format="reference"/>
+        <attr name="custom_backColor_disable" format="reference"/>
+
+        <attr name="custom_textColor_normal" format="reference"/>
+        <attr name="custom_textColor_select" format="reference"/>
+        <attr name="custom_textColor_disable" format="reference"/>
+    </declare-styleable>
+    // 设置密码等页面的北京alert
+    <declare-styleable name="KapAlertBankShowView">
+        <attr name="title_isShow" format="boolean"/>
+        <attr name="title_text" format="reference"/>
+        <attr name="button_isShow" format="boolean"/>
+        <attr name="button_text" format="reference"/>
+        <attr name="button_color" format="reference"/>
+    </declare-styleable>
+</resources>

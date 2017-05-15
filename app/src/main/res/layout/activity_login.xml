@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/image_size_bitmap"
+    android:fitsSystemWindows="true">
+    <include layout="@layout/nav_custom_titlebar" android:visibility="gone"/>
+    <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
+        android:id="@+id/login_placeview"
+        android:layout_marginTop="170dp"
+        android:layout_width="@dimen/login_edittext_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_image="@mipmap/login_place_w"
+        app:custom_placeholdText="@string/please_change_controy"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v" />
+
+    <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
+        android:id="@+id/login_numberview"
+        android:layout_width="@dimen/login_edittext_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_image="@mipmap/login_number"
+        app:custom_placeholdText="@string/please_number"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v" />
+
+    <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
+        android:id="@+id/login_passwordview"
+        android:layout_width="@dimen/login_edittext_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_image="@mipmap/login_password"
+        app:custom_placeholdText="@string/please_password"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_big_v" />
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/login_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/login"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_small_v" />
+    <Button
+        android:id="@+id/login_forgetpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/customview_textSize"
+        android:text="@string/forget_password"
+        android:textColor="@color/Bank_Blue_247cdc"
+        android:background="@null"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_big_v" />
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/login_regist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/regist"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Red_e96a79"
+        />
+</LinearLayout>

@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.example.jing.kapep"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+////下面注解
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.jakewharton.butterknife'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    /**
+     * 网络请求的第三方库
+     * */
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    /**
+     * model json转换的库
+     * */
+    compile 'com.google.code.gson:gson:2.8.0'
+    /**
+     *下啦加载
+     * */
+    // -------------------- 以下三个库是必须依赖的 ----------------------------
+//    compile 'com.android.support:recyclerview-v7:latestVersion'
+//    compile 'com.android.support:appcompat-v7:latestVersion'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    // -------------------- 以上三个库是必须依赖的 ----------------------------
+    /**
+     * 万能adapter 来自 鸿洋
+     * ForRecyclerView
+     * compile 'com.zhy:base-rvadapter:3.0.3'
+     *
+     * ForListView
+     * compile 'com.zhy:base-adapter:3.0.3'
+     * */
+    compile 'com.zhy:base-rvadapter:3.0.3'
+    compile 'com.zhy:base-adapter:3.0.3'
+    /**
+     * 异步加载图片
+     * */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    /**
+     * ButterKnife注解库.
+     * 取代findbyid 等其他的一些东西 （非常强大）
+     * */
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+}

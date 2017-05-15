@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // 圆角
+    <dimen name="view_bg_radius">4dp</dimen>
+    <dimen name="view_bg_alertview_radius">8dp</dimen>
+
+    //title bar
+    <dimen name="title_bar_height">44dp</dimen>
+    <dimen name="title_bar_insetx">10dp</dimen>
+    <dimen name="title_bar_button_size">28dp</dimen>
+    <dimen name="title_bar_title_textsize">16sp</dimen>
+    <dimen name="customview_textSize">14sp</dimen>
+    // alert show view
+    <dimen name="alertview_title_height">40dp</dimen>
+
+    //login
+    <dimen name="login_edittext_height">35dp</dimen>
+    <dimen name="login_edittext_width">275dp</dimen>
+    <dimen name="login_edittext_small_width">200dp</dimen>
+
+    <dimen name="login_edittext_interval_v">10dp</dimen>
+    <dimen name="login_edittext_interval_small_v">15dp</dimen>
+    <dimen name="login_edittext_interval_bigsmall_v">20dp</dimen>
+    <dimen name="login_edittext_interval_big_v">30dp</dimen>
+</resources>
