@@ -25,12 +25,13 @@ public class HttpConfiguration {
     public HashMap<String, String> publicWordBreaks(){
         HashMap<String,String> publicWordBreaks = new HashMap<String,String>();
         publicWordBreaks.put("token", KapApplication.getUserToken());
-//        publicWordBreaks.put("user_id","");
         return publicWordBreaks;
     }
     // 结果是否正确
     public boolean resultIsSuccessWithResult(JSONObject jsonObject) throws JSONException {
-        return jsonObject.getBoolean("success");
+        int a = jsonObject.getInt("success");
+        boolean b = a==0 ? false : true;
+        return b;
     }
     // 返回错误code
     public int resultErrorCodeWithResult(JSONObject jsonObject) throws JSONException {

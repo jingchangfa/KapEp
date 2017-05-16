@@ -9,19 +9,20 @@ import android.content.Context;
 
 public class KapApplication extends Application{
     private static Context context;
-
     private static String  userToken;
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
     }
-
     public static Context getContext() {
         return context;
     }
 
     public static String getUserToken() {
         return userToken;
+    }
+    public static void setUserToken(String userToken) {
+        KapApplication.userToken = userToken;
     }
 }

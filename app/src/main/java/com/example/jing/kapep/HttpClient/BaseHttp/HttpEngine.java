@@ -65,16 +65,17 @@ public class HttpEngine {
         /**
          * HASMAP value 也可能是json（array，hasmap）类型的字符串
          * */
-        Log.d("thread",Thread.currentThread().toString());
         FormBody.Builder builder = new FormBody.Builder();
         //遍历添加key value
         Iterator iterator = pareDictionary.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
+            String key = (String)entry.getKey();
+            String value = (String) entry.getValue();
+            if (key == null||value == null) continue;
             //添加键值对
-            builder.add((String)entry.getKey(),(String) entry.getValue());
+            builder.add(key,value);
         }
-        Log.d("5656","666");
         RequestBody requestBody = builder.build();
         final Request request = new Request.Builder()
                 .url(urlString)
