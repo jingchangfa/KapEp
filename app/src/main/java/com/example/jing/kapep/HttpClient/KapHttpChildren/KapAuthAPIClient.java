@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.jing.kapep.Helper.JSONObjToJavaClassHelper;
 import com.example.jing.kapep.Helper.StringMD5SHAHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.Manager.KapGsonManager;
 import com.example.jing.kapep.Model.KapModelUserDetail;
 
 import org.json.JSONException;
@@ -334,16 +335,18 @@ public class KapAuthAPIClient extends HttpClickBase {
     public void mineOtherString(HashMap pareDictionary,
             final KapAuthUserDetailInterface success,
             final HTTPAPIDefaultFailureBack failure){
-        String urlString = this.httpConfiguration.authLoginPath();
-        HashMap parameters = this.urlParametersDictionary(null);
-        parameters.put("","");
+        String urlString = this.httpConfiguration.mineOtherDataPath();
+        HashMap parameters = this.urlParametersDictionary(pareDictionary);
 
-        Log.d("验证邀请码","url:"+urlString+"\n"+parameters.toString());
+        Log.d("完善资料","url:"+urlString+"\n"+parameters.toString());
         HTTPAPICallBack finishBlock = this.customFinishedBlock(new HTTPAPIFinishBack() {
             @Override
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
+                    String userString = jsonObject.getString("user");
+                    KapModelUserDetail userDetail = KapGsonManager.KapJsonToModel(userString,KapModelUserDetail.class);
+                    success.successResult(userDetail);
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -353,6 +356,11 @@ public class KapAuthAPIClient extends HttpClickBase {
         },failure);
         this.httpEngine.httpPostRequest(urlString,parameters,finishBlock);
     }
+    // 上传头像
+
+    // 上传信息
+
+
     //绑定邮箱
     public void bindEmail(String emailString,
                           Boolean canSend,

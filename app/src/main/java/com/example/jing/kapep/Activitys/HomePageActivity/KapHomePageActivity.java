@@ -2,8 +2,10 @@ package com.example.jing.kapep.Activitys.HomePageActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapContentAPIClient;
 import com.example.jing.kapep.R;
 
 /**

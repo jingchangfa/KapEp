@@ -21,6 +21,10 @@ public class HttpConfiguration {
     public  static HttpConfiguration getStaticApiConfiguration() {
         return  apiConfiguration;
     }
+    // 获取token
+    public String token(){
+        return KapApplication.getUserToken();
+    }
     // 公共字断
     public HashMap<String, String> publicWordBreaks(){
         HashMap<String,String> publicWordBreaks = new HashMap<String,String>();
