@@ -17,11 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.LoginActivity.KapLoginActivity">
+        <activity android:name=".Activitys.ALunchActivity.KapLunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.LoginActivity.KapLoginActivity">
         </activity>
         <activity android:name=".Activitys.CommentActivity.KapCommentActivity"/>
         <activity android:name=".Activitys.ContentDetailActivity.KapContentDetailActivity"/>

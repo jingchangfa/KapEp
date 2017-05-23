@@ -7,11 +7,13 @@ import android.widget.Toast;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.ForgetPasswordActivity.KapForgetPasswordActivity;
+import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
 import com.example.jing.kapep.Activitys.RegisteredActivity.Regist.KapRegistActivity;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapAuthAPIClient;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.UserAccount.KapUserAccount;
 import com.example.jing.kapep.View.KapBigChangeButton;
 
 import java.util.Map;
@@ -98,8 +100,11 @@ public class KapLoginActivity extends ActivityBase {
         new KapAuthAPIClient().authLogin(numberString, passWordString, new KapAuthAPIClient.KapAuthLoginInterface() {
             @Override
             public void successResult(String token, int userID, Map herd, boolean isFirstLogin) {
-                KapApplication.setUserToken(token);
-                Toast.makeText(KapLoginActivity.this, ""+userID, Toast.LENGTH_SHORT).show();
+                KapUserAccount.saveKapUserAccount(new KapUserAccount(userID,token,herd));
+                KapApplication.setUserAccount(KapUserAccount.loadActiveUserAccount());
+                if (KapApplication.getUserAccount() == null) return;
+                startActivity(new Intent(KapLoginActivity.this, KapHomePageActivity.class));
+                finish();
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override

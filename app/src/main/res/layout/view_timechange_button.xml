@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/time_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/time_button_back_selector"
+        android:textColor="@drawable/time_button_text_selector"
+        android:textSize="@dimen/customview_textSize"
+        android:text="获取验证码"/>
+</LinearLayout>
