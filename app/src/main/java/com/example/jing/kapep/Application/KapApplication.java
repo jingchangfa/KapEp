@@ -23,6 +23,7 @@ public class KapApplication extends Application{
     }
 
     public static KapUserAccount getUserAccount() {
+        if (userAccount == null) userAccount = KapUserAccount.loadActiveUserAccount();
         return userAccount;
     }
     public static void setUserAccount(KapUserAccount userAccount) {
@@ -38,6 +39,7 @@ public class KapApplication extends Application{
     }
 
     public static String getUserToken() {
+        if (getUserAccount() == null) return null;
         return getUserAccount().token;
     }
 }

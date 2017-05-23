@@ -24,7 +24,8 @@ public class HttpConfiguration {
     // 公共字断
     public HashMap<String, String> publicWordBreaks(){
         HashMap<String,String> publicWordBreaks = new HashMap<String,String>();
-        publicWordBreaks.put("token", KapApplication.getUserToken());
+        String token = KapApplication.getUserToken();
+        if (token != null) publicWordBreaks.put("token", token);
         return publicWordBreaks;
     }
     // 结果是否正确
