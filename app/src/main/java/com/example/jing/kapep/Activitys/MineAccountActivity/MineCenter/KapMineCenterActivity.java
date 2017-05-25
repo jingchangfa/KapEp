@@ -2,6 +2,7 @@ package com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.R;
@@ -22,11 +23,11 @@ public class KapMineCenterActivity extends ActivityBase {
     }
     @Override
     protected String navShowTitle() {
-        return null;
+        return "个人中心";
     }
     @Override
     protected void setController() {
-
+        this.rightButton.setVisibility(View.INVISIBLE);
     }
 
     @Override

@@ -106,12 +106,11 @@ public class KapLoginActivity extends ActivityBase {
                 KapUserAccount.saveKapUserAccount(new KapUserAccount(userID,token,herd));
                 KapApplication.setUserAccount(KapUserAccount.loadActiveUserAccount());
                 if (KapApplication.getUserAccount() == null) return;
-                startActivity(new Intent(KapLoginActivity.this, KapHomePageActivity.class));
-                finish();
+                KapApplication.getInstance().homeActivityChangeAction();//登录页面
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
-            public void defaultFailureBlock(int errorCode, String errorMsg) {
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
 
             }
         });

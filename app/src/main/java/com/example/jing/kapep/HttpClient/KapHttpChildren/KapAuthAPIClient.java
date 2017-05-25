@@ -328,7 +328,7 @@ public class KapAuthAPIClient extends HttpClickBase {
         this.httpEngine.httpPostRequest(urlString,parameters,finishBlock);
     }
     /**
-     * 完善资料
+     * 完善资料(未实现,待研究)
      * 1.传头像
      * 2.传资料
      * */

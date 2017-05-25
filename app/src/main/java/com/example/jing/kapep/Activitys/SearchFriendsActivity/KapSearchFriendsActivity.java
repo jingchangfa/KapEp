@@ -22,16 +22,14 @@ public class KapSearchFriendsActivity extends ActivityBase {
     }
     @Override
     protected String navShowTitle() {
-        return null;
+        return "搜索";
     }
     @Override
     protected void setController() {
-
     }
 
     @Override
     protected void getView() {
-
     }
 
     @Override

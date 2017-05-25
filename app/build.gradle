@@ -46,6 +46,7 @@ dependencies {
     // -------------------- 以上三个库是必须依赖的 ----------------------------
     /**
      * 万能adapter 来自 鸿洋
+     *
      * ForRecyclerView
      * compile 'com.zhy:base-rvadapter:3.0.3'
      *

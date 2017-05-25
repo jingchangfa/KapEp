@@ -25,6 +25,7 @@ public class KapUserAccountStore {
         if (kapUserAccount == null){
             // 注销操作
             editor.putInt(KEY_ACTIVE_USER_ID,-1);
+            editor.commit();
             return;
         }
         // 保存

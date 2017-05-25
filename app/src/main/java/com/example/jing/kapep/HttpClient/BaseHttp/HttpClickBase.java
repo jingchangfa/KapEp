@@ -15,16 +15,6 @@ import java.util.HashMap;
 public class HttpClickBase {
     // 基类
     /**
-     * 错误类型
-     */
-    // http 网络错误
-    private static final int API_NET_ERROR_UNKNOWN = 0;
-    private static final int API_NET_ERROR_DownLoad_EXPIRED= -999;
-    private static final int API_NET_ERROR_TIMEOUT = -1001;
-    private static final int API_NET_ERROR_NONETWORK = -1009;
-    //server 服务端错误
-    private static final int API_SERVER_ERROR_UNKNOWN = 0;
-    /**
      * 回调intface
      */
     public interface HTTPAPICallBack{
@@ -34,7 +24,7 @@ public class HttpClickBase {
         boolean finishedBlock(String jsonString);//throws JSONException
     }
     public interface HTTPAPIDefaultFailureBack{
-        void defaultFailureBlock(int errorCode,String errorMsg);
+        void defaultFailureBlock(long errorCode,String errorMsg);
     }
     /**
      * 工具
@@ -95,7 +85,7 @@ public class HttpClickBase {
      */
     private boolean handleNetworkError(IOException e,HTTPAPIDefaultFailureBack defaultFailureBack){
         if (e == null) return  false;
-        int errCode = e.hashCode();
+        long errCode = e.hashCode();
         String errmsg = "网络错误";
         defaultFailureBack.defaultFailureBlock(errCode,errmsg);
         httpErrorShow.httpErrorWithCode(errCode,errmsg);
@@ -107,7 +97,7 @@ public class HttpClickBase {
     private boolean handleCommonErrorFromResponse(String jsonString,HTTPAPIDefaultFailureBack defaultFailureBack){
         if (jsonString == null) return false;
         JSONObject jsonObject = null;
-        int errCode = -1;
+        long errCode = -1;
         String errmsg = "";
         try {
             jsonObject =  new JSONObject(jsonString);
@@ -119,6 +109,7 @@ public class HttpClickBase {
         }
         defaultFailureBack.defaultFailureBlock(errCode,errmsg);
         httpErrorShow.serverErrorWithCode(errCode,errmsg);
+        Log.d("服务端错误",jsonString);
         return true;
     }
 }

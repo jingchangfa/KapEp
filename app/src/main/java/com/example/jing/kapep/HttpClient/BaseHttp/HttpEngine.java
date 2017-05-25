@@ -60,7 +60,7 @@ public class HttpEngine {
      *Object val = entry.getValue();
      }
      * */
-    public void httpPostRequest(String urlString, HashMap<String,String> pareDictionary,
+    public void httpPostRequest(String urlString, HashMap pareDictionary,
                                 final HttpClickBase.HTTPAPICallBack finished){
         /**
          * HASMAP value 也可能是json（array，hasmap）类型的字符串
@@ -71,7 +71,7 @@ public class HttpEngine {
         while (iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
             String key = (String)entry.getKey();
-            String value = (String) entry.getValue();
+            String value = String.valueOf(entry.getValue());
             if (key == null||value == null) continue;
             //添加键值对
             builder.add(key,value);

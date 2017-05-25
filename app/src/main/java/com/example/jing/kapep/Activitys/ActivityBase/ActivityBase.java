@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.R;
 
 import butterknife.BindView;
@@ -61,7 +62,7 @@ abstract public class ActivityBase extends AppCompatActivity {
         });
     }
     protected void leftButtonAction(){
-        finish();
+        KapApplication.getInstance().backActivityChangeAction();
     }
     protected void rightButtonAction(){
     }
@@ -85,5 +86,16 @@ abstract public class ActivityBase extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void finish() {
+        // 注意～  不要直接调用 finish 要通过application调用
+        super.finish();
+    }
+    // 重写返回按钮,使其归入自己的栈管理
+    @Override
+    public void onBackPressed() {
+        KapApplication.getInstance().backActivityChangeAction();
     }
 }

@@ -67,10 +67,9 @@ public class KapLunchActivity extends ActivityBase {
     }
     private void pushActivity(){
         if (KapApplication.getUserAccount() == null){
-            startActivity(new Intent(this, KapLoginActivity.class));
+            KapApplication.getInstance().logInActivityChangeAction();//登录页
         }else {
-            startActivity(new Intent(this, KapHomePageActivity.class));
+            KapApplication.getInstance().homeActivityChangeAction();//主页
         }
-        finish();
     }
 }

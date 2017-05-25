@@ -66,7 +66,7 @@ public class KapContentAPIClient extends HttpClickBase {
         this.httpEngine.httpPostRequest(urlString,parameters,finishBlock);
     }
     /**
-     * 发帖子
+     * 发帖子 (未实现,待研究)
      * 1.穿文件
      * 2.穿帖子
      */
