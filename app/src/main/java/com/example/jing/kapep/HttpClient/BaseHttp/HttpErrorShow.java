@@ -41,34 +41,34 @@ public class HttpErrorShow {
     public void serverErrorWithCode(long serverCode,String msg){
         if (serverCode == API_ERROR_SERVER_CODE_TOKEN_INVALID){
             // token 过期
-            Toast.makeText(KapApplication.getContext(), "token过期", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "token过期", Toast.LENGTH_SHORT).show();
             // 返回登陆页
-            KapApplication.getInstance().logInActivityChangeAction();
+            KapApplication.logInActivityChangeAction();
             // 清空一下存储
             KapUserAccount.saveKapUserAccount(null);
             return;
         }
         if (serverCode == API_ERROR_SERVER_MOBILE_FOUND){
-            Toast.makeText(KapApplication.getContext(), "账号不存在", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "账号不存在", Toast.LENGTH_SHORT).show();
             return;
         }
         if (serverCode == API_ERROR_SERVER_PASSWORD_ERROR){
-            Toast.makeText(KapApplication.getContext(), "账号密码错误", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "账号密码错误", Toast.LENGTH_SHORT).show();
             return;
         }
         if (serverCode == API_ERROR_SERVER_MobileIsInvalid){
-            Toast.makeText(KapApplication.getContext(), "输入正确的手机号", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "输入正确的手机号", Toast.LENGTH_SHORT).show();
             return;
         }
         if (serverCode == API_ERROR_SERVER_FriendRequestAlready){
-            Toast.makeText(KapApplication.getContext(), "已申请", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "已申请", Toast.LENGTH_SHORT).show();
             return;
         }
         if (serverCode == API_ERROR_SERVER_HadBeenFriends){
-            Toast.makeText(KapApplication.getContext(), "已添加", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KapApplication.currentActivity(), "已添加", Toast.LENGTH_SHORT).show();
             return;
         }
         // 未知错误
-        Toast.makeText(KapApplication.getContext(), "API_ERROR_SERVER_UNKNOWN", Toast.LENGTH_SHORT).show();
+        Toast.makeText(KapApplication.currentActivity(), "API_ERROR_SERVER_UNKNOWN", Toast.LENGTH_SHORT).show();
     }
 }

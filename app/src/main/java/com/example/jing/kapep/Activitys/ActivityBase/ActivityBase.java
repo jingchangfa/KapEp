@@ -62,7 +62,7 @@ abstract public class ActivityBase extends AppCompatActivity {
         });
     }
     protected void leftButtonAction(){
-        KapApplication.getInstance().backActivityChangeAction();
+        KapApplication.backActivityChangeAction();
     }
     protected void rightButtonAction(){
     }
@@ -96,6 +96,6 @@ abstract public class ActivityBase extends AppCompatActivity {
     // 重写返回按钮,使其归入自己的栈管理
     @Override
     public void onBackPressed() {
-        KapApplication.getInstance().backActivityChangeAction();
+        KapApplication.backActivityChangeAction();
     }
 }

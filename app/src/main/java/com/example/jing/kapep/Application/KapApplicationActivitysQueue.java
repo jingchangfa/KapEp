@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * Created by jing on 17/5/24.
  */
-// 管理 对立 的类
+// 管理 Activity 的 queue
 // Application 使用
 public class KapApplicationActivitysQueue {
     private KapApplicationActivitysQueue(){}

@@ -34,20 +34,31 @@ public class KapApplication extends Application{
      * homeActivityChangeAction 切换根视图主页
      * backActivityChangeAction 返回按钮
      * */
-    public void logInActivityChangeAction(){
+    public static void logInActivityChangeAction(){
+        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
+
         Class openClass = KapLoginActivity.class;
         Activity currentActivity = activitysQueue.currentActivity();
         currentActivity.startActivity(new Intent(currentActivity, openClass));
         activitysQueue.finishExcludeActivityAllActivity(openClass);
     }
-    public void homeActivityChangeAction(){
+    public static void homeActivityChangeAction(){
+        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
+
         Class openClass = KapHomePageActivity.class;
         Activity currentActivity = activitysQueue.currentActivity();
         currentActivity.startActivity(new Intent(currentActivity, openClass));
         activitysQueue.finishExcludeActivityAllActivity(openClass);
     }
-    public void backActivityChangeAction(){
+    public static void backActivityChangeAction(){
+        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
+
         activitysQueue.finishCurrentActivity();
+    }
+    public static Activity currentActivity(){
+        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
+
+        return activitysQueue.currentActivity();
     }
     /**
      * activity栈管理

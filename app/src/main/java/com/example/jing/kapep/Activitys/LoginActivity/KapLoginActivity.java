@@ -106,7 +106,7 @@ public class KapLoginActivity extends ActivityBase {
                 KapUserAccount.saveKapUserAccount(new KapUserAccount(userID,token,herd));
                 KapApplication.setUserAccount(KapUserAccount.loadActiveUserAccount());
                 if (KapApplication.getUserAccount() == null) return;
-                KapApplication.getInstance().homeActivityChangeAction();//登录页面
+                KapApplication.homeActivityChangeAction();//登录页面
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
