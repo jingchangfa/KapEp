@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Activitys.MakeContentActivity.KapMakeContentActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter.KapMineCenterActivity;
 import com.example.jing.kapep.Activitys.SearchFriendsActivity.KapSearchFriendsActivity;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
@@ -16,6 +19,8 @@ import com.example.jing.kapep.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by jing on 17/5/10.
  */
@@ -23,6 +28,9 @@ import java.util.List;
 public class KapHomePageActivity extends ActivityBase {
     private int limit = 20;
     private int offset = 0;
+
+    @BindView(R.id.home_write_button)
+    Button writeButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +64,12 @@ public class KapHomePageActivity extends ActivityBase {
 
     @Override
     protected void getView() {
-
+        writeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(KapHomePageActivity.this, KapMakeContentActivity.class));
+            }
+        });
     }
 
     @Override

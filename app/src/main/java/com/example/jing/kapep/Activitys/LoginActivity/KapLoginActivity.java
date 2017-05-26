@@ -88,7 +88,7 @@ public class KapLoginActivity extends ActivityBase {
             }
         });
 
-        numberEditView.getEditText().setText("+8615810544001");
+        numberEditView.getEditText().setText("+8615810544002");
         passwordEditView.getEditText().setText("a111111");
     }
 

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/nav_custom_titlebar"/>
 
-</LinearLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/login_edittext_interval_v"
+        android:layout_width="@dimen/home_writeback_size"
+        android:layout_height="@dimen/home_writeback_size"
+        android:background="@drawable/view_button_writeback_bg">
+        <Button
+            android:id="@+id/home_write_button"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/home_writebutton_size"
+            android:layout_height="@dimen/home_writebutton_size"
+            android:background="@mipmap/home_write" />
+    </RelativeLayout>
+
+</RelativeLayout>

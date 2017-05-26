@@ -45,7 +45,7 @@
         android:layout_height="@dimen/login_edittext_interval_big_v" />
     <com.example.jing.kapep.View.KapBigChangeButton
         android:id="@+id/login_login"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:custom_text_normal="@string/login"
@@ -68,7 +68,7 @@
         android:layout_height="@dimen/login_edittext_interval_big_v" />
     <com.example.jing.kapep.View.KapBigChangeButton
         android:id="@+id/login_regist"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:custom_text_normal="@string/regist"

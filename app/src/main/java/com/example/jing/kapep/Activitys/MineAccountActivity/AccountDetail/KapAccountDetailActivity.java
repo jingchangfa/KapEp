@@ -2,6 +2,7 @@ package com.example.jing.kapep.Activitys.MineAccountActivity.AccountDetail;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.R;
@@ -22,10 +23,11 @@ public class KapAccountDetailActivity extends ActivityBase {
     }
     @Override
     protected String navShowTitle() {
-        return null;
+        return "账户信息";
     }
     @Override
     protected void setController() {
+        this.rightButton.setVisibility(View.INVISIBLE);
 
     }
 

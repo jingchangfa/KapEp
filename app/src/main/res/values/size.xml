@@ -22,4 +22,11 @@
     <dimen name="login_edittext_interval_small_v">15dp</dimen>
     <dimen name="login_edittext_interval_bigsmall_v">20dp</dimen>
     <dimen name="login_edittext_interval_big_v">30dp</dimen>
+    // home
+    <dimen name="home_writebutton_size">28dp</dimen>
+    <dimen name="home_writeback_size">56dp</dimen>
+    // mine_center
+    <dimen name="minecenter_imageview_size">80dp</dimen>
+    <dimen name="minecenter_buttons_layout_height">30dp</dimen>
+
 </resources>

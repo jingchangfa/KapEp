@@ -1,7 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <include layout="@layout/nav_custom_titlebar"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/mineseting_updateContact"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/mineseting_updateContact"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/mineseting_cleanCache"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/mineseting_cleanCache"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/mineseting_aboutUs"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/mineseting_aboutUs"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/mineseting_logout"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/mineseting_logout"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Red_ff7777" />
 
 </LinearLayout>

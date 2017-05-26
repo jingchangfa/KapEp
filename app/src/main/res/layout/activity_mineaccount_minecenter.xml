@@ -3,5 +3,56 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/nav_custom_titlebar"/>
+    <ImageView
+        android:id="@+id/minecenter_imageview"
+        android:layout_width="@dimen/minecenter_imageview_size"
+        android:layout_height="@dimen/minecenter_imageview_size"
+        android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_buttons_layout_height">
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/minecenter_listener"
+            android:layout_width="@dimen/minecenter_buttons_layout_height"
+            android:layout_height="@dimen/minecenter_buttons_layout_height"
+            android:background="@mipmap/mine_center_listener"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <Button
+            android:id="@+id/minecenter_message"
+            android:layout_width="@dimen/minecenter_buttons_layout_height"
+            android:layout_height="@dimen/minecenter_buttons_layout_height"
+            android:background="@mipmap/mine_center_message"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <Button
+            android:id="@+id/minecenter_mine"
+            android:layout_width="@dimen/minecenter_buttons_layout_height"
+            android:layout_height="@dimen/minecenter_buttons_layout_height"
+            android:background="@mipmap/mine_center_mine"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <Button
+            android:id="@+id/minecenter_seting"
+            android:layout_width="@dimen/minecenter_buttons_layout_height"
+            android:layout_height="@dimen/minecenter_buttons_layout_height"
+            android:background="@mipmap/mine_center_seting"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
 
 </LinearLayout>

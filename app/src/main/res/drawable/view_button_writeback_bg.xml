@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/Bank_Blue_2f95fb"/>
+    <corners android:radius="@dimen/home_writebutton_size" />
+</shape>

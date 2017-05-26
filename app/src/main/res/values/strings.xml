@@ -14,4 +14,10 @@
     <string name="yes">确定</string>
     <string name="next">下一步</string>
 
+    // 个人设置页
+    <string name="mineseting_updateContact">上传通讯录</string>
+    <string name="mineseting_cleanCache">清除缓存</string>
+    <string name="mineseting_aboutUs">关于我们</string>
+    <string name="mineseting_logout">退出登录</string>
+
 </resources>
