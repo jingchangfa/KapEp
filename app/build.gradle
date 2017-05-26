@@ -60,6 +60,10 @@ dependencies {
      * */
     compile 'com.github.bumptech.glide:glide:3.7.0'
     /**
+     * 圆形imageview
+     * */
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    /**
      * ButterKnife注解库.
      * 取代findbyid 等其他的一些东西 （非常强大）
      * */

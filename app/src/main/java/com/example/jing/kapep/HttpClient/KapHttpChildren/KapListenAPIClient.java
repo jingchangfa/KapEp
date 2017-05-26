@@ -7,11 +7,13 @@ import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.Manager.KapGsonManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jing on 17/5/11.
@@ -43,12 +45,20 @@ public class KapListenAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
+                    JSONArray audiences =  jsonObject.getJSONArray("audiences");
+                    String needModelString = "[";
+                    for (int i = 0; i < audiences.length(); i++) {
+                        JSONObject audience = audiences.getJSONObject(i);
+                        JSONObject need =  audience.getJSONObject("audience");
+                        needModelString += need.toString();
+                        if (i < audiences.length()-1) needModelString += ",";
+                    }
+                    needModelString += "]";
 //                    得过滤一次(不好调试，等回来继续调试)
-//                    JSONObjToJavaClassHelper.jsonToMap(jsonObject.getJSONObject("friends"));
-//                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString);
-//                    int total = -1;
-//                    int offset = -1;
-//                    success.successResult(modelList,total,offset);
+                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(needModelString,KapModelPeople.class);
+                    int total = jsonObject.getInt("total");
+                    int offset = -1;
+                    success.successResult(modelList,total,offset);
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());

@@ -66,7 +66,7 @@ public class KapUserAPIClient extends HttpClickBase{
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("regions");
-                    List<KapModelCountry> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelCountry> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelCountry.class);
                     int total = -1;
                     int offset = -1;
                     success.successResult(modelList,total,offset);
@@ -98,7 +98,7 @@ public class KapUserAPIClient extends HttpClickBase{
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("results");
-                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelPeople.class);
                     int total = jsonObject.getInt("total");
                     int offset = jsonObject.getInt("offset");
                     success.successResult(modelList,total,offset);
@@ -124,7 +124,7 @@ public class KapUserAPIClient extends HttpClickBase{
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("possible_friends");
-                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelPeople.class);
                     int total = -1;
                     int offset = -1;
                     success.successResult(modelList,total,offset);
@@ -154,7 +154,7 @@ public class KapUserAPIClient extends HttpClickBase{
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("messages");
-                    List<KapModelMessage> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelMessage> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelMessage.class);
                     int total = jsonObject.getInt("total");
                     int offset = jsonObject.getInt("offset");
                     int unread = jsonObject.getInt("unread");

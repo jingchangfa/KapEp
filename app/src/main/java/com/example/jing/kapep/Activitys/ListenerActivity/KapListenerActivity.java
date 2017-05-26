@@ -3,15 +3,30 @@ package com.example.jing.kapep.Activitys.ListenerActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ListView;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Application.KapApplication;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapListenAPIClient;
 import com.example.jing.kapep.R;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
  * Created by jing on 17/5/10.
  */
 
-public class KapListenerActivity extends ActivityBase {
+public class KapListenerActivity extends ActivityBase implements BGARefreshLayout.BGARefreshLayoutDelegate{
+    @BindView(R.id.listener_refresh)
+    BGARefreshLayout refreshView;
+    @BindView(R.id.listener_listview)
+    ListView listView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +43,40 @@ public class KapListenerActivity extends ActivityBase {
     @Override
     protected void setController() {
         this.rightButton.setVisibility(View.INVISIBLE);
-
     }
-
+    private int limit = 20;
+    private int offset = 0;
+    private List modelList = new ArrayList();
     @Override
     protected void getView() {
-
+        refreshView.setDelegate(this);
+        listView.setAdapter(new ListenerAdapter(this,R.layout.list_iteam_listener,modelList));
     }
-
     @Override
     protected void getModel() {
         super.getModel();
+        postList(0);
     }
-
+    private void postList(final int nowOffset){
+        new KapListenAPIClient().userListenerList(limit, nowOffset, KapApplication.getUserAccount().ID, new KapListenAPIClient.KapListenListInterface() {
+            @Override
+            public void successResult(List modelList, int total, int offset) {
+                if (nowOffset == 0) {
+                    KapListenerActivity.this.offset = 0;
+                    modelList.clear();
+                }
+                KapListenerActivity.this.offset += limit;
+                modelList.addAll(modelList);
+                listView.notify();
+                refreshView.endRefreshing();
+                refreshView.endLoadingMore();
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -54,5 +90,16 @@ public class KapListenerActivity extends ActivityBase {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    // 上拉加载下拉刷刷新
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        postList(0);
+    }
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        postList(offset);
+        return true;
     }
 }

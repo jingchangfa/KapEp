@@ -52,7 +52,7 @@ public class KapContentAPIClient extends HttpClickBase {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("people");
-                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelPeople.class);
                     int total = jsonObject.getInt("total");
                     int offset = jsonObject.getInt("offset");
                     success.successResult(modelList,total,offset);
@@ -115,7 +115,7 @@ public class KapContentAPIClient extends HttpClickBase {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("posts");
-                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelOtherConton.class);
                     int total = jsonObject.getInt("total");
                     int offset = jsonObject.getInt("offset");
                     success.successResult(modelList,total,offset);
@@ -147,7 +147,7 @@ public class KapContentAPIClient extends HttpClickBase {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("posts");
-                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelOtherConton.class);
                     int total = jsonObject.getInt("total");
                     int offset = jsonObject.getInt("offset");
                     success.successResult(modelList,total,offset);
@@ -285,7 +285,7 @@ public class KapContentAPIClient extends HttpClickBase {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
                     String modelString = jsonObject.getString("comments");
-                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString);
+                    List<KapModelOtherConton> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelOtherConton.class);
                     int total = -1;
                     int offset = -1;
                     success.successResult(modelList,total,offset);
