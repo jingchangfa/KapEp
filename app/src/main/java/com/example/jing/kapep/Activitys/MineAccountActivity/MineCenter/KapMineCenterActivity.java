@@ -7,11 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.ListenerActivity.KapListenerActivity;
 import com.example.jing.kapep.Activitys.MessageActivity.KapMessageActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.AccountDetail.KapAccountDetailActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.MineSet.KapMineSetActivity;
+import com.example.jing.kapep.Helper.MainThreadHelper;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 
 import butterknife.BindView;
@@ -76,8 +82,22 @@ public class KapMineCenterActivity extends ActivityBase {
     @Override
     protected void getModel() {
         super.getModel();
+        new KapUserAPIClient().mineDetail(new KapUserAPIClient.KapUserModelUserDetailInterface() {
+            @Override
+            public void successResult(KapModelUserDetail model) {
+                Glide.with(KapMineCenterActivity.this).load("http://app1.kap-ep.com:18890//api/image?herd_id=9&id=33").placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
+                MainThreadHelper.logCurrentThread();
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+        MainThreadHelper.logCurrentThread();
+//        Glide.with(KapMineCenterActivity.this).load("http://app1.kap-ep.com:18890//api/image?herd_id=9&id=33").placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
     }
-
+    //                String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
+    //                Glide.with(KapMineCenterActivity.this).load(imageURLString).placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
     @Override
     protected void onStart() {
         super.onStart();

@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
 import com.zhy.adapter.abslistview.CommonAdapter;
@@ -44,6 +46,8 @@ public class ListenerAdapter extends CommonAdapter {
         final KapModelPeople modelPeople = (KapModelPeople) item;
         ButterKnife.bind(this,viewHolder.getConvertView());
         textView.setText(modelPeople.getName());
+        String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(modelPeople.getPortrait_url());
+        Glide.with(this.mContext).load(imageURLString).placeholder(R.mipmap.mine_placehold).into(imageView);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +57,6 @@ public class ListenerAdapter extends CommonAdapter {
     }
     void buttonAction(Button button,int userID){
         // 状态变化
-
         // 回调
         if (listener != null) listener.onClick(button,userID);
     }

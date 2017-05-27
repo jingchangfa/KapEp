@@ -62,6 +62,7 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
             @Override
             public void onClick(Button button, int userID) {
                 // 添加好友
+
             }
         });
         listView.setAdapter(adapter);

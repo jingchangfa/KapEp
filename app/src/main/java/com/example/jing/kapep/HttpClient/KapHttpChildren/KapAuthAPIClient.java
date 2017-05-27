@@ -6,7 +6,7 @@ import com.example.jing.kapep.Helper.JSONObjToJavaClassHelper;
 import com.example.jing.kapep.Helper.StringMD5SHAHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.Manager.KapGsonManager;
-import com.example.jing.kapep.Model.KapModelUserDetail;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 
 import org.json.JSONException;
 import org.json.JSONObject;

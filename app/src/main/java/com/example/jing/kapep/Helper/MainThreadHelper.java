@@ -2,6 +2,7 @@ package com.example.jing.kapep.Helper;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpThread;
 
@@ -28,5 +29,10 @@ public class MainThreadHelper {
             return;
         }
         getStaticHttpThread().mainHandler.post(runnable);
+    }
+    // 调试
+    public static void logCurrentThread(){
+        String string = Thread.currentThread().toString();
+        Log.d("当前线程",string);
     }
 }

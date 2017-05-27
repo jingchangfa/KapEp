@@ -1,8 +1,8 @@
 package com.example.jing.kapep.Model;
 
 import java.util.Map;
-import com.example.jing.kapep.Model.KapModelComment;
-import com.example.jing.kapep.Model.KapModelUserDetail;
+
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.google.gson.annotations.SerializedName;
 
 /**

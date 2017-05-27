@@ -5,9 +5,9 @@ import android.util.Log;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.Manager.KapGsonManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.Model.KapModelCountry;
 import com.example.jing.kapep.Model.KapModelMessage;
-import com.example.jing.kapep.Model.KapModelUserDetail;
 
 import org.json.JSONException;
 import org.json.JSONObject;
