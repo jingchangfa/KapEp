@@ -18,7 +18,7 @@ public class KapModelPeople extends  KapModelContentBase{
     @SerializedName("unread")
     protected int unread;
     @SerializedName("last_post")
-    protected int lastPost;
+    protected long lastPost;
 //    @SerializedName("areadyApplied")
 //    protected int areadyApplied;
     @SerializedName("refered")
@@ -26,4 +26,43 @@ public class KapModelPeople extends  KapModelContentBase{
     @SerializedName("is_friend")
     protected int isFriend;
 
+    public int getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(int relationship) {
+        this.relationship = relationship;
+    }
+
+    public int getUnread() {
+        return unread;
+    }
+
+    public void setUnread(int unread) {
+        this.unread = unread;
+    }
+
+    public long getLastPost() {
+        return lastPost;
+    }
+
+    public void setLastPost(long lastPost) {
+        this.lastPost = lastPost;
+    }
+
+    public int getRefered() {
+        return refered;
+    }
+
+    public void setRefered(int refered) {
+        this.refered = refered;
+    }
+
+    public int getIsFriend() {
+        return isFriend;
+    }
+
+    public void setIsFriend(int isFriend) {
+        this.isFriend = isFriend;
+    }
 }

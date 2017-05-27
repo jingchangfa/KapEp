@@ -1,5 +1,6 @@
 package com.example.jing.kapep.Manager;
 
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -8,6 +9,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.xml.transform.Result;
+
+import ikidou.reflect.TypeBuilder;
 
 /**
  * Created by jing on 17/5/22.
@@ -41,31 +44,15 @@ public class KapGsonManager {
 //        return modelList;
 //    }
     // http://www.jianshu.com/p/d62c2be60617 泛型分析链接
-    public static <T> List<T> KapJsonToModels(String jsonString,Class<T> modelClass){
+    public static <T> List<T> KapJsonToModels(String jsonString, Class<T> modelClass){
 //        Type listType = new TypeToken<List<T>>(){}.getType();
-        Type listType = new ParameterizedTypeImpl(List.class,new Class[]{modelClass});
+        Type listType = TypeBuilder
+                .newInstance(List.class)
+                .addTypeParam(modelClass)
+                .build();
         List<T> modelList = shareGsonManager.gson.fromJson(jsonString,listType);
         String name = modelList.get(0).getClass().toString();
         if(modelList == null) return null;
         return modelList;
-    }
-
-    public static class ParameterizedTypeImpl implements ParameterizedType {
-        private final Class raw;
-        private final Type[] args;
-        public ParameterizedTypeImpl(Class raw, Type[] args) {
-            this.raw = raw;
-            this.args = args != null ? args : new Type[0];
-        }
-        @Override
-        public Type[] getActualTypeArguments() {
-            return args;
-        }
-        @Override
-        public Type getRawType() {
-            return raw;
-        }
-        @Override
-        public Type getOwnerType() {return null;}
     }
 }

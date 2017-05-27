@@ -64,6 +64,10 @@ dependencies {
      * */
     compile 'de.hdodenhof:circleimageview:2.1.0'
     /**
+     * type 生成器
+     * */
+    compile 'com.github.ikidou:TypeBuilder:1.0'
+    /**
      * ButterKnife注解库.
      * 取代findbyid 等其他的一些东西 （非常强大）
      * */

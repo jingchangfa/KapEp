@@ -51,5 +51,5 @@ public class KapModelMessage extends KapModelBase{
     private Map relatePost;
 
     @SerializedName("created_at")
-    private int ts;
+    private long ts;
 }

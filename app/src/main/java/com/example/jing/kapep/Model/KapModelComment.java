@@ -25,5 +25,5 @@ public class KapModelComment extends KapModelBase{
     private KapModelComment replyTo;
 
     @SerializedName("created_at")
-    private int ts;
+    private long ts;
 }
