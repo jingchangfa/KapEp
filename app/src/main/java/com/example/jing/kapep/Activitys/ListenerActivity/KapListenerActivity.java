@@ -9,8 +9,11 @@ import android.widget.ListView;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapFriendAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapListenAPIClient;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.View.KapAddFriendButton;
 
 
 import java.util.ArrayList;
@@ -60,9 +63,9 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
         adapter = new ListenerAdapter(this,R.layout.list_iteam_listener,modelsArray);
         adapter.setListener(new ListenerAdapter.AddButtonListener() {
             @Override
-            public void onClick(Button button, int userID) {
+            public void onClick(KapAddFriendButton button, KapModelPeople modelPeople) {
                 // 添加好友
-
+                addFriendsByUser(button,modelPeople);
             }
         });
         listView.setAdapter(adapter);
@@ -72,6 +75,9 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
         super.getModel();
         postList(0);
     }
+    /**
+     *  网络请求
+     * */
     private void postList(final int nowOffset){
         new KapListenAPIClient().userListenerList(limit, nowOffset, KapApplication.getUserAccount().ID, new KapListenAPIClient.KapListenListInterface() {
             @Override
@@ -83,6 +89,9 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
                 KapListenerActivity.this.offset += limit;
                 modelsArray.addAll(modelList);
                 listViewEndRefreshingAndChangeData(true);
+                if (KapListenerActivity.this.offset > total){
+                    refreshView.setIsShowLoadingMoreView(false);
+                }
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
@@ -91,6 +100,35 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
             }
         });
     }
+    private void addFriendsByUser(final KapAddFriendButton button,final KapModelPeople modelPeople){
+        new KapFriendAPIClient().addUserFriends(modelPeople.getID(), new KapFriendAPIClient.KapFriendNoParticipationInterface() {
+            @Override
+            public void successResult() {
+                modelPeople.setAreadyApplied(1);
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+                // 设置button 显示加号
+                button.setButtonType(KapAddFriendButton.addButton_type_add);
+            }
+        });
+    }
+    /**
+     * 协议
+     * */
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        postList(0);
+    }
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        postList(offset);
+        return true;
+    }
+    /**
+     * 辅助方法
+     * */
     void listViewEndRefreshingAndChangeData(Boolean success){
         if (success) adapter.notifyDataSetChanged();
         refreshView.endRefreshing();
@@ -111,14 +149,5 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
         super.onDestroy();
     }
 
-    // 上拉加载下拉刷刷新
-    @Override
-    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        postList(0);
-    }
-    @Override
-    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        postList(offset);
-        return true;
-    }
+
 }

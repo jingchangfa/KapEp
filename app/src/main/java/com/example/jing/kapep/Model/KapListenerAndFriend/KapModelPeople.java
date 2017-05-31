@@ -19,8 +19,8 @@ public class KapModelPeople extends  KapModelContentBase{
     protected int unread;
     @SerializedName("last_post")
     protected long lastPost;
-//    @SerializedName("areadyApplied")
-//    protected int areadyApplied;
+    @SerializedName("areadyApplied")
+    protected int areadyApplied;//已申请
     @SerializedName("refered")
     protected int refered;
     @SerializedName("is_friend")
@@ -48,6 +48,14 @@ public class KapModelPeople extends  KapModelContentBase{
 
     public void setLastPost(long lastPost) {
         this.lastPost = lastPost;
+    }
+
+    public int getAreadyApplied() {
+        return areadyApplied;
+    }
+
+    public void setAreadyApplied(int areadyApplied) {
+        this.areadyApplied = areadyApplied;
     }
 
     public int getRefered() {

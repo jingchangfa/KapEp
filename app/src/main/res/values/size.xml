@@ -32,6 +32,7 @@
     <dimen name="listener_list_iteam_image_height">28dp</dimen>
     <dimen name="listener_list_iteam_line_height">1dp</dimen>
     <dimen name="listener_list_iteam_textSize">12sp</dimen>
+    <dimen name="listener_list_addbutton_textSize">8sp</dimen>
 
 
 </resources>

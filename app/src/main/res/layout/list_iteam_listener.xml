@@ -28,12 +28,11 @@
             android:text="121212456"
             android:textSize="@dimen/listener_list_iteam_textSize"
             android:textColor="@color/Bank_White_ffffff"/>
-        <Button
+        <com.example.jing.kapep.View.KapAddFriendButton
             android:id="@+id/listener_iteam_button"
             android:layout_width="@dimen/title_bar_button_size"
             android:layout_height="@dimen/title_bar_button_size"
-            android:layout_gravity="center_vertical"
-            android:background="@mipmap/iteam_add"/>
+            android:layout_gravity="center_vertical" />
         <FrameLayout
             android:layout_width="@dimen/login_edittext_interval_v"
             android:layout_height="match_parent"/>

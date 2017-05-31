@@ -85,19 +85,18 @@ public class KapMineCenterActivity extends ActivityBase {
         new KapUserAPIClient().mineDetail(new KapUserAPIClient.KapUserModelUserDetailInterface() {
             @Override
             public void successResult(KapModelUserDetail model) {
-                Glide.with(KapMineCenterActivity.this).load("http://app1.kap-ep.com:18890//api/image?herd_id=9&id=33").placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
-                MainThreadHelper.logCurrentThread();
+                mineSetingBy(model);
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
             public void defaultFailureBlock(long errorCode, String errorMsg) {
             }
         });
-        MainThreadHelper.logCurrentThread();
-//        Glide.with(KapMineCenterActivity.this).load("http://app1.kap-ep.com:18890//api/image?herd_id=9&id=33").placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
     }
-    //                String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
-    //                Glide.with(KapMineCenterActivity.this).load(imageURLString).placeholder(R.mipmap.mine_placehold).into(imageView);//.thumbnail(0.1f)
+    void mineSetingBy(KapModelUserDetail model){
+        String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
+        Glide.with(KapMineCenterActivity.this).load(imageURLString).into(imageView);//.thumbnail(0.1f)
+    }
     @Override
     protected void onStart() {
         super.onStart();
