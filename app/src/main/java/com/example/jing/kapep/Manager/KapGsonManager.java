@@ -36,6 +36,16 @@ public class KapGsonManager {
         if (modelList == null) return "";
         return shareGsonManager.gson.toJson(modelList);
     }
+    // http://www.jianshu.com/p/d62c2be60617 泛型分析链接
+    public static <T> List<T> KapJsonToModels(String jsonString, Class<T> modelClass){
+        Type listType = TypeBuilder
+                .newInstance(List.class)
+                .addTypeParam(modelClass)
+                .build();
+        List<T> modelList = shareGsonManager.gson.fromJson(jsonString,listType);
+        return modelList;
+    }
+}
 //    public static <T> List<T> KapJsonToModels(String jsonString,Class<T> modelClass){
 //        Type listType = new TypeToken<List<T>>(){}.getType();
 //        List<T> modelList = shareGsonManager.gson.fromJson(jsonString,listType);
@@ -43,16 +53,4 @@ public class KapGsonManager {
 //        if(modelList == null) return null;
 //        return modelList;
 //    }
-    // http://www.jianshu.com/p/d62c2be60617 泛型分析链接
-    public static <T> List<T> KapJsonToModels(String jsonString, Class<T> modelClass){
-//        Type listType = new TypeToken<List<T>>(){}.getType();
-        Type listType = TypeBuilder
-                .newInstance(List.class)
-                .addTypeParam(modelClass)
-                .build();
-        List<T> modelList = shareGsonManager.gson.fromJson(jsonString,listType);
-        String name = modelList.get(0).getClass().toString();
-        if(modelList == null) return null;
-        return modelList;
-    }
-}
+

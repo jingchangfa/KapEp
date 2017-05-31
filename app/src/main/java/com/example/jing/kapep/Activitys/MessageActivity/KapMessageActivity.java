@@ -21,10 +21,12 @@ public class KapMessageActivity extends ActivityBase {
     protected int getContentViewLayoutID() {
         return R.layout.activity_message;
     }
+
     @Override
     protected String navShowTitle() {
         return "我的消息";
     }
+
     @Override
     protected void setController() {
         this.rightButton.setVisibility(View.INVISIBLE);

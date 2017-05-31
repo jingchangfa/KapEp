@@ -3,11 +3,11 @@ package com.example.jing.kapep.Activitys.ListenerActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Application.KapApplication;
+import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapFriendAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapListenAPIClient;
@@ -59,7 +59,6 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
         refreshView.setIsShowLoadingMoreView(true);
         BGANormalRefreshViewHolder bgaRefreshViewHolder = new BGANormalRefreshViewHolder(this,true);
         refreshView.setRefreshViewHolder(bgaRefreshViewHolder);
-
         adapter = new ListenerAdapter(this,R.layout.list_iteam_listener,modelsArray);
         adapter.setListener(new ListenerAdapter.AddButtonListener() {
             @Override
@@ -76,8 +75,8 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
         postList(0);
     }
     /**
-     *  网络请求
-     * */
+     * 网络请求
+     */
     private void postList(final int nowOffset){
         new KapListenAPIClient().userListenerList(limit, nowOffset, KapApplication.getUserAccount().ID, new KapListenAPIClient.KapListenListInterface() {
             @Override
@@ -123,6 +122,7 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
     }
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        if (!KapFieldHelper.kapGetPrivateValue(refreshLayout,"mIsShowLoadingMoreView")) return false;
         postList(offset);
         return true;
     }
@@ -148,6 +148,5 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
     protected void onDestroy() {
         super.onDestroy();
     }
-
 
 }

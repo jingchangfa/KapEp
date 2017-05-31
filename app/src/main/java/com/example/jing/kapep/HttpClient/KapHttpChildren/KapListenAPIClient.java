@@ -2,6 +2,7 @@ package com.example.jing.kapep.HttpClient.KapHttpChildren;
 
 import android.util.Log;
 
+import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.JSONObjToJavaClassHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.Manager.KapGsonManager;
@@ -95,7 +96,7 @@ public class KapListenAPIClient extends HttpClickBase {
         this.httpEngine.httpPostRequest(urlString,parameters,finishBlock);
     }
     //可推荐听众的好友列表 //我的好友接口
-    public void mineCanListenFriends(int userID,
+    public void mineCanListenFriends(final int userID,
                                      final KapListenListInterface success,
                                      final HTTPAPIDefaultFailureBack failure){
         String urlString = this.httpConfiguration.mineFriensPath();
@@ -109,12 +110,16 @@ public class KapListenAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-//                    得过滤一次(不好调试，等回来继续调试)
-//                    JSONObjToJavaClassHelper.jsonToMap(jsonObject.getJSONObject("friends"));
-//                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString);
-//                    int total = jsonObject.getInt("total");
-//                    int offset = jsonObject.getInt("offset");
-//                    success.successResult(modelList,total,offset);
+                    String modelString = jsonObject.getString("friends");
+                    List<KapModelPeople> modelList = KapGsonManager.KapJsonToModels(modelString,KapModelPeople.class);
+                    for (int i = 0; i < modelList.size(); i++) {
+                        KapModelPeople people = modelList.get(i);
+                        if (!(people.getIsFriend() == 0 && people.getID() != userID && people.getID() != KapApplication.getUserAccount().ID))
+                            modelList.remove(people);
+                    }
+                    int total = jsonObject.getInt("total");
+                    int offset = jsonObject.getInt("offset");
+                    success.successResult(modelList,total,offset);
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
