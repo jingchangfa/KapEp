@@ -3,15 +3,30 @@ package com.example.jing.kapep.Activitys.MessageActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ListView;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Helper.KapFieldHelper;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
 import com.example.jing.kapep.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
  * Created by jing on 17/5/10.
  */
 
-public class KapMessageActivity extends ActivityBase {
+public class KapMessageActivity extends ActivityBase implements BGARefreshLayout.BGARefreshLayoutDelegate{
+    @BindView(R.id.message_refresh)
+    BGARefreshLayout refreshView;
+    @BindView(R.id.message_listview)
+    ListView listView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +47,70 @@ public class KapMessageActivity extends ActivityBase {
         this.rightButton.setVisibility(View.INVISIBLE);
     }
 
+    private int limit = 20;
+    private int offset = 0;
+    private List modelsArray = new ArrayList();
+    private MessageAdapter adapter = null;
     @Override
     protected void getView() {
-
+        refreshView.setDelegate(this);
+        refreshView.setIsShowLoadingMoreView(true);
+        BGANormalRefreshViewHolder bgaRefreshViewHolder = new BGANormalRefreshViewHolder(this,true);
+        refreshView.setRefreshViewHolder(bgaRefreshViewHolder);
+        adapter = new MessageAdapter(this,R.layout.list_iteam_message,modelsArray);
+        listView.setAdapter(adapter);
     }
 
     @Override
     protected void getModel() {
         super.getModel();
+        postList(0);
     }
-
+    /**
+     * 网络请求
+     */
+    private void postList(final int nowOffset){
+        new KapUserAPIClient().userMessage(limit, nowOffset, new KapUserAPIClient.KapUserUnreadListInterface() {
+            @Override
+            public void successResult(List modelList, int total, int offset, int unread) {
+                if (nowOffset == 0) {
+                    KapMessageActivity.this.offset = 0;
+                    modelsArray.clear();
+                }
+                KapMessageActivity.this.offset += limit;
+                modelsArray.addAll(modelList);
+                listViewEndRefreshingAndChangeData(true);
+                if (KapMessageActivity.this.offset > total){
+                    refreshView.setIsShowLoadingMoreView(false);
+                }
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+    }
+    /**
+     * 协议
+     * */
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        postList(0);
+    }
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        if (!KapFieldHelper.kapGetPrivateValue(refreshLayout,"mIsShowLoadingMoreView")) return false;
+        postList(offset);
+        return true;
+    }
+    /**
+     * 辅助方法
+     * */
+    void listViewEndRefreshingAndChangeData(Boolean success){
+        if (success) adapter.notifyDataSetChanged();
+        refreshView.endRefreshing();
+        refreshView.endLoadingMore();
+    }
     @Override
     protected void onStart() {
         super.onStart();
