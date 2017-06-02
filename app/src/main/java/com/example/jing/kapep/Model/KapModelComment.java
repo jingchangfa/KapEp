@@ -1,6 +1,7 @@
 package com.example.jing.kapep.Model;
 
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelContentBase;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -19,7 +20,7 @@ public class KapModelComment extends KapModelBase{
     private String message;
 
     @SerializedName("author")
-    private KapModelContentBase author;
+    private KapModelUserDetail author;
 
     @SerializedName("reply_to")
     private KapModelComment replyTo;
