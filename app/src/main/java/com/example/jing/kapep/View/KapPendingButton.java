@@ -5,5 +5,5 @@ package com.example.jing.kapep.View;
  */
 
 public class KapPendingButton {
-    
+
 }
