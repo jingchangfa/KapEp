@@ -12,10 +12,13 @@ import android.widget.Button;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.MakeContentActivity.KapMakeContentActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter.KapMineCenterActivity;
+import com.example.jing.kapep.Activitys.OtherDetailActivity.KapOtherDetailActivity;
 import com.example.jing.kapep.Activitys.SearchFriendsActivity.KapSearchFriendsActivity;
+import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapContentAPIClient;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
@@ -83,7 +86,15 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
         adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                KapModelPeople modelPeople = (KapModelPeople)modelsArray.get(position);
                 // 跳到详情页
+                if (modelPeople.getID() == KapApplication.getUserAccount().ID){
+                    // 个人设置页
+                    startActivity(new Intent(KapHomePageActivity.this, KapMineCenterActivity.class));
+                    return;
+                }
+               // 他人详情页
+                startActivity(new Intent(KapHomePageActivity.this, KapOtherDetailActivity.class));
             }
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -108,7 +119,7 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
         postContentList(0);
     }
     private void postContentList(final int nowOffset){
-        new KapContentAPIClient().homePagePeopleList(this.limit, offset, new KapContentAPIClient.KapContentListInterface() {
+        new KapContentAPIClient().homePagePeopleList(this.limit, nowOffset, new KapContentAPIClient.KapContentListInterface() {
             @Override
             public void successResult(List modelList, int total, int offset) {
                 if (nowOffset == 0) {

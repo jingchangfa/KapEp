@@ -22,7 +22,7 @@ public class KapOtherDetailActivity extends ActivityBase {
     }
     @Override
     protected String navShowTitle() {
-        return null;
+        return "他人详情页";
     }
     @Override
     protected void setController() {

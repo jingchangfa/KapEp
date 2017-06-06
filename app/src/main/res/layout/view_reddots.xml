@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/reddots_image"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/mine_placehold"/>
+    <View
+        android:id="@+id/reddots_redview"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:visibility="invisible"/>
+</RelativeLayout>

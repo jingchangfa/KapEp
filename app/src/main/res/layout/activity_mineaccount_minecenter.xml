@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -27,38 +28,38 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
-        <Button
+        <com.example.jing.kapep.View.KapImageRedDotsView
             android:id="@+id/minecenter_listener"
             android:layout_width="@dimen/minecenter_buttons_layout_height"
             android:layout_height="@dimen/minecenter_buttons_layout_height"
-            android:background="@mipmap/mine_center_listener"/>
+            app:imageview_image = "@mipmap/mine_center_listener" />
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
-        <Button
+        <com.example.jing.kapep.View.KapImageRedDotsView
             android:id="@+id/minecenter_message"
             android:layout_width="@dimen/minecenter_buttons_layout_height"
             android:layout_height="@dimen/minecenter_buttons_layout_height"
-            android:background="@mipmap/mine_center_message"/>
+            app:imageview_image = "@mipmap/mine_center_message"/>
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
-        <Button
+        <com.example.jing.kapep.View.KapImageRedDotsView
             android:id="@+id/minecenter_mine"
             android:layout_width="@dimen/minecenter_buttons_layout_height"
             android:layout_height="@dimen/minecenter_buttons_layout_height"
-            android:background="@mipmap/mine_center_mine"/>
+            app:imageview_image ="@mipmap/mine_center_mine"/>
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
-        <Button
+        <com.example.jing.kapep.View.KapImageRedDotsView
             android:id="@+id/minecenter_seting"
             android:layout_width="@dimen/minecenter_buttons_layout_height"
             android:layout_height="@dimen/minecenter_buttons_layout_height"
-            android:background="@mipmap/mine_center_seting"/>
+            app:imageview_image = "@mipmap/mine_center_seting"/>
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -21,4 +21,32 @@ public class KapModelUserDetail extends  KapModelContentBase {
     protected  int unreadMessages;
     @SerializedName("new_audiences")
     protected  int unreadAdiences;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getEmailStatus() {
+        return emailStatus;
+    }
+
+    public int getHerdID() {
+        return herdID;
+    }
+
+    public int getUnreadMessages() {
+        return unreadMessages;
+    }
+
+    public int getUnreadAdiences() {
+        return unreadAdiences;
+    }
 }

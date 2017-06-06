@@ -34,4 +34,8 @@
         <attr name="button_text" format="reference"/>
         <attr name="button_color" format="reference"/>
     </declare-styleable>
+    // 带红点的button
+    <declare-styleable name="KapImageRedDotsView">
+        <attr name="imageview_image" format="reference"/>
+    </declare-styleable>
 </resources>

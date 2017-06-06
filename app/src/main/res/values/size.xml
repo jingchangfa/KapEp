@@ -25,14 +25,14 @@
     // home
     <dimen name="home_writebutton_size">28dp</dimen>
     <dimen name="home_writeback_size">56dp</dimen>
-    <dimen name="home_list_imagesize">56dp</dimen>
+    <dimen name="home_list_imagesize">66dp</dimen>
     <dimen name="home_list_textSize">12sp</dimen>
     <dimen name="home_interval_v">5dp</dimen>
     <dimen name="home_interval_bigv">20dp</dimen>
 
     // mine_center
     <dimen name="minecenter_imageview_size">80dp</dimen>
-    <dimen name="minecenter_buttons_layout_height">30dp</dimen>
+    <dimen name="minecenter_buttons_layout_height">38dp</dimen>
     // listener
     <dimen name="listener_list_iteam_image_height">28dp</dimen>
     <dimen name="listener_list_iteam_line_height">1dp</dimen>

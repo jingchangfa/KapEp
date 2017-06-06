@@ -19,19 +19,21 @@ import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.View.KapImageRedDotsView;
 
 import butterknife.BindView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by jing on 17/5/10.
  */
 
 public class KapMineCenterActivity extends ActivityBase {
-    @BindView(R.id.minecenter_imageview)ImageView imageView;
-    @BindView(R.id.minecenter_listener)Button listenerButton;
-    @BindView(R.id.minecenter_message)Button messageButton;
-    @BindView(R.id.minecenter_mine)Button mineButton;
-    @BindView(R.id.minecenter_seting)Button setingButton;
+    @BindView(R.id.minecenter_imageview)CircleImageView imageView;
+    @BindView(R.id.minecenter_listener)KapImageRedDotsView listenerButton;
+    @BindView(R.id.minecenter_message)KapImageRedDotsView messageButton;
+    @BindView(R.id.minecenter_mine)KapImageRedDotsView mineButton;
+    @BindView(R.id.minecenter_seting)KapImageRedDotsView setingButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,12 +59,14 @@ public class KapMineCenterActivity extends ActivityBase {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(KapMineCenterActivity.this, KapListenerActivity.class));
+                listenerButton.setShowRedView(false);
             }
         });
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(KapMineCenterActivity.this, KapMessageActivity.class));
+                messageButton.setShowRedView(false);
             }
         });
         mineButton.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +99,12 @@ public class KapMineCenterActivity extends ActivityBase {
     }
     void mineSetingBy(KapModelUserDetail model){
         String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
-        Glide.with(KapMineCenterActivity.this).load(imageURLString).into(imageView);//.thumbnail(0.1f)
+        Glide.with(KapMineCenterActivity.this)
+                .load(imageURLString)
+//                .placeholder(R.mipmap.mine_placehold)
+                .into(imageView);//.thumbnail(0.1f)
+        listenerButton.setShowRedView(model.getUnreadAdiences() > 0);
+        messageButton.setShowRedView(model.getUnreadMessages() > 0);
     }
     @Override
     protected void onStart() {
