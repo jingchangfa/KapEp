@@ -2,8 +2,10 @@ package com.example.jing.kapep.Activitys.OtherDetailActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
 
 /**
@@ -37,6 +39,8 @@ public class KapOtherDetailActivity extends ActivityBase {
     @Override
     protected void getModel() {
         super.getModel();
+        KapModelPeople modelPeople = (KapModelPeople)getIntent().getSerializableExtra("KapModelPeople");
+        Toast.makeText(this, modelPeople.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

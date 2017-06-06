@@ -94,7 +94,9 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
                     return;
                 }
                // 他人详情页
-                startActivity(new Intent(KapHomePageActivity.this, KapOtherDetailActivity.class));
+                Intent intent = new Intent(KapHomePageActivity.this, KapOtherDetailActivity.class);
+                intent.putExtra("KapModelPeople",modelPeople);
+                startActivity(intent);
             }
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {

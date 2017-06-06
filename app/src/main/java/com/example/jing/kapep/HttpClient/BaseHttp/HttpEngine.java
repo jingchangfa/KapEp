@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,7 +30,7 @@ public class HttpEngine {
      * 如果你想拿到返回的inputStream，则调用response.body().byteStream()
      * */
     public void httpGetRequest(String urlString, final HttpClickBase.HTTPAPICallBack finished){
-        OkHttpClient mOkHttpClient = new OkHttpClient();
+        OkHttpClient mOkHttpClient = createdClick();
         final Request request = new Request.Builder()
                 .url(urlString)
                 .build();
@@ -82,7 +83,7 @@ public class HttpEngine {
                 .post(requestBody)
                 .build();
         //创建并加入调度
-        OkHttpClient mOkHttpClient = new OkHttpClient();
+        OkHttpClient mOkHttpClient = createdClick();
         call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -109,7 +110,17 @@ public class HttpEngine {
      * toPath 为本地存储路径（含文件名），
      * finished block中，如果成功，返回最终文件保存的地址
      * */
-
+    /**
+     * 创建 click
+     * */
+    OkHttpClient createdClick(){
+        OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
+//                .readTimeout(READ_TIMEOUT,TimeUnit.SECONDS)//设置读取超时时间
+//                .writeTimeout(WRITE_TIMEOUT,TimeUnit.SECONDS)//设置写的超时时间
+                .connectTimeout(60, TimeUnit.SECONDS)//设置连接超时时间
+                .build();
+        return mOkHttpClient;
+    }
     /**
      *取消当前请求
      * */
