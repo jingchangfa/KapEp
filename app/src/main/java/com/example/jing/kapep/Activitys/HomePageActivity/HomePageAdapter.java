@@ -1,7 +1,6 @@
 package com.example.jing.kapep.Activitys.HomePageActivity;
 
 import android.content.Context;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
