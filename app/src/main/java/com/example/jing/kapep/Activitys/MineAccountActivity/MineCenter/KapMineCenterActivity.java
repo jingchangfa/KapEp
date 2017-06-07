@@ -119,5 +119,7 @@ public class KapMineCenterActivity extends ActivityBase {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 页面销毁的时候 当前页面停止加载图片，防止崩溃
+        Glide.with(this).pauseRequests();
     }
 }

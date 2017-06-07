@@ -20,4 +20,9 @@
     <string name="mineseting_aboutUs">关于我们</string>
     <string name="mineseting_logout">退出登录</string>
 
+    // 个人详情页
+    <string name="accountdetail_clickimage">点击更换头像</string>
+    <string name="accountdetail_changename">修改信息</string>
+    <string name="accountdetail_chengepassword">修改密码</string>
+
 </resources>

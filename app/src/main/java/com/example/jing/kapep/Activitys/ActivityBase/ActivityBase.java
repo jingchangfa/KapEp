@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.R;
 
