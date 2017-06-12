@@ -38,4 +38,11 @@
     <declare-styleable name="KapImageRedDotsView">
         <attr name="imageview_image" format="reference"/>
     </declare-styleable>
+    // 账户详情页 显示昵称，性别等的view
+    <declare-styleable name="KapShowAccountDetailTextView">
+        <attr name="AccountDetail_style" format="integer"/>
+        <attr name="AccountDetail_content_sex" format="integer"/>// 0 女1 男   -1  未设置
+        <attr name="AccountDetail_title_text" format="reference"/>
+        <attr name="AccountDetail_content_textcolor" format="reference"/>
+    </declare-styleable>
 </resources>

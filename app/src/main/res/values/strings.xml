@@ -5,10 +5,14 @@
     <string name="please_number">请输入手机号</string>
     <string name="please_password">请输入密码</string>
     <string name="please_code">请输入验证码</string>
-
+    //登陆
     <string name="login">登录</string>
     <string name="forget_password">忘记密码</string>
     <string name="regist">注册</string>
+    //设置密码
+    <string name="please_new_password">请输入新密码</string>
+    <string name="please_passwordagain">请在输入一次</string>
+
     //忘记密码页面
     <string name="please_put_email">忘记密码</string>
     <string name="yes">确定</string>
@@ -24,5 +28,11 @@
     <string name="accountdetail_clickimage">点击更换头像</string>
     <string name="accountdetail_changename">修改信息</string>
     <string name="accountdetail_chengepassword">修改密码</string>
+    <string name="accountdetail_nike">昵称</string>
+    <string name="accountdetail_number">账号</string>
+    <string name="accountdetail_occ">职业</string>
+    <string name="accountdetail_sex">性别</string>
+    <string name="accountdetail_place">地点</string>
+    <string name="accountdetail_email">邮箱</string>
 
 </resources>

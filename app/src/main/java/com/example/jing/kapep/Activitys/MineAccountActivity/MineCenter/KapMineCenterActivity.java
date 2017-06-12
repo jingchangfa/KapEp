@@ -1,5 +1,6 @@
 package com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import com.example.jing.kapep.Activitys.ListenerActivity.KapListenerActivity;
 import com.example.jing.kapep.Activitys.MessageActivity.KapMessageActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.AccountDetail.KapAccountDetailActivity;
 import com.example.jing.kapep.Activitys.MineAccountActivity.MineSet.KapMineSetActivity;
+import com.example.jing.kapep.Helper.KapBitmapHalper;
+import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.Helper.MainThreadHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
@@ -72,6 +75,7 @@ public class KapMineCenterActivity extends ActivityBase {
         mineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                KapBitmapHalper.SaveImageView(imageView);
                 startActivity(new Intent(KapMineCenterActivity.this, KapAccountDetailActivity.class));
             }
         });
@@ -99,12 +103,15 @@ public class KapMineCenterActivity extends ActivityBase {
     }
     void mineSetingBy(KapModelUserDetail model){
         String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
-        Glide.with(KapMineCenterActivity.this)
-                .load(imageURLString)
-//                .placeholder(R.mipmap.mine_placehold)
+        KapGlideHelper.CreatedGlide().load(imageURLString)
+                .asBitmap()
+                .placeholder(R.mipmap.mine_placehold)
+                .dontAnimate()
                 .into(imageView);//.thumbnail(0.1f)
+
         listenerButton.setShowRedView(model.getUnreadAdiences() > 0);
         messageButton.setShowRedView(model.getUnreadMessages() > 0);
+        MainThreadHelper.logCurrentThread();
     }
     @Override
     protected void onStart() {
@@ -119,7 +126,5 @@ public class KapMineCenterActivity extends ActivityBase {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // 页面销毁的时候 当前页面停止加载图片，防止崩溃
-        Glide.with(this).pauseRequests();
     }
 }

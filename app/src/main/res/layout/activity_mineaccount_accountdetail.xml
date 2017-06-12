@@ -14,7 +14,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="@dimen/minecenter_imageview_size"
         android:layout_height="@dimen/minecenter_imageview_size"
-        android:src="@mipmap/mine_placehold"
         app:civ_border_width="0dp"
         app:civ_border_color="@color/Bank_White_ffffff"/>
     <TextView
@@ -25,8 +24,78 @@
         android:text="@string/accountdetail_clickimage"
         android:textColor="@color/Bank_Black_565656"
         android:textSize="10dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
 
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_nikename"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_nike"
+        app:AccountDetail_content_textcolor="@color/Bank_White_ffffff"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_edittext_interval_v"/>
 
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_number"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_number"
+        app:AccountDetail_content_textcolor="@color/Bank_White_ffffff"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_edittext_interval_v"/>
+
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_occ"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_occ"
+        app:AccountDetail_content_textcolor="@color/Bank_Blue_2f95fb"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_edittext_interval_v"/>
+
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_sex"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_sex"
+        app:AccountDetail_content_textcolor="@color/Bank_White_ffffff"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_edittext_interval_v"/>
+
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_place"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_place"
+        app:AccountDetail_content_textcolor="@color/Bank_White_ffffff"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_edittext_interval_v"/>
+
+    <com.example.jing.kapep.View.KapShowAccountDetailTextView
+        android:id="@+id/accountDetail_email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minecenter_account_text_height"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        app:AccountDetail_title_text="@string/accountdetail_email"
+        app:AccountDetail_content_textcolor="@color/Bank_White_ffffff"/>
     // 填充剩余区域
     <FrameLayout
         android:layout_width="match_parent"

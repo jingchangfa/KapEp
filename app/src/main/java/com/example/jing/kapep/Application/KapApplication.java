@@ -4,10 +4,15 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
 import com.example.jing.kapep.Activitys.LoginActivity.KapLoginActivity;
+import com.example.jing.kapep.Manager.KapGsonManager;
+import com.example.jing.kapep.Manager.KapSharePreferenceManager;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.UserAccount.KapUserAccount;
 
 /**
@@ -21,12 +26,14 @@ public class KapApplication extends Application{
     }
     private static Context context;
     private static KapUserAccount userAccount;
+    private static KapModelUserDetail mineUserDetail;
     private static String codeKeyString;
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
         instance = this;
+        shared = KapSharePreferenceManager.getSharedPreferences();
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
     }
     /**
@@ -52,7 +59,6 @@ public class KapApplication extends Application{
     }
     public static void backActivityChangeAction(){
         KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
-
         activitysQueue.finishCurrentActivity();
     }
     public static Activity currentActivity(){
@@ -107,6 +113,32 @@ public class KapApplication extends Application{
     }
     public static void setUserAccount(KapUserAccount userAccount) {
         KapApplication.userAccount = userAccount;
+    }
+
+    private static final String KEY_ACTIVE_USER_DETAIL = "active_user_mine_detail_";
+    private static SharedPreferences shared = null;
+
+    public static KapModelUserDetail getMineUserDetail() {
+        if (mineUserDetail != null) return mineUserDetail;
+        // 持久化
+        String userKey =  KEY_ACTIVE_USER_DETAIL + userAccount.ID;
+        String jsonString = shared.getString(userKey,null);
+        if (jsonString != null) return KapGsonManager.KapJsonToModel(jsonString,KapModelUserDetail.class);
+        // 创建一个
+        mineUserDetail = new KapModelUserDetail();
+        mineUserDetail.setID(userAccount.ID);
+        return mineUserDetail;
+    }
+
+    public static void setMineUserDetail(KapModelUserDetail mineUserDetail) {
+        if (mineUserDetail == null) return;
+        KapApplication.mineUserDetail = mineUserDetail;
+        // 持久化
+        String userKey =  KEY_ACTIVE_USER_DETAIL + userAccount.ID;
+        String jsonString = KapGsonManager.KapModelToJson(mineUserDetail);
+        SharedPreferences.Editor editor = shared.edit();
+        editor.putString(userKey,jsonString);
+        editor.commit();
     }
 
     public static String getCodeKeyString() {

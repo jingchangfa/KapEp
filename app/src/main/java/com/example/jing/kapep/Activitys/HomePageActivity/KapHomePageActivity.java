@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.MakeContentActivity.KapMakeContentActivity;
@@ -18,7 +19,9 @@ import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapContentAPIClient;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
@@ -118,7 +121,10 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
     @Override
     protected void getModel() {
         super.getModel();
+        postSaveMineDetail();
         postContentList(0);
+//        Toast.makeText(this, String.valueOf(Math.pow(0.89,7)), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.valueOf(Math.pow(0.85,3)), Toast.LENGTH_SHORT).show();
     }
     private void postContentList(final int nowOffset){
         new KapContentAPIClient().homePagePeopleList(this.limit, nowOffset, new KapContentAPIClient.KapContentListInterface() {
@@ -134,6 +140,19 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
                 if (KapHomePageActivity.this.offset > total){
                     refreshView.setIsShowLoadingMoreView(false);
                 }
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+    }
+    private void postSaveMineDetail(){
+        new KapUserAPIClient().mineDetail(new KapUserAPIClient.KapUserModelUserDetailInterface() {
+            @Override
+            public void successResult(KapModelUserDetail model) {
+                // 更新我的信息
+                KapApplication.setMineUserDetail(model);
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override

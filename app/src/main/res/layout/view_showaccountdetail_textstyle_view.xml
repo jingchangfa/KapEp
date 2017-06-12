@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Bank_Black_2b2b2b">
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:text="昵称"
+        android:textColor="@color/gray"
+        android:gravity="center"
+        android:textSize="@dimen/home_list_textSize"/>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7">
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/Bank_White_ffffff"
+            android:text="女一号"
+            android:textSize="@dimen/customview_textSize"/>
+
+    </RelativeLayout>
+    // 下面这个空布局目的让 上面那个布局 居中
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"/>
+</LinearLayout>

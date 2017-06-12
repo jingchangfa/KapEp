@@ -4,12 +4,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.jing.kapep.Application.KapApplication;
+import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.R;
 
 import butterknife.BindView;
@@ -37,6 +39,7 @@ abstract public class ActivityBase extends AppCompatActivity {
         setingButtonAction();
         // 子类自定义实现
         setController();
+        // 背景颜色的设置在androidmanifest.xml application的appthream的style文件里面
         getView();
         getModel();
     }
@@ -87,6 +90,7 @@ abstract public class ActivityBase extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e("页面销毁",this.getClass().toString()+" delloc");
     }
 
     @Override

@@ -48,10 +48,10 @@ public class KapImageRedDotsView extends FrameLayout{
                 view.setBackgroundDrawable(gd);
             }
         });
-        if (attrs != null){
-            TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapImageRedDotsView);
-            AttributeSetingHelper.setImageResource(imageView,a,R.styleable.KapImageRedDotsView_imageview_image);
-        }
+        if (attrs == null) return;
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapImageRedDotsView);
+        AttributeSetingHelper.setImageResource(imageView,a,R.styleable.KapImageRedDotsView_imageview_image);
+        a.recycle();
     }
 
     // set

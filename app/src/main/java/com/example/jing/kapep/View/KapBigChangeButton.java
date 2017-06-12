@@ -28,25 +28,24 @@ public class KapBigChangeButton extends FrameLayout {
         super(context, attrs);
         View view = LayoutInflater.from(context).inflate(R.layout.big_change_button,this);
         ButterKnife.bind(this,view);
-        if (attrs != null){
-            TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapBigChangeButton);
-            String normalText = a.getString(R.styleable.KapBigChangeButton_custom_text_normal);
-            String selectText = a.getString(R.styleable.KapBigChangeButton_custom_text_select);
-            String disableText =  a.getString(R.styleable.KapBigChangeButton_custom_text_disable);
+        if (attrs == null) return;
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapBigChangeButton);
+        String normalText = a.getString(R.styleable.KapBigChangeButton_custom_text_normal);
+        String selectText = a.getString(R.styleable.KapBigChangeButton_custom_text_select);
+        String disableText =  a.getString(R.styleable.KapBigChangeButton_custom_text_disable);
 
-            int normalBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_normal,0);
-            int selectBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_select,0);
-            int disableBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_disable,0);
+        int normalBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_normal,0);
+        int selectBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_select,0);
+        int disableBackColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_backColor_disable,0);
 
-            int normalTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_normal,0);
-            int selectTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_select,0);
-            int disableTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_disable,0);
+        int normalTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_normal,0);
+        int selectTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_select,0);
+        int disableTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_disable,0);
 
-            AttributeSetingHelper.setText(button,a,R.styleable.KapBigChangeButton_custom_text_normal);
-            AttributeSetingHelper.setBackgroundColor(context,button,a,R.styleable.KapBigChangeButton_custom_backColor_normal);
-            AttributeSetingHelper.setTextColor(context,button,a,R.styleable.KapBigChangeButton_custom_textColor_normal);
-            a.recycle();
-        }
+        AttributeSetingHelper.setText(button,a,R.styleable.KapBigChangeButton_custom_text_normal);
+        AttributeSetingHelper.setBackgroundColor(context,button,a,R.styleable.KapBigChangeButton_custom_backColor_normal);
+        AttributeSetingHelper.setTextColor(context,button,a,R.styleable.KapBigChangeButton_custom_textColor_normal);
+        a.recycle();
     }
     public Button getButton() {
         return button;

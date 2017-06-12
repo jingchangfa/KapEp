@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Manager.KapGsonManager;
+import com.example.jing.kapep.Manager.KapSharePreferenceManager;
 
 /**
  * Created by jing on 17/5/19.
@@ -18,7 +19,7 @@ public class KapUserAccountStore {
     private static final String KEY_ACTIVE_USER_ID = "active_user_id";
     private static final String KEY_ACTIVE_USER = "active_user_";
 
-    private static SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(KapApplication.getContext());
+    private static SharedPreferences sharedPreferences = KapSharePreferenceManager.getSharedPreferences();
     // 存储
     public static void save(KapUserAccount kapUserAccount){
         SharedPreferences.Editor editor = sharedPreferences.edit();

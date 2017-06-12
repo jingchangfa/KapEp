@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
@@ -50,7 +51,7 @@ public class ListenerAdapter extends CommonAdapter {
         ButterKnife.bind(this,viewHolder.getConvertView());
         textView.setText(modelPeople.getName());
         String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(modelPeople.getPortrait_url());
-        Glide.with(this.mContext).load(imageURLString).placeholder(R.mipmap.mine_placehold).into(imageView);
+        KapGlideHelper.CreatedGlide().load(imageURLString).placeholder(R.mipmap.mine_placehold).into(imageView);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -49,4 +49,12 @@ public class KapModelUserDetail extends  KapModelContentBase {
     public int getUnreadAdiences() {
         return unreadAdiences;
     }
+
+    // 辅助方法
+    public String sexToString(){
+        return this.sex == 0?"女":"男";
+    }
+    public String occToString(){
+        return "户外运动";
+    }
 }

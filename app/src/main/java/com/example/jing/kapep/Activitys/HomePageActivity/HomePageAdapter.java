@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
@@ -37,14 +38,14 @@ public class HomePageAdapter extends CommonAdapter {
         String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(modelPeople.getPortrait_url());
         if (modelPeople.getRelationship() == KapModelPeople.people_relationship_audience){
             // 模糊效果
-            Glide.with(this.mContext)
+            KapGlideHelper.CreatedGlide()
                     .load(imageURLString)
                     .placeholder(R.mipmap.mine_placehold)
                     .bitmapTransform(new BlurTransformation(this.mContext, 8))// 0~100
                     .into(imageRedDotsView.getImageView());
         }else {
             // 没有模糊效果
-            Glide.with(this.mContext)
+            KapGlideHelper.CreatedGlide()
                     .load(imageURLString)
                     .placeholder(R.mipmap.mine_placehold)
                     .into(imageRedDotsView.getImageView());
