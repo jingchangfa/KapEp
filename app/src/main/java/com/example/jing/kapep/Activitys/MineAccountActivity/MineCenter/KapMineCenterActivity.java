@@ -58,6 +58,14 @@ public class KapMineCenterActivity extends ActivityBase {
 
     @Override
     protected void getView() {
+        View.OnClickListener mineListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                KapBitmapHalper.SaveImageView(imageView);
+                startActivity(new Intent(KapMineCenterActivity.this, KapAccountDetailActivity.class));
+            }
+        };
+        imageView.setOnClickListener(mineListener);
         listenerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,13 +80,7 @@ public class KapMineCenterActivity extends ActivityBase {
                 messageButton.setShowRedView(false);
             }
         });
-        mineButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                KapBitmapHalper.SaveImageView(imageView);
-                startActivity(new Intent(KapMineCenterActivity.this, KapAccountDetailActivity.class));
-            }
-        });
+        mineButton.setOnClickListener(mineListener);
         setingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

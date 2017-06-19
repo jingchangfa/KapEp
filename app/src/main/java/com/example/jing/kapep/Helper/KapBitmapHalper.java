@@ -21,7 +21,9 @@ public class KapBitmapHalper {
     // 获取imageview的图片，并且转化为可传递的string
     public static String GetStringByImageView(ImageView imageView){
         // 从ImageView得到Bitmap对象
-        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        BitmapDrawable drawable = (BitmapDrawable)imageView.getDrawable();
+        if (drawable == null) return null;// 无图片的时候
+        Bitmap bitmap = drawable.getBitmap();
         // 把Bitmap转码成字符串
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 50,baos);

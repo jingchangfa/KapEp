@@ -65,7 +65,6 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
             @Override
             public void seeButtonOnClick(KapPendingButton button, KapModelMessage message) {
                 // 查看(跳到帖子详情页)
-
             }
 
             @Override

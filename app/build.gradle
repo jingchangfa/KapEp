@@ -77,4 +77,8 @@ dependencies {
      * */
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    /**
+     * 仿iOS alertview
+     * */
+    compile 'com.bigkoo:alertview:1.0.3'
 }

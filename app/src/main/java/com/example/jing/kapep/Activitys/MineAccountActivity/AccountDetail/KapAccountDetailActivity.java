@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.bigkoo.alertview.AlertView;
+import com.bigkoo.alertview.OnItemClickListener;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.RegisteredActivity.PasswordSet.KapPasswordSetActivity;
 import com.example.jing.kapep.Application.KapApplication;
@@ -13,6 +15,7 @@ import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
+import com.example.jing.kapep.Manager.KapCreameManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapBigChangeButton;
@@ -73,6 +76,31 @@ public class KapAccountDetailActivity extends ActivityBase {
     @Override
     protected void getView() {
         imageView.setImageBitmap(KapBitmapHalper.GetImageBitMap());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 出现更换页面
+                new AlertView("", null, "取消", null,
+                        new String[]{"拍照", "从相册中选择"},
+                        KapAccountDetailActivity.this,
+                        AlertView.Style.ActionSheet,
+                        new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(Object o, int position) {// 跳转到相册
+                                if(position == 0){// 拍照
+                                    KapCreameManager.OpenCreame(KapAccountDetailActivity.this);
+                                    return;
+                                }
+                                if (position == 1){// 相册
+                                    KapCreameManager.OpenPhotoLib(KapAccountDetailActivity.this);
+                                    return;
+                                }
+                                if (position == -1){// 取消
+                                }
+                            }
+                        }).show();
+            }
+        });
         changeDetailButton.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
