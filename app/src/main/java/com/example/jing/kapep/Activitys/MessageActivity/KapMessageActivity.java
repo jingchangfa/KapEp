@@ -8,8 +8,11 @@ import android.widget.ListView;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapFriendAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
+import com.example.jing.kapep.Model.KapModelMessage;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.View.KapPendingButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +61,25 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
         BGANormalRefreshViewHolder bgaRefreshViewHolder = new BGANormalRefreshViewHolder(this,true);
         refreshView.setRefreshViewHolder(bgaRefreshViewHolder);
         adapter = new MessageAdapter(this,R.layout.list_iteam_message,modelsArray);
+        adapter.setListener(new MessageAdapter.MessageButtonListener() {
+            @Override
+            public void seeButtonOnClick(KapPendingButton button, KapModelMessage message) {
+                // 查看(跳到帖子详情页)
+
+            }
+
+            @Override
+            public void agreeButtonOnClick(KapPendingButton button, KapModelMessage message) {
+                // 同意
+                postAgreeHttpWithMessage(message);
+            }
+
+            @Override
+            public void refusedButtonOnClick(KapPendingButton button, KapModelMessage message) {
+                // 拒绝
+                postRefuseHttpWithMessage(message);
+            }
+        });
         listView.setAdapter(adapter);
     }
 
@@ -87,6 +109,32 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
             public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+    }
+    void postAgreeHttpWithMessage(final KapModelMessage message){
+        new KapFriendAPIClient().acceptUserFriends(message.getRelateUser().getID(), new KapFriendAPIClient.KapFriendNoParticipationInterface() {
+            @Override
+            public void successResult() {
+                message.setAck(KapModelMessage.ACK_TYPE_ACCEPTED);
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+    void postRefuseHttpWithMessage(final KapModelMessage message){
+        new KapFriendAPIClient().refuseFriends(message.getRelateUser().getID(), new KapFriendAPIClient.KapFriendNoParticipationInterface() {
+            @Override
+            public void successResult() {
+                message.setAck(KapModelMessage.ACK_TYPE_REFUSED);
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+                adapter.notifyDataSetChanged();
             }
         });
     }

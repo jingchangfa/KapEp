@@ -52,4 +52,85 @@ public class KapModelMessage extends KapModelBase{
 
     @SerializedName("created_at")
     private long ts;
+
+
+    public int getID() {
+        return ID;
+    }
+
+    public int getMsgType() {
+        return msgType;
+    }
+
+    public int getAck() {
+        return ack;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getRelateID() {
+        return relateID;
+    }
+
+    public KapModelUserDetail getRelateUser() {
+        return relateUser;
+    }
+
+    public int getRelateHerdID() {
+        return relateHerdID;
+    }
+
+    public KapModelComment getRelateComment() {
+        return relateComment;
+    }
+
+    public Map getRelatePost() {
+        return relatePost;
+    }
+
+    public long getTs() {
+        return ts;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setMsgType(int msgType) {
+        this.msgType = msgType;
+    }
+
+    public void setAck(int ack) {
+        this.ack = ack;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setRelateID(int relateID) {
+        this.relateID = relateID;
+    }
+
+    public void setRelateUser(KapModelUserDetail relateUser) {
+        this.relateUser = relateUser;
+    }
+
+    public void setRelateHerdID(int relateHerdID) {
+        this.relateHerdID = relateHerdID;
+    }
+
+    public void setRelateComment(KapModelComment relateComment) {
+        this.relateComment = relateComment;
+    }
+
+    public void setRelatePost(Map relatePost) {
+        this.relatePost = relatePost;
+    }
+
+    public void setTs(long ts) {
+        this.ts = ts;
+    }
 }

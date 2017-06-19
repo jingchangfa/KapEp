@@ -45,4 +45,9 @@
         <attr name="AccountDetail_title_text" format="reference"/>
         <attr name="AccountDetail_content_textcolor" format="reference"/>
     </declare-styleable>
+    // 查看 拒绝 同意的view
+    <declare-styleable name="KapPendingButton">
+        <attr name="pendingButton_backcolor" format="reference"/>
+        <attr name="pendingButton_button_text" format="reference"/>
+    </declare-styleable>
 </resources>

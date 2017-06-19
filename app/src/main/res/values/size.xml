@@ -42,5 +42,11 @@
     <dimen name="listener_list_iteam_textSize">12sp</dimen>
     <dimen name="listener_list_addbutton_textSize">8sp</dimen>
 
+    // message
+    <dimen name="message_list_iteam_height">48dp</dimen>
+    <dimen name="message_list_button_width">40sp</dimen>
+    <dimen name="message_list_button_height">20sp</dimen>
+    <dimen name="message_list_time_textSize">7sp</dimen>
+    <dimen name="message_pendingbutton__textSize">10sp</dimen>
 
 </resources>

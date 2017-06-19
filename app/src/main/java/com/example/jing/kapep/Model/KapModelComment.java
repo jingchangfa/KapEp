@@ -27,4 +27,28 @@ public class KapModelComment extends KapModelBase{
 
     @SerializedName("created_at")
     private long ts;
+
+    public int getID() {
+        return ID;
+    }
+
+    public int getPostID() {
+        return postID;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public KapModelUserDetail getAuthor() {
+        return author;
+    }
+
+    public KapModelComment getReplyTo() {
+        return replyTo;
+    }
+
+    public long getTs() {
+        return ts;
+    }
 }
