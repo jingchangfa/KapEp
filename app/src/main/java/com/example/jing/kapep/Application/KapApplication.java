@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 
 import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
 import com.example.jing.kapep.Activitys.LoginActivity.KapLoginActivity;
+import com.example.jing.kapep.Manager.KapCreameManager;
 import com.example.jing.kapep.Manager.KapGsonManager;
 import com.example.jing.kapep.Manager.KapSharePreferenceManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
@@ -57,13 +58,8 @@ public class KapApplication extends Application{
         currentActivity.startActivity(new Intent(currentActivity, openClass));
         activitysQueue.finishExcludeActivityAllActivity(openClass);
     }
-    public static void backActivityChangeAction(){
-        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
-        activitysQueue.finishCurrentActivity();
-    }
     public static Activity currentActivity(){
         KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
-
         return activitysQueue.currentActivity();
     }
     /**
@@ -73,12 +69,11 @@ public class KapApplication extends Application{
     private ActivityLifecycleCallbacks activityLifecycleCallbacks = new ActivityLifecycleCallbacks() {
         @Override
         public void onActivityCreated(Activity activity, Bundle bundle) {
-            //创建
-            activitysQueue.addActivity(activity);
+            activitysQueue.addActivity(activity);//创建
         }
         @Override
         public void onActivityDestroyed(Activity activity) {
-            // 推出
+            activitysQueue.finishCurrentActivity();// 推出
         }
 
         @Override
@@ -95,12 +90,13 @@ public class KapApplication extends Application{
 
         @Override
         public void onActivityStopped(Activity activity) {
+
         }
 
         @Override
         public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
-        }
 
+        }
     };
     // get
     public static Context getContext() {

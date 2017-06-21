@@ -66,7 +66,8 @@ abstract public class ActivityBase extends AppCompatActivity {
         });
     }
     protected void leftButtonAction(){
-        KapApplication.backActivityChangeAction();
+        finish();
+//        KapApplication.backActivityChangeAction();
     }
     protected void rightButtonAction(){
     }
@@ -92,15 +93,8 @@ abstract public class ActivityBase extends AppCompatActivity {
         super.onDestroy();
         Log.e("页面销毁",this.getClass().toString()+" delloc");
     }
-
-    @Override
-    public void finish() {
-        // 注意～  不要直接调用 finish 要通过application调用
-        super.finish();
-    }
-    // 重写返回按钮,使其归入自己的栈管理
     @Override
     public void onBackPressed() {
-        KapApplication.backActivityChangeAction();
+        finish();
     }
 }

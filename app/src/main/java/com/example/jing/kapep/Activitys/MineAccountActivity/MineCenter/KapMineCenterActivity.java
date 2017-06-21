@@ -2,13 +2,11 @@ package com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.ListenerActivity.KapListenerActivity;
 import com.example.jing.kapep.Activitys.MessageActivity.KapMessageActivity;
@@ -20,6 +18,7 @@ import com.example.jing.kapep.Helper.MainThreadHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
+import com.example.jing.kapep.Manager.KapActivityInfoTransferManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapImageRedDotsView;

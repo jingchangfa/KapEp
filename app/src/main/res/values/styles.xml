@@ -9,5 +9,4 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/Bank_Black_313131</item>
     </style>
-
 </resources>
