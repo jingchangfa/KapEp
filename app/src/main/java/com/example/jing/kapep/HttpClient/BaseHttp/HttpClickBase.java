@@ -27,6 +27,12 @@ public class HttpClickBase {
         void defaultFailureBlock(long errorCode,String errorMsg);
     }
     /**
+     * 进度回调接口
+     * */
+    public interface HTTPAPIProgressCallBack{
+        void onProgress(long total, long current ,float progress);
+    }
+    /**
      * 工具
      * {@link HttpEngine} 引擎
      * {@link HttpConfiguration} 配置

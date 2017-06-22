@@ -6,9 +6,7 @@ package com.example.jing.kapep.Manager;
 
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,29 +33,34 @@ public class KapActivityInfoTransferManager {
         String key = keyByContext(context);
         share.hashMap.put(key,changeModel);
     }
-    // 触发回调的页面
+    // 触发回调的页面 必须指定某个页面
+    // 一对一的关系
     public static<T> void PostChangeByModel(T model,Class activityClass){
         if (activityClass == null) return;
         String key = keyByContext(activityClass);
         InfoTransferModelInterface infoTransferModelInterface = share.hashMap.get(key);
+        if (infoTransferModelInterface == null) return;// 不存在
         try {
             infoTransferModelInterface.changeUIByModel(model);
         }catch (Exception e){
             // 野指针
-//            UnBindChangeModel();
+            share.hashMap.remove(infoTransferModelInterface);
         }
     }
-    // UnBind 取消注册,不取消static 持有这changeModel 会导致野指针
-    public static void UnBindChangeModel(Context context){
-        if (context == null) return;
-        String key = keyByContext(context);
 
-    }
+//    // UnBind 取消注册,不取消static 持有这changeModel 会导致野指针
+//    // 这个我解决了 加了个try 所以此方法没必要了
+//    public static void UnBindChangeModel(Context context){
+//        if (context == null) return;
+//        String key = keyByContext(context);
+//
+//    }
+
     // 辅助方法，获取key
-    static String keyByContext(Context context){
+    private static String keyByContext(Context context){
         return context.getClass().toString();
     }
-    static String keyByContext(Class activityClass){
+    private static String keyByContext(Class activityClass){
         return activityClass.toString();
     }
 }

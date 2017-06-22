@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.bigkoo.alertview.AlertView;
-import com.bigkoo.alertview.OnItemClickListener;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter.KapMineCenterActivity;
 import com.example.jing.kapep.Activitys.RegisteredActivity.PasswordSet.KapPasswordSetActivity;
@@ -27,13 +26,10 @@ import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapBigChangeButton;
 import com.example.jing.kapep.View.KapShowAccountDetailTextView;
 
+import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
-import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
-import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
-import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -99,7 +95,7 @@ public class KapAccountDetailActivity extends ActivityBase {
             @Override
             public void onClick(View view) {
                 // 修改信息
-
+                postMineSetChange(mineChangeHasMap,(String)imageView.getTag());//((BitmapDrawable)imageView.getDrawable()).getBitmap()
             }
         });
         changePassWordButton.getButton().setOnClickListener(new View.OnClickListener() {
@@ -133,12 +129,15 @@ public class KapAccountDetailActivity extends ActivityBase {
     /**
      * 网络请求
      * */
-    void postMineSetChange(HashMap changeDictionary){
-        new KapAuthAPIClient().mineOtherString(changeDictionary, new KapAuthAPIClient.KapAuthUserDetailInterface() {
+    void postMineSetChange(HashMap changeDictionary,final String filePath){
+        HashMap<String,File> hashMap = new HashMap<String,File>();
+        hashMap.put("content",new File(filePath));
+        final Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+        new KapAuthAPIClient().mineOtherString(changeDictionary, hashMap, null, new KapAuthAPIClient.KapAuthUserDetailInterface() {
             @Override
             public void successResult(KapModelUserDetail userDetail) {
                 // 回调更新上页面的图片
-                Kap
+                KapActivityInfoTransferManager.PostChangeByModel(bitmap,KapMineCenterActivity.class);
                 // 更新本读的用户详情
                 KapApplication.setMineUserDetail(userDetail);
             }
@@ -172,8 +171,7 @@ public class KapAccountDetailActivity extends ActivityBase {
             public void result(String imagePath) {
                 Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
                 imageView.setImageBitmap(bitmap);
-                // 确认修改之后 上传图片，更新本地的持久化
-                postMineSetChange(mineChangeHasMap);
+                imageView.setTag(imagePath);// 把图片路径存在tag里
             }
         });
     }

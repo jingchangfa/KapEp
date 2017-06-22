@@ -14,6 +14,8 @@ import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.R;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

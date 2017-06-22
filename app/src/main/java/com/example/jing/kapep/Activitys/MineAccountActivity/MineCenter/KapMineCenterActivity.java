@@ -101,6 +101,12 @@ public class KapMineCenterActivity extends ActivityBase {
             public void defaultFailureBlock(long errorCode, String errorMsg) {
             }
         });
+        KapActivityInfoTransferManager.BindChangeModel(this, new KapActivityInfoTransferManager.InfoTransferModelInterface<Bitmap>() {
+            @Override
+            public void changeUIByModel(Bitmap model) {
+                KapMineCenterActivity.this.imageView.setImageBitmap(model);
+            }
+        });
     }
     void mineSetingBy(KapModelUserDetail model){
         String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(model.getPortrait_url());
