@@ -48,5 +48,6 @@
     <dimen name="message_list_button_height">20sp</dimen>
     <dimen name="message_list_time_textSize">7sp</dimen>
     <dimen name="message_pendingbutton__textSize">10sp</dimen>
-
+    //制作内容
+    <dimen name="makecontent_smallrecycle_height">50dp</dimen>
 </resources>

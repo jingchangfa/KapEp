@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
-    android:clipToPadding="true"
-    android:background="@color/Bank_Black_313131"
-    >
+    android:clipToPadding="true">
+    <!--android:background="@color/Bank_Black_313131"-->
+    <!--&gt;-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

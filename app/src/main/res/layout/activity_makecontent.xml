@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/nav_custom_titlebar"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_size_bitmap">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/make_big_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Bank_Blue_2f95fb"
+        android:scrollbars="vertical"
+        android:fitsSystemWindows="true"/>
+    <include
+        android:id="@+id/make_nav_tool"
+        layout="@layout/nav_custom_titlebar"/>
 
-</LinearLayout>
+    <!--透明灰色涂层-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/make_small_recyclerView"
+        android:background="@color/BANK_GRAY_translucent">
+    </View>
+    <!--下一步-->
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/make_next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_marginBottom="@dimen/login_edittext_interval_v"
+        app:custom_text_normal="@string/next"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <!--缩略展示-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/make_small_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/makecontent_smallrecycle_height"
+        android:layout_marginBottom="@dimen/login_edittext_interval_v"
+        android:layout_above="@id/make_next_button" />
+
+</RelativeLayout>
