@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.List;
 
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
+import cn.finalteam.rxgalleryfinal.RxGalleryFinalApi;
 import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
@@ -56,6 +57,7 @@ public class KapCreameManager {
                     }
                 });
         //自定义裁剪
+        RxGalleryFinalApi.setImgSaveRxCropSDCard("dujinyang/crop/cutImage.png");//手动设置裁剪的路径；
         rx.cropAspectRatioOptions(0, new AspectRatio("3:3", 30, 30))//方形裁剪
                 .crop()
                 .openGallery();

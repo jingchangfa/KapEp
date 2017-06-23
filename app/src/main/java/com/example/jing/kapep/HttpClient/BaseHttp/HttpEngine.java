@@ -74,14 +74,16 @@ public class HttpEngine {
          * */
         FormBody.Builder builder = new FormBody.Builder();
         //遍历添加key value
-        Iterator iterator = pareDictionary.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            String key = (String)entry.getKey();
-            String value = String.valueOf(entry.getValue());
-            if (key == null||value == null) continue;
-            //添加键值对
-            builder.add(key,value);
+        if (pareDictionary != null){
+            Iterator iterator = pareDictionary.entrySet().iterator();
+            while (iterator.hasNext()){
+                Map.Entry entry = (Map.Entry)iterator.next();
+                String key = (String)entry.getKey();
+                String value = String.valueOf(entry.getValue());
+                if (key == null||value == null) continue;
+                //添加键值对
+                builder.add(key,value);
+            }
         }
         RequestBody requestBody = builder.build();
         final Request request = new Request.Builder()
@@ -111,41 +113,41 @@ public class HttpEngine {
      * 通过 HTTP POST 上传数据到服务器，带参数 带进度的上传
      * urlString 请求的url
      * pareDictionary 参数列表
-     * files 文件列表
+     * file 文件model
      * 进度回调
      * finished 完成的回调
      * */
     //mdiatype 这个需要和服务端保持一致 你需要看下你们服务器设置的ContentType 是不是这个，他们设置的是哪个 我们要和他们保持一致
-    private static final MediaType MEDIA_OBJECT_STREAM = MediaType.parse("application/octet-stream");
     public void httpPostRequest(String urlString,
                                 HashMap pareDictionary,
-                                HashMap <String,File> filesMap,
+                                HttpFile file,
                                 final HttpClickBase.HTTPAPIProgressCallBack progressCallBack,
                                 final HttpClickBase.HTTPAPICallBack finished){
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.setType(MultipartBody.FORM);
-        //遍历添加key value
-        Iterator iterator = pareDictionary.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            String key = (String)entry.getKey();
-            String value = String.valueOf(entry.getValue());
-            if (key == null||value == null) continue;
-            //添加键值对
-            builder.addFormDataPart(key,value);
-        }
-        if (filesMap != null){// 添加文件
-            for (String key : filesMap.keySet()) {
-                File file = filesMap.get(key);
-                builder.addFormDataPart(key, file.getName(), createProgressRequestBody(MEDIA_OBJECT_STREAM, file, progressCallBack));
+        if (pareDictionary != null){
+            HashMap<String,String> hashMap = pareDictionary;
+            for (String key : hashMap.keySet()){
+                String value = hashMap.get(key);
+                if (key == null||value == null) continue;
+                //添加键值对
+                builder.addFormDataPart(key,value);
             }
         }
-        //创建RequestBody
-        RequestBody body = builder.build();
+        if (file != null){// 添加文件
+            RequestBody fileBody = RequestBody.create(MediaType.parse(file.getTypeString()), file.getFile());
+            builder.addFormDataPart(file.getTypeString(), file.getName(), fileBody);
+        }
+        RequestBody requestBody = builder.build();
+        // 生成带进度的 requestBody
+        HttpUploadProgressRequestBody progressRequestBody = new HttpUploadProgressRequestBody(requestBody,progressCallBack);
+        Request request = new Request.Builder()
+                .url(urlString)
+                .post(progressRequestBody)
+                .build();
         //创建Request
         OkHttpClient mOkHttpClient = createdClick();
-        final Request request = new Request.Builder().url(urlString).post(body).build();
-        final Call call = mOkHttpClient.newBuilder().writeTimeout(50, TimeUnit.SECONDS).build().newCall(request);
+        final Call call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -167,14 +169,13 @@ public class HttpEngine {
      * finished block中，如果成功，返回最终文件保存的地址
      * */
     // 没用到所以没写，参考文件最下方
-
     /**
      * 创建 click
      * */
     OkHttpClient createdClick(){
         OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
-//                .readTimeout(READ_TIMEOUT,TimeUnit.SECONDS)//设置读取超时时间
-//                .writeTimeout(WRITE_TIMEOUT,TimeUnit.SECONDS)//设置写的超时时间
+                .readTimeout(60,TimeUnit.SECONDS)//设置读取超时时间
+                .writeTimeout(60,TimeUnit.SECONDS)//设置写的超时时间
                 .connectTimeout(60, TimeUnit.SECONDS)//设置连接超时时间
                 .build();
         return mOkHttpClient;
@@ -186,51 +187,51 @@ public class HttpEngine {
         call.cancel();
     }
 
-    /**
-     * 创建带进度的RequestBody
-     * @param contentType MediaType
-     * @param file  准备上传的文件
-     * @param progressCallBack 回调
-     * @param <T>
-     * @return
-     */
-    private  <T> RequestBody createProgressRequestBody(final MediaType contentType,
-                                                       final File file,
-                                                       final HttpClickBase.HTTPAPIProgressCallBack progressCallBack)
-    {
-        return new RequestBody() {
-            @Override
-            public MediaType contentType() {
-                return contentType;
-            }
-
-            @Override
-            public long contentLength() {
-                return file.length();
-            }
-
-            @Override
-            public void writeTo(BufferedSink sink) throws IOException {
-                Source source;
-                try {
-                    source = Okio.source(file);
-                    Buffer buf = new Buffer();
-                    long remaining = contentLength();
-                    long current = 0;
-                    for (long readCount; (readCount = source.read(buf, 2048)) != -1; ) {
-                        sink.write(buf, readCount);
-                        current += readCount;
-                        float pro = current/remaining;
-                        if (progressCallBack == null) return;
-                        progressCallBack.onProgress(remaining, current, pro);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-    }
+//
 }
+/**
+ //     * 创建带进度的RequestBody
+ //     * @param contentType MediaType文件类型
+ //     * @param file  准备上传的文件
+ //     * @param progressCallBack 回调
+ //     * @return
+ //     */
+//    private  RequestBody createProgressRequestBody(final MediaType contentType,
+//                                                       final File file,
+//                                                       final HttpClickBase.HTTPAPIProgressCallBack progressCallBack)
+//    {
+//        return new RequestBody() {
+//            @Override
+//            public MediaType contentType() {
+//                return contentType;
+//            }
+//
+//            @Override
+//            public long contentLength() {
+//                return file.length();
+//            }
+//
+//            @Override
+//            public void writeTo(BufferedSink sink) throws IOException {
+//                Source source;
+//                try {
+//                    source = Okio.source(file);
+//                    Buffer buf = new Buffer();
+//                    long remaining = contentLength();
+//                    long current = 0;
+//                    for (long readCount; (readCount = source.read(buf, 2048)) != -1; ) {
+//                        sink.write(buf, readCount);
+//                        current += readCount;
+//                        float pro = current/remaining;
+//                        if (progressCallBack == null) return;
+//                        progressCallBack.onProgress(remaining, current, pro);
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        };
+//    }
 //    /**
 //     * 下载文件
 //     * @param fileUrl 文件url

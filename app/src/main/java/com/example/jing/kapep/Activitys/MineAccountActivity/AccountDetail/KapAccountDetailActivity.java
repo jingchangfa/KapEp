@@ -16,6 +16,8 @@ import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.KapBitmapHalper;
 import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpEngine;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpFile;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapAuthAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
@@ -130,21 +132,24 @@ public class KapAccountDetailActivity extends ActivityBase {
      * 网络请求
      * */
     void postMineSetChange(HashMap changeDictionary,final String filePath){
-        HashMap<String,File> hashMap = new HashMap<String,File>();
-        hashMap.put("content",new File(filePath));
-        final Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-        new KapAuthAPIClient().mineOtherString(changeDictionary, hashMap, null, new KapAuthAPIClient.KapAuthUserDetailInterface() {
+        HttpFile file = null;
+        if (filePath != null){
+            file = new HttpFile("content","content","image/png",new File(filePath));
+        }
+        new KapAuthAPIClient().mineOtherString(changeDictionary, file, null, new KapAuthAPIClient.KapAuthUserDetailInterface() {
             @Override
             public void successResult(KapModelUserDetail userDetail) {
-                // 回调更新上页面的图片
-                KapActivityInfoTransferManager.PostChangeByModel(bitmap,KapMineCenterActivity.class);
                 // 更新本读的用户详情
                 KapApplication.setMineUserDetail(userDetail);
+                // 回调更新上页面的图片
+                if (filePath == null) return;
+                Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+                KapActivityInfoTransferManager.PostChangeByModel(bitmap,KapMineCenterActivity.class);
+                imageView.setTag(null);// 清空tag
             }
         }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
             @Override
             public void defaultFailureBlock(long errorCode, String errorMsg) {
-
             }
         });
     }

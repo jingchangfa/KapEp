@@ -6,13 +6,13 @@ import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.JSONObjToJavaClassHelper;
 import com.example.jing.kapep.Helper.StringMD5SHAHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpFile;
 import com.example.jing.kapep.Manager.KapGsonManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -338,16 +338,15 @@ public class KapAuthAPIClient extends HttpClickBase {
         void successResult(String codeKeyString);
     }
     public void mineOtherString(final HashMap pareDictionary,
-                                HashMap<String,File> fileHashMap,
+                                HttpFile file,
                                 final HttpClickBase.HTTPAPIProgressCallBack progressCallBack,
                                 final KapAuthUserDetailInterface success,
                                 final HTTPAPIDefaultFailureBack failure){
-        if (fileHashMap != null){
-            // 传资料
+        if (file == null){// 传资料
             uploadMineDetail(pareDictionary,success,failure);
             return;
         }
-        uploadHeaderImage(fileHashMap, progressCallBack, new ImageUploadInterface() {
+        uploadHeaderImage(file, progressCallBack, new ImageUploadInterface() {
             @Override
             public void successResult(String codeKeyString) {
                 HashMap<String,Object> hashMap = new HashMap<String,Object>();
@@ -358,7 +357,7 @@ public class KapAuthAPIClient extends HttpClickBase {
         }, failure);
     }
     // 上传头像
-    void uploadHeaderImage(HashMap<String,File> fileHashMap,
+    void uploadHeaderImage(HttpFile file,
                            final HttpClickBase.HTTPAPIProgressCallBack progressCallBack,
                            final ImageUploadInterface success,
                            final HTTPAPIDefaultFailureBack failure){
@@ -381,7 +380,7 @@ public class KapAuthAPIClient extends HttpClickBase {
                 return false;
             }
         },failure);
-        this.httpEngine.httpPostRequest(urlString,null,fileHashMap,progressCallBack,finishBlock);
+        this.httpEngine.httpPostRequest(urlString,parameters,file,progressCallBack,finishBlock);
     }
     // 上传信息
     void uploadMineDetail(HashMap pareDictionary,
