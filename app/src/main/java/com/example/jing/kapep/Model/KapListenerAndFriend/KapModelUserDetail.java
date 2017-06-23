@@ -54,6 +54,9 @@ public class KapModelUserDetail extends  KapModelContentBase {
     public String sexToString(){
         return this.sex == 0?"女":"男";
     }
+    public static int StringToSex(String string){
+        return string.equals("女")?0:1;
+    }
     public String occToString(){
         return "户外运动";
     }

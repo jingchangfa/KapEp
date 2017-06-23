@@ -1,10 +1,8 @@
 package com.example.jing.kapep.Activitys.MineAccountActivity.AccountDetail;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -16,13 +14,13 @@ import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.KapBitmapHalper;
 import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
-import com.example.jing.kapep.HttpClient.BaseHttp.HttpEngine;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpFile;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapAuthAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
 import com.example.jing.kapep.Manager.KapActivityInfoTransferManager;
 import com.example.jing.kapep.Manager.KapCreameManager;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapBigChangeButton;
@@ -97,6 +95,10 @@ public class KapAccountDetailActivity extends ActivityBase {
             @Override
             public void onClick(View view) {
                 // 修改信息
+                mineChangeHasMap.put("name",nikeNameView.getContentText());
+                mineChangeHasMap.put("sex", KapModelUserDetail.StringToSex(sexView.getContentText()));
+                mineChangeHasMap.put("country",placeView.getContentText());
+//                mineChangeHasMap.put("location",);
                 postMineSetChange(mineChangeHasMap,(String)imageView.getTag());//((BitmapDrawable)imageView.getDrawable()).getBitmap()
             }
         });

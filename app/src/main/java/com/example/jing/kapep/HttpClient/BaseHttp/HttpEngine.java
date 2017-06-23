@@ -136,7 +136,7 @@ public class HttpEngine {
         }
         if (file != null){// 添加文件
             RequestBody fileBody = RequestBody.create(MediaType.parse(file.getTypeString()), file.getFile());
-            builder.addFormDataPart(file.getTypeString(), file.getName(), fileBody);
+            builder.addFormDataPart(file.getName(), file.getFileName(), fileBody);
         }
         RequestBody requestBody = builder.build();
         // 生成带进度的 requestBody
