@@ -3,7 +3,6 @@ package com.example.jing.kapep.Activitys.HomePageActivity;
 import android.content.Context;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.jing.kapep.Helper.KapGlideHelper;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;

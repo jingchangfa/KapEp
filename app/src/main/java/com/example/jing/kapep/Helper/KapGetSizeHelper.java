@@ -1,6 +1,9 @@
 package com.example.jing.kapep.Helper;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.WindowManager;
 
 /**
  * Created by jing on 2017/6/23.

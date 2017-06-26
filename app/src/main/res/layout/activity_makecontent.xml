@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/image_size_bitmap">
-    <android.support.v7.widget.RecyclerView
+    android:layout_height="match_parent">
+    <!--最后一个属性是沉浸式-->
+    <com.example.jing.kapep.View.KapInfinteSlideView
         android:id="@+id/make_big_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Bank_Blue_2f95fb"
-        android:scrollbars="vertical"
         android:fitsSystemWindows="true"/>
+        <!--android:background="@drawable/image_size_bitmap"-->
+
     <include
         android:id="@+id/make_nav_tool"
         layout="@layout/nav_custom_titlebar"/>
@@ -38,7 +38,7 @@
         app:custom_textColor_normal="@color/Bank_White_ffffff"
         app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
     <!--缩略展示-->
-    <android.support.v7.widget.RecyclerView
+    <com.example.jing.kapep.View.KapInfinteSlideView
         android:id="@id/make_small_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/makecontent_smallrecycle_height"

@@ -50,4 +50,9 @@
         <attr name="pendingButton_backcolor" format="reference"/>
         <attr name="pendingButton_button_text" format="reference"/>
     </declare-styleable>
+
+    // recycle的封装
+    <declare-styleable name="InfiniteSlideView">
+        <attr name="view_orientation" format="string"></attr>
+    </declare-styleable>
 </resources>
