@@ -30,7 +30,7 @@ public class ImageShowAdapter  extends CommonAdapter {
         String imagePath = (String)item;
         ButterKnife.bind(this,viewHolder.getConvertView());
         if (imagePath.equals(KapMakeContentActivity.ADD_STRING_PATH)){
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);// 缩放在中心
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setImageResource(R.mipmap.make_add_photo);
             return;
         }

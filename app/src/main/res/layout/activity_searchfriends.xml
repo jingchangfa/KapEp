@@ -2,6 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/nav_custom_titlebar"/>
+    <include layout="@layout/nav_custom_titlebar" android:visibility="gone"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/search_editText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/title_bar_button_size"
+            android:layout_marginLeft="@dimen/login_edittext_interval_small_v"
+            android:layout_weight="1"
+            android:hint="昵称/手机号"
+            android:textColorHint="@color/BANK_GRAY_e5e5e5"
+            android:textSize="12sp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/Bank_White_ffffff"
+            android:background="#000000" />
+        <Button
+            android:id="@+id/search_leftbutton"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/title_bar_button_size"
+            android:layout_height="@dimen/title_bar_button_size"
+            android:layout_marginLeft="@dimen/title_bar_insetx"
+            android:text="@string/search_cancle"
+            android:textSize="12sp"
+            android:background="#00000000"
+            android:textColor="@color/Bank_Blue_2f95fb"/>
+    </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edittext_interval_v"/>
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/search_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/search_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 </LinearLayout>

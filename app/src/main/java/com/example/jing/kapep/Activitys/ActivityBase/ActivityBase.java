@@ -69,7 +69,6 @@ abstract public class ActivityBase extends AppCompatActivity {
     }
     protected void leftButtonAction(){
         finish();
-//        KapApplication.backActivityChangeAction();
     }
     protected void rightButtonAction(){
     }

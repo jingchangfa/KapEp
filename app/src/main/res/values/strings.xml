@@ -39,4 +39,6 @@
     <string name="message_agress">同意</string>
     <string name="message_refuse">拒绝</string>
 
+    //搜索好友页面
+    <string name="search_cancle">取消</string>
 </resources>

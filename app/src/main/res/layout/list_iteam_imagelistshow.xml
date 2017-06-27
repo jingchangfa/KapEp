@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/makecontent_smallrecycle_width"
+    android:layout_height="@dimen/makecontent_smallrecycle_height">
+
+    <ImageView
+        android:id="@+id/listshow_iteam_image"
+        android:layout_width="@dimen/makecontent_smallrecycle_image_width"
+        android:layout_height="@dimen/makecontent_smallrecycle_image_height"
+        android:layout_centerInParent="true"/>
+    <ImageView
+        android:id="@+id/listshow_iteam_deleteview"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignTop="@id/listshow_iteam_image"
+        android:layout_alignRight="@id/listshow_iteam_image"
+        android:layout_marginRight="@dimen/makecontent_smallrecycle_red_interval"
+        android:layout_marginTop="@dimen/makecontent_smallrecycle_red_interval"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/make_delete"/>
+</RelativeLayout>

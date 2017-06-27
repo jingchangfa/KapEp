@@ -1,5 +1,6 @@
 package com.example.jing.kapep.Activitys.MakeContentActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Activitys.MakeContentActivity.MakeLister.KapMakeListerActivity;
 import com.example.jing.kapep.Helper.KapGetSizeHelper;
 import com.example.jing.kapep.Helper.KapViewFrameSetingHelper;
 import com.example.jing.kapep.Manager.KapCreameManager;
@@ -38,7 +40,7 @@ public class KapMakeContentActivity extends ActivityBase {
         add(ADD_STRING_PATH);
     }};
     private ImageShowAdapter bigAdapter = null;
-
+    private ImageListShowAdapter smallAdapter = null;
 
     @BindView(R.id.make_nav_tool)
     LinearLayout navToolBar;
@@ -47,7 +49,7 @@ public class KapMakeContentActivity extends ActivityBase {
     KapInfinteSlideView bigRecycleView;
 
     @BindView(R.id.make_small_recyclerView)
-    KapInfinteSlideView smallRecycleView;
+    RecyclerView smallRecycleView;
 
     @BindView(R.id.make_next_button)
     KapBigChangeButton nextButton;
@@ -72,22 +74,39 @@ public class KapMakeContentActivity extends ActivityBase {
 
     @Override
     protected void getView() {
-        // 调整状态栏的偏移量
-        KapViewFrameSetingHelper.setLayoutY(navToolBar, KapGetSizeHelper.GetStatusBarHeight(this));
+//        // 调整状态栏的偏移量
+//        KapViewFrameSetingHelper.setLayoutY(navToolBar, KapGetSizeHelper.GetStatusBarHeight(this));
+        nextButton.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(KapMakeContentActivity.this, KapMakeListerActivity.class));
+            }
+        });
+        // 设置大的
+        bigRecycleViewSeting();
+        // 设置小的
+        smallRecycleViewSeting();
+    }
+
+    @Override
+    protected void getModel() {
+        super.getModel();
+    }
+    /**
+     * 辅助方法
+     * */
+    void bigRecycleViewSeting(){
         // 设置滚动方向
         bigRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        smallRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         // 设置adapter
         bigAdapter = new ImageShowAdapter(this,R.layout.list_iteam_imageshow,modelsArray);
         bigAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                // 点击
-                if (position == modelsArray.size()-1){
-                    // 直接选择图片
-                    choseImageAction();
-                }
-               // 裁剪
+                String imagePath = modelsArray.get(position);
+                if (isOpenChangeImage(imagePath)) return;
+                 // 裁剪
+                cropImage(imagePath);
             }
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -95,7 +114,6 @@ public class KapMakeContentActivity extends ActivityBase {
             }
         });
         bigRecycleView.setAdapter(bigAdapter);
-        bigRecycleView.setHasFixedSize(true);
         // 设置动画监听
         bigRecycleView.setSlideViewListener(new KapInfinteSlideView.SlideViewListener() {
             @Override
@@ -106,12 +124,39 @@ public class KapMakeContentActivity extends ActivityBase {
             }
         });
     }
-
-    @Override
-    protected void getModel() {
-        super.getModel();
+    // 设置小的
+    void smallRecycleViewSeting(){
+        // 设置滚动方向
+        smallRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        // 设置adapter
+        smallAdapter = new ImageListShowAdapter(this,R.layout.list_iteam_imagelistshow,modelsArray);
+        smallAdapter.setListener(new ImageListShowAdapter.ImageShowAdapterListener() {
+            @Override
+            public void removeAction(View view, RecyclerView.ViewHolder holder, int position) {
+                // 删除事件
+                modelsArray.remove(position);
+                bigAdapter.notifyDataSetChanged();
+                smallAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void didSelected(View view, RecyclerView.ViewHolder holder, int position) {
+                // 点击事件
+                String imagePath = modelsArray.get(position);
+                if (isOpenChangeImage(imagePath)) return;
+                // 上边的变化
+                bigRecycleView.smoothScrollToPosition(position);
+            }
+        });
+        smallRecycleView.setAdapter(smallAdapter);
     }
-
+    boolean isOpenChangeImage(String imagePath){
+        if (imagePath.equals(KapMakeContentActivity.ADD_STRING_PATH)){
+            // 直接选择图片
+            choseImageAction();
+            return true;
+        }
+        return false;
+    }
     void choseImageAction(){// 多选
         KapCreameManager.OpenLibByMultiple(this, new KapCreameManager.MultipleFinishResultInKapCreameManage() {
             @Override
@@ -121,8 +166,12 @@ public class KapMakeContentActivity extends ActivityBase {
                     modelsArray.add(0,imagePath);
                 }
                 bigAdapter.notifyDataSetChanged();//更新
+                smallAdapter.notifyDataSetChanged();//更新
             }
         });
+    }
+    void cropImage(String imagePath){ // 裁剪
+
     }
     @Override
     protected void onStart() {

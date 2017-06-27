@@ -1,6 +1,8 @@
 package com.example.jing.kapep.Manager;
 
 import android.app.Activity;
+import android.content.Context;
+
 import com.yalantis.ucrop.model.AspectRatio;
 
 import java.io.File;
@@ -93,6 +95,10 @@ public class KapCreameManager {
                     }
                 })
                 .openGallery();
+    }
+    public static void CropImage(Activity context,String path){
+        //调用裁剪.RxGalleryFinalApi.getModelPath()为模拟的输出路径
+        RxGalleryFinalApi.cropScannerForResult(context, RxGalleryFinalApi.getModelPath(), path);
     }
 }
 //

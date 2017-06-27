@@ -13,12 +13,11 @@ import com.example.jing.kapep.R;
 /**
  * Created by jing on 2017/6/26.
  */
-// recycle的封装
+// recycle的封装 --（实质是对scrollerview的方法进行了重写～没有改变layoutmanager）
 public class KapInfinteSlideView extends RecyclerView {
     public interface SlideViewListener {
         void onChange(View v, float offset,boolean left);
     }
-
     public static final String SLIDE_MODE_HORIZONTAL = "horizontal";//horizontal
     public static final String SLIDE_MODE_VERTICAL = "vertical";//vertical
     private String view_orientation = SLIDE_MODE_HORIZONTAL;
@@ -50,13 +49,21 @@ public class KapInfinteSlideView extends RecyclerView {
         } else {
             view_orientation = SLIDE_MODE_HORIZONTAL;
         }
-
     }
-
+    public void animalScrollerToPosition(int position){
+        switch (view_orientation) {
+            case SLIDE_MODE_HORIZONTAL:
+//                smoothScrollBy(needgo, 0);
+                break;
+            case SLIDE_MODE_VERTICAL:
+//                smoothScrollBy(needgo, 0);
+                break;
+        }
+    }
     @Override
     public void onScrolled(int dx, int dy) {
         super.onScrolled(dx, dy);
-        scrollerChange(dx, dy);
+        scrollerChange(dx, dy);// 滚动中
     }
 
     @Override
@@ -80,7 +87,7 @@ public class KapInfinteSlideView extends RecyclerView {
     private void scrollerChange(int dx, int dy) {
         for (int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);
-            float dis = 0;
+            float dis;
             float f = 0;
             boolean isLeft = true;
             switch (view_orientation) {
@@ -105,40 +112,45 @@ public class KapInfinteSlideView extends RecyclerView {
         super.onScrollStateChanged(state);
         switch (state) {
             case SCROLL_STATE_IDLE:
-                int neardis = 0;
-                int needgo = 0;
                 switch (view_orientation) {
                     case SLIDE_MODE_HORIZONTAL:
-                        neardis = width;
-                        needgo = 0;
-                        for (int i = 0; i < getChildCount(); i++) {
-                            View v = getChildAt(i);
-                            int dis = Math.abs((v.getLeft() + v.getRight()) - center_x);
-                            if (neardis > dis) {
-                                neardis = dis;
-                                needgo = ((v.getLeft() + v.getRight()) - center_x) / 2;
-                            }
-                        }
-                        smoothScrollBy(needgo, 0);
+                        hScrollerByNeardis(width);
                         break;
                     case SLIDE_MODE_VERTICAL:
-                        neardis = height;
-                        needgo = 0;
-                        for (int i = 0; i < getChildCount(); i++) {
-                            View v = getChildAt(i);
-                            int dis = Math.abs((v.getTop() + v.getBottom()) - center_y);
-                            if (neardis > dis) {
-                                neardis = dis;
-                                needgo = ((v.getTop() + v.getBottom()) - center_y) / 2;
-                            }
-                        }
-                        smoothScrollBy(0, needgo);
+                        vScrollerByNeardis(height);
                         break;
                 }
                 break;
         }
     }
-
+    /**
+     * hScrollerByNeardis 水平滚动
+     * vScrollerByNeardis 竖直滚动
+     * */
+    private void hScrollerByNeardis(int neardis){
+        int needgo = 0;
+        for (int i = 0; i < getChildCount(); i++) { //getChildCount(): 获取所有的item
+            View v = getChildAt(i);
+            int dis = Math.abs((v.getLeft() + v.getRight()) - center_x);
+            if (neardis > dis) {
+                neardis = dis;
+                needgo = ((v.getLeft() + v.getRight()) - center_x) / 2;
+            }
+        }
+        smoothScrollBy(needgo, 0);
+    }
+    private void vScrollerByNeardis(int neardis){
+        int needgo = 0;
+        for (int i = 0; i < getChildCount(); i++) {
+            View v = getChildAt(i);
+            int dis = Math.abs((v.getTop() + v.getBottom()) - center_y);
+            if (neardis > dis) {
+                neardis = dis;
+                needgo = ((v.getTop() + v.getBottom()) - center_y) / 2;
+            }
+        }
+        smoothScrollBy(0, needgo);
+    }
 
     private void log(String s) {
         Log.d("InfiniteSlideView", s);

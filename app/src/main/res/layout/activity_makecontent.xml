@@ -4,14 +4,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--最后一个属性是沉浸式-->
+    <!--最后一个属性是沉浸式-不好弄啊～-->
+    <!--android:fitsSystemWindows="true"-->
     <com.example.jing.kapep.View.KapInfinteSlideView
         android:id="@+id/make_big_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"/>
-        <!--android:background="@drawable/image_size_bitmap"-->
-
+        android:background="@color/green"/>
+    <!--不写在鞋面会被上面的遮住-->
     <include
         android:id="@+id/make_nav_tool"
         layout="@layout/nav_custom_titlebar"/>
@@ -38,7 +38,7 @@
         app:custom_textColor_normal="@color/Bank_White_ffffff"
         app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
     <!--缩略展示-->
-    <com.example.jing.kapep.View.KapInfinteSlideView
+    <android.support.v7.widget.RecyclerView
         android:id="@id/make_small_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/makecontent_smallrecycle_height"
