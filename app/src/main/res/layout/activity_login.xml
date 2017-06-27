@@ -7,6 +7,11 @@
     android:background="@drawable/image_size_bitmap"
     android:fitsSystemWindows="true">
     <include layout="@layout/nav_custom_titlebar" android:visibility="gone"/>
+    <!--这个和最下面的布局是为了分配剩余空间，适配机型的-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"/>
     <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
         android:id="@+id/login_placeview"
         android:layout_marginTop="170dp"
@@ -75,4 +80,8 @@
         app:custom_textColor_normal="@color/Bank_White_ffffff"
         app:custom_backColor_normal="@color/Bank_Red_e96a79"
         />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
 </LinearLayout>

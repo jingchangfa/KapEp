@@ -38,10 +38,8 @@ public class LoginEditTextView extends LinearLayout {
         AttributeSetingHelper.setTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_textColor);
         AttributeSetingHelper.setHintTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_hintColor);
         // 背景色
-        // 此话无效不知为何
-        AttributeSetingHelper.setBackgroundColor(context,view,a,R.styleable.LoginEditTextView_custom_backColor);
-//        AttributeSetingHelper.setBackgroundColor(context,imageView,a,R.styleable.LoginEditTextView_custom_backColor);
-//        AttributeSetingHelper.setBackgroundColor(context,editText,a,R.styleable.LoginEditTextView_custom_backColor);
+        AttributeSetingHelper.setBackgroundColor(context,imageView,a,R.styleable.LoginEditTextView_custom_backColor);
+        AttributeSetingHelper.setBackgroundColor(context,editText,a,R.styleable.LoginEditTextView_custom_backColor);
         // 线隐藏显示
         lineView.setVisibility(AttributeSetingHelper.getVisibility(a,R.styleable.LoginEditTextView_custom_lineIsShow));
         a.recycle();

@@ -28,6 +28,7 @@ import com.example.jing.kapep.View.KapShowAccountDetailTextView;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Objects;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -99,7 +100,11 @@ public class KapAccountDetailActivity extends ActivityBase {
                 mineChangeHasMap.put("sex", KapModelUserDetail.StringToSex(sexView.getContentText()));
                 mineChangeHasMap.put("country",placeView.getContentText());
 //                mineChangeHasMap.put("location",);
-                postMineSetChange(mineChangeHasMap,(String)imageView.getTag());//((BitmapDrawable)imageView.getDrawable()).getBitmap()
+                String imagePath = null;
+                if (imageView.getTag() != null){
+                    imagePath = imageView.getTag().getClass().equals(String.class)?(String)imageView.getTag():null;
+                }
+                postMineSetChange(mineChangeHasMap,imagePath);//((BitmapDrawable)imageView.getDrawable()).getBitmap()
             }
         });
         changePassWordButton.getButton().setOnClickListener(new View.OnClickListener() {

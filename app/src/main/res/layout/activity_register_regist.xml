@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
     <include layout="@layout/nav_custom_titlebar"/>
     <com.example.jing.kapep.View.KapAlertBankShowView
+        android:id="@+id/regist_next"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -20,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_edittext_interval_bigsmall_v" />
             <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
-                android:id="@+id/forget_placeview"
+                android:id="@+id/regist_placeview"
                 android:layout_width="@dimen/login_edittext_width"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -34,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_edittext_interval_v" />
             <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
-                android:id="@+id/forget_numberview"
+                android:id="@+id/regist_numberview"
                 android:layout_width="@dimen/login_edittext_width"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -55,7 +56,7 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal">
                 <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
-                    android:id="@+id/forget_invitecodeview"
+                    android:id="@+id/regist_invitecodeview"
                     android:layout_width="@dimen/login_edittext_small_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -69,6 +70,7 @@
                     android:layout_width="@dimen/login_edittext_interval_v"
                     android:layout_height="match_parent" />
                 <com.example.jing.kapep.View.KapTimeChangeButton
+                    android:id="@+id/regist_timebutton"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/login_edittext_height"
                     android:layout_weight="1"/>

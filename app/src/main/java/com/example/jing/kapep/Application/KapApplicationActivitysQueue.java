@@ -17,46 +17,44 @@ public class KapApplicationActivitysQueue {
     }
     private Stack<Activity> activityStack = new Stack<Activity>();
     /**
-     * 添加Activity到堆栈
+     * addActivity 添加Activity到堆栈
+     * popCurrentActivity 结束当前Activity
+     * 只有这俩方法 操作 activityStack 不能手动调用（都是自动添加删除的）
+     * currentActivity 获取当前的activity，不做任何操作
      */
-    public  void addActivity(Activity activity) {
+    public void addActivity(Activity activity) {
         activityStack.push(activity);
     }
-
-    /**
-     * 获取当前Activity（堆栈中最后一个压入的）
-     */
+    public  void popCurrentActivity() {
+        activityStack.pop();
+    }
     public  Activity currentActivity() {
         return activityStack.lastElement();
     }
 
-    /**
-     * 结束当前Activity（堆栈中最后一个压入的）
-     */
-    public  void finishCurrentActivity() {
-        activityStack.pop();
-    }
 
     /**
-     * 结束指定的Activity
+     * 辅助方法
+     * 下面的这些方法都是，注意防止当前activity结束当前的导致crash
+     * 获取当前Activity（堆栈中最后一个压入的）
      */
-    public  void finishActivity(Activity activity) {
+    /**
+     * finishOneActivity 结束指定的Activity
+     * activity
+     * Class<?> cls  activity的class
+     */
+    public  void finishOneActivity(Activity activity) {
         if (activity != null) {
-            activityStack.remove(activity);
             if(!activity.isFinishing()) {
                 activity.finish();
             }
         }
     }
-
-    /**
-     * 结束指定类名的Activity
-     */
-    public  void finishActivity(Class<?> cls) {
+    public  void finishOneActivity(Class<?> cls) {
         for (Activity activity : activityStack) {
-            if (activity.getClass().equals(cls)) {
-                finishActivity(activity);
-            }
+            if (!activity.getClass().equals(cls)) continue;
+            finishOneActivity(activity);
+            return;
         }
     }
 
@@ -65,25 +63,20 @@ public class KapApplicationActivitysQueue {
      */
     public  void finishExcludeActivityAllActivity(Class<?> cls) {
         for (Activity activity : activityStack) {
-            if (activity != null) {
-                if (activity.getClass().equals(cls)) continue;
-                activity.finish();
-            }
+            if (activity == null) continue;
+            if (activity.getClass().equals(cls)) continue;
+            finishOneActivity(activity);
         }
-        activityStack.clear();
     }
     /**
      * 结束所有Activity
      */
     public  void finishAllActivity() {
         for (Activity activity : activityStack) {
-            if (activity != null) {
-                activity.finish();
-            }
+            if (activity == null) continue;
+            finishOneActivity(activity);
         }
-        activityStack.clear();
     }
-
 //    /**
 //     * 退出应用程序
 //     */

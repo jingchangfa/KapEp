@@ -38,29 +38,27 @@ public class KapApplication extends Application{
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
     }
     /**
-     * logInActivityChangeAction 切换根视图登录也
+     * currentActivity 获取当前activity
+     * logInActivityChangeAction 切换根视图登录
      * homeActivityChangeAction 切换根视图主页
-     * backActivityChangeAction 返回按钮
      * */
-    public static void logInActivityChangeAction(){
-        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
-
-        Class openClass = KapLoginActivity.class;
-        Activity currentActivity = activitysQueue.currentActivity();
-        currentActivity.startActivity(new Intent(currentActivity, openClass));
-        activitysQueue.finishExcludeActivityAllActivity(openClass);
-    }
-    public static void homeActivityChangeAction(){
-        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
-
-        Class openClass = KapHomePageActivity.class;
-        Activity currentActivity = activitysQueue.currentActivity();
-        currentActivity.startActivity(new Intent(currentActivity, openClass));
-        activitysQueue.finishExcludeActivityAllActivity(openClass);
-    }
     public static Activity currentActivity(){
         KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
         return activitysQueue.currentActivity();
+    }
+    public static void logInActivityChangeAction(){
+        Class openClass = KapLoginActivity.class;
+        changeRootActivityByClass(openClass);
+    }
+    public static void homeActivityChangeAction(){
+        Class openClass = KapHomePageActivity.class;
+        changeRootActivityByClass(openClass);
+    }
+    private static void changeRootActivityByClass(Class openClass){
+        KapApplicationActivitysQueue activitysQueue = getInstance().activitysQueue;
+        Activity currentActivity = activitysQueue.currentActivity();
+        currentActivity.startActivity(new Intent(currentActivity, openClass));
+        activitysQueue.finishExcludeActivityAllActivity(openClass);
     }
     /**
      * activity栈管理
@@ -73,7 +71,7 @@ public class KapApplication extends Application{
         }
         @Override
         public void onActivityDestroyed(Activity activity) {
-            activitysQueue.finishCurrentActivity();// 推出
+            activitysQueue.popCurrentActivity();// 推出
         }
 
         @Override
