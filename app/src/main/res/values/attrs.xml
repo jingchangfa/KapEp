@@ -55,4 +55,9 @@
     <declare-styleable name="InfiniteSlideView">
         <attr name="view_orientation" format="string"></attr>
     </declare-styleable>
+
+    // 完善资料的
+    <declare-styleable name="KapCompleteShowButton">
+        <attr name="completeShowButton_image" format="reference"/>
+    </declare-styleable>
 </resources>

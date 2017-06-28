@@ -18,6 +18,10 @@
     <string name="yes">确定</string>
     <string name="next">下一步</string>
 
+    //完善资料
+    <string name="complete_finish">注册完成</string>
+    <string name="complete_kapep"><![CDATA[点击注册完成按钮表示,您已阅读并愿意遵守 <KapEp服务条款>]]></string>
+
     // 个人设置页
     <string name="mineseting_updateContact">上传通讯录</string>
     <string name="mineseting_cleanCache">清除缓存</string>

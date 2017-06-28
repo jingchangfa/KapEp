@@ -27,27 +27,39 @@ public class KapActivityInfoTransferManager {
      * ChangeByModel 回调
      * UnBind 取消注册
      **/
-    // 绑定 被回调的页面
+    // 一对一的关系
     public static void BindChangeModel(Context context, InfoTransferModelInterface changeModel){
-        if (changeModel == null) return;
         String key = keyByContext(context);
+        BindAction(key,changeModel);
+    }
+    // 多对一
+    public static void BindChangeModel(String activityName,InfoTransferModelInterface changeModel){
+        BindAction(activityName,changeModel);
+    }
+    private static void BindAction(String key,InfoTransferModelInterface changeModel){
+        if (changeModel == null) return;
+        if (key == null) return;
         share.hashMap.put(key,changeModel);
     }
-    // 触发回调的页面 必须指定某个页面
     // 一对一的关系
     public static<T> void PostChangeByModel(T model,Class activityClass){
-        if (activityClass == null) return;
         String key = keyByContext(activityClass);
+        PostAction(model,key);
+    }
+    // 多对一
+    public static<T> void PostChangeByModel(T model,String activityName) {
+        PostAction(model,activityName);
+    }
+    private static<T> void PostAction(T model,String key){
+        if (key == null) return;
         InfoTransferModelInterface infoTransferModelInterface = share.hashMap.get(key);
         if (infoTransferModelInterface == null) return;// 不存在
         try {
             infoTransferModelInterface.changeUIByModel(model);
-        }catch (Exception e){
-            // 野指针
+        }catch (Exception e){// 野指针
             share.hashMap.remove(infoTransferModelInterface);
         }
     }
-
 //    // UnBind 取消注册,不取消static 持有这changeModel 会导致野指针
 //    // 这个我解决了 加了个try 所以此方法没必要了
 //    public static void UnBindChangeModel(Context context){
@@ -58,9 +70,11 @@ public class KapActivityInfoTransferManager {
 
     // 辅助方法，获取key
     private static String keyByContext(Context context){
+        if (context == null) return null;
         return context.getClass().toString();
     }
     private static String keyByContext(Class activityClass){
+        if (activityClass == null) return null;
         return activityClass.toString();
     }
 }

@@ -1,7 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/nav_custom_titlebar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/login_edittext_interval_v"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:background="@drawable/view_alertview_bg">
+        <!--填充剩余空间，适配手机-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/accountDetail_imageview"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/minecenter_imageview_size"
+            android:layout_height="@dimen/minecenter_imageview_size"
+            android:src="@mipmap/mine_placehold"
+            app:civ_border_width="0dp"
+            app:civ_border_color="@color/Bank_White_ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/Bank_White_ffffff"
+            android:text="点击更换头像"
+            android:textAlignment="center"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_edittext_interval_bigsmall_v"/>
+        <!--性别-->
 
+        <!--账号-->
+        <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
+            android:id="@+id/forget_placeview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
+            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
+            android:layout_gravity="center_horizontal"
+            app:custom_image="@mipmap/login_place_b"
+            app:custom_placeholdText="@string/please_change_controy"
+            app:custom_lineIsShow="false"
+            app:custom_textColor="@color/gray"
+            app:custom_backColor="@color/Bank_Black_313131"
+            app:custom_hintColor="@color/BANK_GRAY_9b9b9b"/>
+        <!--地区-->
+        <com.example.jing.kapep.View.KapCompleteShowButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_interval_v"
+            android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
+            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
+            app:completeShowButton_image = "@mipmap/login_place_b" />
+        <!--职业-->
+        <com.example.jing.kapep.View.KapCompleteShowButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_interval_v"
+            android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
+            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
+            app:completeShowButton_image = "@mipmap/login_place_b" />
+        <!--填充剩余空间，适配手机-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"/>
+    </LinearLayout>
+
+    <com.example.jing.kapep.View.KapBigChangeButton
+        android:id="@+id/accountDetail_changePassWord"
+        android:layout_marginTop="@dimen/login_edittext_interval_v"
+        android:layout_marginLeft="@dimen/login_edittext_interval_v"
+        android:layout_marginRight="@dimen/login_edittext_interval_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:custom_text_normal="@string/complete_finish"
+        app:custom_textColor_normal="@color/Bank_White_ffffff"
+        app:custom_backColor_normal="@color/Bank_Blue_2f95fb" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_edittext_interval_v"
+        android:layout_marginBottom="@dimen/login_edittext_interval_5_v"
+        android:textSize="8sp"
+        android:textColor="@color/BANK_GRAY_9c9c9c"
+        android:text="@string/complete_kapep"
+
+        android:textAlignment="center"/>
 </LinearLayout>

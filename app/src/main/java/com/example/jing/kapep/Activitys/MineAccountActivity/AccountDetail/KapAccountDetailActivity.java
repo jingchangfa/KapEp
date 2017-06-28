@@ -111,7 +111,7 @@ public class KapAccountDetailActivity extends ActivityBase {
             @Override
             public void onClick(View view) {
                 // 设置密码页面
-                startActivity(new Intent(KapAccountDetailActivity.this, KapPasswordSetActivity.class));
+                startPassWordSetingActivity();
             }
         });
     }
@@ -134,6 +134,17 @@ public class KapAccountDetailActivity extends ActivityBase {
             public void defaultFailureBlock(long errorCode, String errorMsg) {
             }
         });
+    }
+    private void startPassWordSetingActivity(){
+        // 跳到设置密码
+        startActivity(new Intent(this, KapPasswordSetActivity.class));
+        KapActivityInfoTransferManager.BindChangeModel(KapPasswordSetActivity.PasswordSetActivityIndentiful, new KapActivityInfoTransferManager.InfoTransferModelInterface<KapPasswordSetActivity>() {
+            @Override
+            public void changeUIByModel(KapPasswordSetActivity model) {
+                model.finish();//完成
+            }
+        });
+
     }
     /**
      * 网络请求

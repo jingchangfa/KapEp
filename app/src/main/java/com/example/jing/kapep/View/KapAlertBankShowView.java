@@ -93,6 +93,17 @@ public class KapAlertBankShowView extends ViewGroup {
         mFooter.layout(0, mLayoutContentHeight, mFooter.getMeasuredWidth(), mLayoutContentHeight + mFooter.getMeasuredHeight());
         mLayoutContentHeight += mHeader.getMeasuredHeight();
     }
+    /**
+     * get set
+     * */
+    public Button getBigChangeButton() {
+        return bigChangeButton;
+    }
+
+    public TextView getTitleView() {
+        return titleView;
+    }
+
     /***
      * 获取子View中宽度最大的值
      */
