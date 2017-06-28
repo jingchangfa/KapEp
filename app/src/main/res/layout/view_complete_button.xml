@@ -12,7 +12,9 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="5dp">
+        <!--偏移的原因是看起来不剧中，原因是imageview-->
         <ImageView
             android:id="@+id/complete_image"
             android:src="@mipmap/login_place_w"

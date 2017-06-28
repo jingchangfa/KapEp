@@ -12,6 +12,7 @@ import com.example.jing.kapep.R;
  */
 
 public class KapCompleteMaterialActivity extends ActivityBase{
+    
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

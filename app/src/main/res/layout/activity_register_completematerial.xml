@@ -18,7 +18,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.75"/>
+            android:layout_weight="0.7"/>
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/accountDetail_imageview"
@@ -39,17 +39,24 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_edittext_interval_bigsmall_v"/>
         <!--性别-->
-
+        <com.example.jing.kapep.View.KapCompleteShowButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_interval_v"
+            android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
+            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
+            app:completeShowButton_image = "@mipmap/complete_sexw_s" />
         <!--账号-->
         <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
             android:id="@+id/forget_placeview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_interval_v"
             android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
             android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
             android:layout_gravity="center_horizontal"
-            app:custom_image="@mipmap/login_place_b"
-            app:custom_placeholdText="@string/please_change_controy"
+            app:custom_image="@mipmap/complete_mine"
+            app:custom_placeholdText=""
             app:custom_lineIsShow="false"
             app:custom_textColor="@color/gray"
             app:custom_backColor="@color/Bank_Black_313131"
@@ -61,7 +68,7 @@
             android:layout_marginTop="@dimen/login_edittext_interval_v"
             android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
             android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
-            app:completeShowButton_image = "@mipmap/login_place_b" />
+            app:completeShowButton_image = "@mipmap/complete_place" />
         <!--职业-->
         <com.example.jing.kapep.View.KapCompleteShowButton
             android:layout_width="match_parent"
@@ -69,12 +76,12 @@
             android:layout_marginTop="@dimen/login_edittext_interval_v"
             android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
             android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
-            app:completeShowButton_image = "@mipmap/login_place_b" />
+            app:completeShowButton_image = "@mipmap/complete_occ" />
         <!--填充剩余空间，适配手机-->
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="0.25"/>
+            android:layout_weight="0.3"/>
     </LinearLayout>
 
     <com.example.jing.kapep.View.KapBigChangeButton
