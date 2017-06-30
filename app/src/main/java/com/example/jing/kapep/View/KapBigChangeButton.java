@@ -30,6 +30,7 @@ public class KapBigChangeButton extends FrameLayout {
         ButterKnife.bind(this,view);
         if (attrs == null) return;
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapBigChangeButton);
+
         String normalText = a.getString(R.styleable.KapBigChangeButton_custom_text_normal);
         String selectText = a.getString(R.styleable.KapBigChangeButton_custom_text_select);
         String disableText =  a.getString(R.styleable.KapBigChangeButton_custom_text_disable);
@@ -42,10 +43,10 @@ public class KapBigChangeButton extends FrameLayout {
         int selectTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_select,0);
         int disableTextColor = a.getResourceId(R.styleable.KapBigChangeButton_custom_textColor_disable,0);
 
+        a.recycle();
         AttributeSetingHelper.setText(button,a,R.styleable.KapBigChangeButton_custom_text_normal);
         AttributeSetingHelper.setBackgroundColor(context,button,a,R.styleable.KapBigChangeButton_custom_backColor_normal);
         AttributeSetingHelper.setTextColor(context,button,a,R.styleable.KapBigChangeButton_custom_textColor_normal);
-        a.recycle();
     }
     public Button getButton() {
         return button;

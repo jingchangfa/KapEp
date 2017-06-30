@@ -39,13 +39,38 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_edittext_interval_bigsmall_v"/>
         <!--性别-->
-        <com.example.jing.kapep.View.KapCompleteShowButton
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="@dimen/login_edittext_interval_v"
             android:layout_marginLeft="@dimen/login_edittext_interval_bigsmall_v"
-            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v"
-            app:completeShowButton_image = "@mipmap/complete_sexw_s" />
+            android:layout_marginRight="@dimen/login_edittext_interval_bigsmall_v">
+            <com.example.jing.kapep.View.ViewSexButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:sexButton_imgae_n="@mipmap/complete_sexm_n"
+                app:sexButton_imgae_s="@mipmap/complete_sexm_s"
+                app:sexButton_fill_color_n="@color/Bank_Black_353535"
+                app:sexButton_fill_color_s="@color/Bank_Black_313131"
+                app:sexButton_stroke_color_n="@color/Bank_Black_353535"
+                app:sexButton_stroke_color_s="@color/Bank_Red_ff8c83"
+                />
+            <FrameLayout
+                android:layout_width="@dimen/login_edittext_interval_bigsmall_v"
+                android:layout_height="match_parent"/>
+            <com.example.jing.kapep.View.ViewSexButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:sexButton_imgae_n="@mipmap/complete_sexw_n"
+                app:sexButton_imgae_s="@mipmap/complete_sexw_s"
+                app:sexButton_fill_color_n="@color/Bank_Black_353535"
+                app:sexButton_fill_color_s="@color/Bank_Black_313131"
+                app:sexButton_stroke_color_n="@color/Bank_Black_353535"
+                app:sexButton_stroke_color_s="@color/Bank_Red_ff8c83"/>
+        </LinearLayout>
         <!--账号-->
         <com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView
             android:id="@+id/forget_placeview"

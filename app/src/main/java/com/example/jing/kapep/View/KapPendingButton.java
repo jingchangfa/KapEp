@@ -32,7 +32,7 @@ public class KapPendingButton extends FrameLayout{
     public KapPendingButton(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         View v = LayoutInflater.from(context).inflate(R.layout.view_pending_button,this);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this,v);
         // 背景色
         if (attrs == null) return;
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.KapPendingButton);

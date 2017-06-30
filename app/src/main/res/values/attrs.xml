@@ -60,4 +60,12 @@
     <declare-styleable name="KapCompleteShowButton">
         <attr name="completeShowButton_image" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="ViewSexButton">
+        <attr name="sexButton_imgae_n" format="reference"/>
+        <attr name="sexButton_imgae_s" format="reference"/>
+        <attr name="sexButton_stroke_color_n" format="reference"/>
+        <attr name="sexButton_stroke_color_s" format="reference"/>
+        <attr name="sexButton_fill_color_n" format="reference"/>
+        <attr name="sexButton_fill_color_s" format="reference"/>
+    </declare-styleable>
 </resources>
