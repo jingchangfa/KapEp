@@ -3,6 +3,7 @@ package com.example.jing.kapep.Helper;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,16 +20,26 @@ public class AttributeSetingHelper {
      * 参数带typeArray的 用于不可变的
      * 参数不带typeArray的 需要先调用 getReResourceId 获取id然后再调用此函数设置属性
      */
-
+    public static String getTextString(TypedArray a, int id){
+        return a.getString(id);
+    }
     public static void setText(TextView v, TypedArray a, int id){
-        String s = a.getString(id);
+        String s = getTextString(a,id);
         if (s == null) return;
         v.setText(s);
     }
+    public static void setText(TextView v, String textString){
+        if (textString == null) return;
+        v.setText(textString);
+    }
     public static void setHint(TextView v, TypedArray a, int id){
-        String s = a.getString(id);
+        String s = getTextString(a,id);
         if (s == null) return;
         v.setHint(s);
+    }
+    public static void setHint(TextView v, String textString){
+        if (textString == null) return;
+        v.setHint(textString);
     }
     /**
      * getReResourceId 从TypedArray获取资源的ID

@@ -22,8 +22,13 @@ import butterknife.ButterKnife;
  */
 
 public class KapTimeChangeButton extends LinearLayout {
+   public interface TimerButtonListener {
+        void start();
+        void finish();
+    }
     @BindView(R.id.time_button) Button button;
     private TimerButtonListener timerButtonListener = null;
+    private KapCountDownButtonHelper helper = null;
     public KapTimeChangeButton(@NonNull Context context) {
         super(context);
     }
@@ -31,31 +36,35 @@ public class KapTimeChangeButton extends LinearLayout {
         super(context, attrs);
         View view = LayoutInflater.from(context).inflate(R.layout.view_timechange_button,this);
         ButterKnife.bind(this,view);
-        button.setText("获取验证码");
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                KapCountDownButtonHelper helper = new KapCountDownButtonHelper(button,"获取验证码",30,1);
-                helper.setOnFinishListener(new KapCountDownButtonHelper.OnFinishListener() {
-                    @Override
-                    public void finish() {
-                        if (timerButtonListener != null)timerButtonListener.finish();
-                    }
-                });
-                helper.start();
-                if (timerButtonListener != null)timerButtonListener.start();
-            }
-        });
-    }
-    public interface TimerButtonListener {
-         void start();
-         void finish();
+        reSetTimeButton();
     }
     /**
      * 监听状态
      * */
     public void bindListener(TimerButtonListener timerButtonListener){
         this.timerButtonListener = timerButtonListener;
+    }
+    public void reSetTimeButton(){
+        if (helper != null){
+            helper.getCountDownTimer().cancel();
+            helper = null;
+        }
+        button.setText("获取验证码");
+        button.setEnabled(true);
+        helper = new KapCountDownButtonHelper(button,"获取验证码",30,1);
+        helper.setOnFinishListener(new KapCountDownButtonHelper.OnFinishListener() {
+            @Override
+            public void finish() {
+                if (timerButtonListener != null)timerButtonListener.finish();
+            }
+        });
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                helper.start();
+                if (timerButtonListener != null)timerButtonListener.start();
+            }
+        });
     }
 }
 class  KapCountDownButtonHelper{
@@ -129,5 +138,9 @@ class  KapCountDownButtonHelper{
      */
     public interface OnFinishListener {
         public void finish();
+    }
+
+    public CountDownTimer getCountDownTimer() {
+        return countDownTimer;
     }
 }

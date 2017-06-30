@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:custom_image="@mipmap/login_place_w"
-        app:custom_placeholdText="@string/please_change_controy"/>
+        app:custom_placeholdText="@string/please_change_controy"
+        app:custom_backColor="@color/Bank_Black_66989898"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,7 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:custom_image="@mipmap/login_number"
-        app:custom_placeholdText="@string/please_number"/>
+        app:custom_placeholdText="@string/please_number"
+        app:custom_backColor="@color/Bank_Black_66989898"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -43,7 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:custom_image="@mipmap/login_password"
-        app:custom_placeholdText="@string/please_password"/>
+        app:custom_placeholdText="@string/please_password"
+        app:custom_backColor="@color/Bank_Black_66989898"/>
 
     <FrameLayout
         android:layout_width="match_parent"

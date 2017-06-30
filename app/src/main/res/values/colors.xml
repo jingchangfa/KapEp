@@ -11,6 +11,7 @@
     <color name="Bank_Red_ff8c83">#ff8c83</color>
     <color name="Bank_Red_dc1f1f">#dc1f1f</color>
     // black color
+    <color name="Bank_Black_66989898">#66989898</color>
     <color name="Bank_Black_313131">#222222</color>
     <color name="Bank_Black_353535">#353535</color>
     <color name="Bank_Black_222222">#222222</color>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#66989898" />
+    <solid android:color="@color/Bank_Black_66989898" />
     <corners android:radius="@dimen/view_bg_radius" />
 </shape>

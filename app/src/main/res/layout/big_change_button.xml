@@ -5,6 +5,7 @@
     <Button
         android:id="@+id/big_change_button"
         android:layout_width="match_parent"
+        android:background="@drawable/corners_bg"
         android:layout_height="@dimen/login_edittext_height"
         android:text="@string/regist"
         android:textAlignment="center"

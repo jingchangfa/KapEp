@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
  */
 
 public class LoginEditTextView extends LinearLayout {
+    @BindView(R.id.login_edittext_backview) LinearLayout backView;
     @BindView(R.id.login_edittext_image) ImageView imageView;
     @BindView(R.id.login_edittext_lineview) View lineView;
     @BindView(R.id.login_edittext_text) EditText editText;
@@ -38,8 +39,7 @@ public class LoginEditTextView extends LinearLayout {
         AttributeSetingHelper.setTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_textColor);
         AttributeSetingHelper.setHintTextColor(context,editText,a,R.styleable.LoginEditTextView_custom_hintColor);
         // 背景色
-        AttributeSetingHelper.setBackgroundColor(context,imageView,a,R.styleable.LoginEditTextView_custom_backColor);
-        AttributeSetingHelper.setBackgroundColor(context,editText,a,R.styleable.LoginEditTextView_custom_backColor);
+        AttributeSetingHelper.setShapeBackgroundFillColor(context,backView,a,R.styleable.LoginEditTextView_custom_backColor);
         // 线隐藏显示
         lineView.setVisibility(AttributeSetingHelper.getVisibility(a,R.styleable.LoginEditTextView_custom_lineIsShow));
         a.recycle();

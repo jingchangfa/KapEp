@@ -132,7 +132,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -155,7 +155,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -241,7 +241,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -295,7 +295,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -319,7 +319,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -423,7 +423,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
@@ -447,7 +447,7 @@ public class KapAuthAPIClient extends HttpClickBase {
             public boolean finishedBlock(String jsonString) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    if (jsonObject.getBoolean("success")) success.successResult();
+                    success.successResult();
                     return true;
                 }catch (JSONException e){
                     Log.d("数据解析失败",e.toString());
