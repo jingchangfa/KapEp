@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
 import com.example.jing.kapep.Activitys.LoginActivity.KapLoginActivity;
+import com.example.jing.kapep.Activitys.RegisteredActivity.CompleteMaterial.KapCompleteMaterialActivity;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.MainThreadHelper;
 import com.example.jing.kapep.R;
@@ -66,10 +67,22 @@ public class KapLunchActivity extends ActivityBase {
         }).start();
     }
     private void pushActivity(){
+        if (goEveryActivity()) return;//方便调试，跳到任意的activity
         if (KapApplication.getUserAccount() == null){
             KapApplication.logInActivityChangeAction();//登录页
         }else {
             KapApplication.homeActivityChangeAction();//主页
         }
+    }
+    /**
+     * 此方法调试专用～～～
+     * 不用了，仅需要注释 everyActivityClass = xx；即可
+     * */
+    private boolean goEveryActivity(){
+        Class everyActivityClass = null;
+        everyActivityClass = KapCompleteMaterialActivity.class;
+        boolean isOpen = everyActivityClass != null;
+        if (isOpen) startActivity(new Intent(this, everyActivityClass));
+        return isOpen;
     }
 }
