@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 
 /**
  * Created by jing on 2017/6/23.
+ * 设置view frame 的帮助类
  */
 
 public class KapViewFrameSetingHelper {

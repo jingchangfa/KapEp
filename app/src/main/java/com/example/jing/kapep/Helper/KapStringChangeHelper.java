@@ -7,11 +7,13 @@ import java.util.Date;
 
 /**
  * Created by jing on 2017/6/15.
+ * 字符串的封装，转化，装箱放在这里面
  */
-// 字符串的封装，转化，装箱放在这里面
 public class KapStringChangeHelper {
     /**
-     * 对外开放的转化
+     * 时间转化相关
+     * MessageTimeIntervalToTimeString 对外开放的转化
+     * MessageTimeStringToTimeInterval 对外开放的转化
      * */
     public static String MessageTimeIntervalToTimeString(long timeInval){
         return TimeIntervalToTimeString(timeInval,dayDateFormatString);
@@ -20,10 +22,6 @@ public class KapStringChangeHelper {
         return TimeStringToTimeInterval(timeString,dayDateFormatString);
     }
 
-
-    /**
-     * 时间转化相关
-     * */
     private static final String dayDateFormatString = "yyyy/MM/dd HH:mm";
     // long to time string
     private static String TimeIntervalToTimeString(long timeInval,String dayDateFormatString){

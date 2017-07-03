@@ -15,8 +15,8 @@ import java.io.ByteArrayOutputStream;
 
 /**
  * Created by jing on 2017/6/8.
+ * 获取imageview的image并转化为可传递的数据
  */
-// 获取imageview的image并转化为可传递的数据
 public class KapBitmapHalper {
     // 获取imageview的图片，并且转化为可传递的string
     public static String GetStringByImageView(ImageView imageView){

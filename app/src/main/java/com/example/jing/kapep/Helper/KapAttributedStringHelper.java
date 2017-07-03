@@ -14,8 +14,8 @@ import com.example.jing.kapep.R;
 
 /**
  * Created by jing on 2017/6/16.
+ * 富文本生成器
  */
-// 富文本生成器
 public class KapAttributedStringHelper {
     public static SpannableStringBuilder AttributedStringByConfi(String allString
             , int normalColor, int selectedColor, String[] selectedStrings){

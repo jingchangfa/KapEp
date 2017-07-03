@@ -8,10 +8,8 @@ import com.example.jing.kapep.HttpClient.BaseHttp.HttpThread;
 
 /**
  * Created by jing on 17/5/19.
- */
-/**
  * 线程管理～
- * */
+ */
 public class MainThreadHelper {
     private Handler mainHandler = new Handler(Looper.getMainLooper());
 

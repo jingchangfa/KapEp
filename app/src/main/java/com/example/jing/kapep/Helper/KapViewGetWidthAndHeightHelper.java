@@ -6,8 +6,8 @@ import android.view.ViewTreeObserver;
 
 /**
  * Created by jing on 2017/6/5.
+ * 这个观察者是为了解决 直接view.getWidth 获取为0的问题
  */
-// 这个观察者是为了解决 直接view.getWidth 获取为0的问题
 public class KapViewGetWidthAndHeightHelper {
     public static void GetViewSizeMethod(final View theView,final View.OnClickListener listener){
         theView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

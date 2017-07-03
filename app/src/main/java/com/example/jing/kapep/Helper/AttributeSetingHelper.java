@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 /**
  * Created by jing on 17/5/15.
+ * 属性设置的帮助类，非空才设置，否则停止
+ *  防止崩溃
  */
-// 属性设置的帮助类，非空才设置，否则停止
-// 防止崩溃
 public class AttributeSetingHelper {
     /**
      * 参数带typeArray的 用于不可变的

@@ -2,6 +2,7 @@ package com.example.jing.kapep.Helper;
 
 /**
  * Created by jing on 2017/6/30.
+ * 字符串检测是否可用
  */
 
 public class StringDetectionHelper {

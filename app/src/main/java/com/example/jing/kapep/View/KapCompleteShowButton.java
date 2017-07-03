@@ -38,7 +38,6 @@ public class KapCompleteShowButton extends LinearLayout{
         a.recycle();
     }
 
-
     public ImageView getImageView() {
         return imageView;
     }

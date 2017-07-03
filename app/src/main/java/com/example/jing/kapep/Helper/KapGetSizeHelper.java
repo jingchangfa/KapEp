@@ -7,8 +7,8 @@ import android.view.WindowManager;
 
 /**
  * Created by jing on 2017/6/23.
+ * 获取尺寸的类
  */
-// 获取尺寸的类
 public class KapGetSizeHelper {
     public static int GetStatusBarHeight(Context context){
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");

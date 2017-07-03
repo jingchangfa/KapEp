@@ -12,6 +12,7 @@ import java.util.Map;
 
 /**
  * Created by jing on 17/5/16.
+ * json map list 转化帮助类
  */
 
 public class JSONObjToJavaClassHelper {

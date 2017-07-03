@@ -6,9 +6,12 @@ import java.lang.reflect.Field;
 
 /**
  * Created by jing on 17/5/31.
+ * 反射的帮助类
  */
-// 反射的帮助类
 public class KapFieldHelper {
+    /**
+     * kapGetPrivateValue 获取boolean属性
+     * */
     public static boolean kapGetPrivateValue(Object model,String fieldName){
         Class<?> personType = model.getClass();
         boolean bo = false;

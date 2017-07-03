@@ -4,6 +4,7 @@ import android.os.Handler;
 
 /**
  * Created by jing on 2017/6/27.
+ * 实时搜索的策略
  */
 
 public class KapSearchRunnableHelper implements Runnable {

@@ -8,8 +8,8 @@ import com.example.jing.kapep.Application.KapApplication;
 
 /**
  * Created by jing on 2017/6/7.
+ * Glide 帮助类
  */
-// Glide 帮助类
 public class KapGlideHelper {
     /**
      * 用Application context 防止出现

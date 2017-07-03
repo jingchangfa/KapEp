@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by jing on 17/5/15.
- * 加密相关
+ * 字符串加密相关
  */
 
 public class StringMD5SHAHelper {
