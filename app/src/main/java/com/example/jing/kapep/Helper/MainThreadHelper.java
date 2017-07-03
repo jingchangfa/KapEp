@@ -12,7 +12,6 @@ import com.example.jing.kapep.HttpClient.BaseHttp.HttpThread;
  */
 public class MainThreadHelper {
     private Handler mainHandler = new Handler(Looper.getMainLooper());
-
     // 单利模式
     private static MainThreadHelper mainThreadHelper = new MainThreadHelper();
     private static MainThreadHelper getStaticHttpThread() {

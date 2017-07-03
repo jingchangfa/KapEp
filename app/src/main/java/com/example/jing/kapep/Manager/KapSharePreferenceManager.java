@@ -7,6 +7,7 @@ import com.example.jing.kapep.Application.KapApplication;
 
 /**
  * Created by jing on 2017/6/12.
+ * SharePreference 管理
  */
 
 public class KapSharePreferenceManager {

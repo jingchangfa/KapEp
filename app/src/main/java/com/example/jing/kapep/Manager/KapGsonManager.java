@@ -14,8 +14,8 @@ import ikidou.reflect.TypeBuilder;
 
 /**
  * Created by jing on 17/5/22.
+ * gson的管理类
  */
-// gson的管理类
 public class KapGsonManager {
     private KapGsonManager(){}
     private static KapGsonManager shareGsonManager = new KapGsonManager();

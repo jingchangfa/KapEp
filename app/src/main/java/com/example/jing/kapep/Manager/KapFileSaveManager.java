@@ -18,6 +18,7 @@ import java.io.IOException;
 
 /**
  * Created by jing on 17/5/22.
+ * 文件管理
  */
 
 public class KapFileSaveManager {

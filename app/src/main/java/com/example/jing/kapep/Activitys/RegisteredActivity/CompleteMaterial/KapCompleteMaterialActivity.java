@@ -54,10 +54,12 @@ public class KapCompleteMaterialActivity extends ActivityBase{
     protected int getContentViewLayoutID() {
         return R.layout.activity_register_completematerial;
     }
+
     @Override
     protected String navShowTitle() {
         return "完善资料";
     }
+
     @Override
     protected void setController() {
         this.rightButton.setVisibility(View.INVISIBLE);

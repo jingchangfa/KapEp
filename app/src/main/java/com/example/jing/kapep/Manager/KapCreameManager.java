@@ -23,10 +23,10 @@ import cn.finalteam.rxgalleryfinal.ui.base.IRadioImageCheckedListener;
 
 /**
  * Created by jing on 2017/6/19.
+ * 相册，相机的管理类
+ * [引擎是第三方的-----RxGalleryFinal](github https://github.com/FinalTeam/RxGalleryFinal)
  */
-// 相册，相机的管理类
-// 引擎是第三方的-----RxGalleryFinal
-// github https://github.com/FinalTeam/RxGalleryFinal
+
 public class KapCreameManager {
     /**
      * 单选回调
