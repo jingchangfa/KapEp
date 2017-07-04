@@ -64,7 +64,7 @@ public class KapLunchActivity extends ActivityBase {
         }).start();
     }
     private void pushActivity(){
-        if (goEveryActivity()) return;//方便调试，跳到任意的activity
+//        if (goEveryActivity()) return;//方便调试，跳到任意的activity
         if (KapApplication.getUserAccount() == null){
             KapApplication.logInActivityChangeAction();//登录页
         }else {

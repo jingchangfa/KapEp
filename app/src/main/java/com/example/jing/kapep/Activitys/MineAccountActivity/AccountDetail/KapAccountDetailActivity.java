@@ -149,7 +149,7 @@ public class KapAccountDetailActivity extends ActivityBase {
     /**
      * 网络请求
      * */
-    void postMineSetChange(HashMap changeDictionary,final String filePath){
+    private void postMineSetChange(HashMap changeDictionary,final String filePath){
         HttpFile file = null;
         if (filePath != null){
             file = new HttpFile("content","content","image/png",new File(filePath));
@@ -188,7 +188,7 @@ public class KapAccountDetailActivity extends ActivityBase {
         placeView.setContentText(model.getLocation());
         emailView.setContentText(model.getEmail());
     }
-    void choseImageAction(){
+    private void choseImageAction(){
         KapCreameManager.OpenLibByRadio(this, new KapCreameManager.RadioFinishResultInKapCreameManager() {
             @Override
             public void result(String imagePath) {

@@ -11,15 +11,24 @@ import android.widget.TextView;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView;
+import com.example.jing.kapep.Activitys.MineAccountActivity.MineCenter.KapMineCenterActivity;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.MainThreadHelper;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
+import com.example.jing.kapep.HttpClient.BaseHttp.HttpFile;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapAuthAPIClient;
+import com.example.jing.kapep.Manager.KapActivityInfoTransferManager;
 import com.example.jing.kapep.Manager.KapCreameManager;
 import com.example.jing.kapep.Manager.KapLocationManager;
 import com.example.jing.kapep.Manager.KapPermissionUtils;
+import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapBigChangeButton;
 import com.example.jing.kapep.View.KapCompleteShowButton;
 import com.example.jing.kapep.View.ViewSexButton;
+
+import java.io.File;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -29,6 +38,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class KapCompleteMaterialActivity extends ActivityBase implements ActivityCompat.OnRequestPermissionsResultCallback{
+    private HashMap mineChangeHasMap = new HashMap();
+
     @BindView(R.id.complete_imageview)
     CircleImageView imageView;
 
@@ -77,6 +88,7 @@ public class KapCompleteMaterialActivity extends ActivityBase implements Activit
                     @Override
                     public void successResult(String country, String locationString) {
                         MainThreadHelper.logCurrentThread();
+                        placeView.getTextView().setText(locationString);
                     }
 
                     @Override
@@ -114,14 +126,23 @@ public class KapCompleteMaterialActivity extends ActivityBase implements Activit
                 mSexButton.setSelected(false);
             }
         });
-//        numberView.getEditText().setText(KapApplication.ge);
         placeView.getTextView().setText("中国北京");
         occView.getTextView().setText("户外运动");
 
         finishButton.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                KapApplication.homeActivityChangeAction();//跳到主页
+                // 完善资料
+                mineChangeHasMap.put("name",numberView.getEditText().getText());
+                mineChangeHasMap.put("sex", KapModelUserDetail.StringToSex(mSexButton.isSelected()?"男":"女"));
+                mineChangeHasMap.put("country",placeView.getTextView().getText());
+                mineChangeHasMap.put("location",placeView.getTextView().getText());
+//                mineChangeHasMap.put("location",);
+                String imagePath = null;
+                if (imageView.getTag() != null){
+                    imagePath = imageView.getTag().getClass().equals(String.class)?(String)imageView.getTag():null;
+                }
+                postMineSetChange(mineChangeHasMap,imagePath);//((BitmapDrawable)imageView.getDrawable()).getBitmap()
             }
         });
     }
@@ -131,7 +152,29 @@ public class KapCompleteMaterialActivity extends ActivityBase implements Activit
         super.getModel();
     }
 
-    void choseImageAction(){
+    /**
+     * 网络请求
+     * */
+    private void postMineSetChange(HashMap changeDictionary, final String filePath){
+        HttpFile file = null;
+        if (filePath != null){
+            file = new HttpFile("content","content","image/png",new File(filePath));
+        }
+        new KapAuthAPIClient().mineOtherString(changeDictionary, file, null, new KapAuthAPIClient.KapAuthUserDetailInterface() {
+            @Override
+            public void successResult(KapModelUserDetail userDetail) {
+                // 更新本读的用户详情
+                KapApplication.setMineUserDetail(userDetail);
+                imageView.setTag(null);// 清空tag
+                KapApplication.homeActivityChangeAction();//跳到主页
+            }
+        }, new HttpClickBase.HTTPAPIDefaultFailureBack() {
+            @Override
+            public void defaultFailureBlock(long errorCode, String errorMsg) {
+            }
+        });
+    }
+    private void choseImageAction(){
         KapCreameManager.OpenLibByRadio(this, new KapCreameManager.RadioFinishResultInKapCreameManager() {
             @Override
             public void result(String imagePath) {
