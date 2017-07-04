@@ -3,8 +3,6 @@ package com.example.jing.kapep.Activitys.ALunchActivity;
 import android.content.Intent;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
-import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
-import com.example.jing.kapep.Activitys.LoginActivity.KapLoginActivity;
 import com.example.jing.kapep.Activitys.RegisteredActivity.CompleteMaterial.KapCompleteMaterialActivity;
 import com.example.jing.kapep.Application.KapApplication;
 import com.example.jing.kapep.Helper.MainThreadHelper;
@@ -37,7 +35,6 @@ public class KapLunchActivity extends ActivityBase {
 
     @Override
     protected void setController() {
-
     }
 
     @Override

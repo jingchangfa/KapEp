@@ -3,14 +3,19 @@ package com.example.jing.kapep.Activitys.RegisteredActivity.CompleteMaterial;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
 import com.example.jing.kapep.Activitys.LoginActivity.LoginEditTextView;
 import com.example.jing.kapep.Application.KapApplication;
+import com.example.jing.kapep.Helper.MainThreadHelper;
 import com.example.jing.kapep.Manager.KapCreameManager;
+import com.example.jing.kapep.Manager.KapLocationManager;
+import com.example.jing.kapep.Manager.KapPermissionUtils;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapBigChangeButton;
 import com.example.jing.kapep.View.KapCompleteShowButton;
@@ -23,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by jing on 17/5/10.
  */
 
-public class KapCompleteMaterialActivity extends ActivityBase{
+public class KapCompleteMaterialActivity extends ActivityBase implements ActivityCompat.OnRequestPermissionsResultCallback{
     @BindView(R.id.complete_imageview)
     CircleImageView imageView;
 
@@ -45,6 +50,7 @@ public class KapCompleteMaterialActivity extends ActivityBase{
 
     @BindView(R.id.complete_terms)
     TextView termsTextView;
+    private KapPermissionUtils.PermissionGrant mPermissionGrant = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +69,25 @@ public class KapCompleteMaterialActivity extends ActivityBase{
     @Override
     protected void setController() {
         this.rightButton.setVisibility(View.INVISIBLE);
+        mPermissionGrant = new KapPermissionUtils.PermissionGrant() {
+            @Override
+            public void onPermissionGranted(int requestCode) {
+                if (requestCode != KapPermissionUtils.CODE_ACCESS_FINE_LOCATION) return;
+                KapLocationManager.UsersLocation(KapCompleteMaterialActivity.this, new KapLocationManager.KapLocationListener() {// 获取位置
+                    @Override
+                    public void successResult(String country, String locationString) {
+                        MainThreadHelper.logCurrentThread();
+                    }
+
+                    @Override
+                    public void failureResult(String errorMsg) {
+                        MainThreadHelper.logCurrentThread();
+                    }
+                });
+            }
+        };
+        // 动态申请权限
+        KapPermissionUtils.requestPermission(this, KapPermissionUtils.CODE_ACCESS_FINE_LOCATION, mPermissionGrant);
     }
 
     @Override
@@ -116,6 +141,14 @@ public class KapCompleteMaterialActivity extends ActivityBase{
             }
         });
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        KapPermissionUtils.requestPermissionsResult(this, requestCode, permissions, grantResults, mPermissionGrant);
+
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
