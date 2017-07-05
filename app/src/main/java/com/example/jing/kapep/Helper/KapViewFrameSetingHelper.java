@@ -1,7 +1,12 @@
 package com.example.jing.kapep.Helper;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 /**
@@ -10,6 +15,19 @@ import android.widget.RelativeLayout;
  */
 
 public class KapViewFrameSetingHelper {
+    /**
+     * 获取屏幕的宽高
+     * */
+    public static int getScreenWidth(Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.widthPixels;
+    }
+    public static int getScreenHeight(Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.heightPixels;
+    }
     /**
      * 获取控件宽
      */

@@ -87,7 +87,11 @@ dependencies {
      * */
     compile 'cn.finalteam.rxgalleryfinal:library:1.0.7'
     /**
-     * popupWindow
+     * popupWindow https://github.com/pinguo-zhouwei/CustomPopwindow
      * */
     compile 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.0'
+    /**
+     * 仿iOS pickview(滚轮) https://github.com/weidongjian/androidWheelView
+     * */
+    compile 'com.weigan:loopView:0.1.2'
 }
