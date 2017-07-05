@@ -6,9 +6,11 @@
 
     //title bar
     <dimen name="title_bar_height">44dp</dimen>
+    <dimen name="title_image_height">28dp</dimen>
+
     <dimen name="title_bar_insetx">10dp</dimen>
     <dimen name="title_bar_button_size">28dp</dimen>
-    <dimen name="title_bar_title_textsize">16sp</dimen>
+    <dimen name="title_bar_title_textsize">14sp</dimen>
     <dimen name="customview_textSize">14sp</dimen>
     // alert show view
     <dimen name="alertview_title_height">40dp</dimen>

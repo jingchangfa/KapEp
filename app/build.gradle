@@ -4,7 +4,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.jing.kapep"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -86,6 +86,8 @@ dependencies {
      * 拍照裁剪
      * */
     compile 'cn.finalteam.rxgalleryfinal:library:1.0.7'
-//    compile 'cn.finalteam:galleryfinal:1.4.8.7'
-//    compile 'com.android.support:support-v4:23.1.1'
+    /**
+     * popupWindow
+     * */
+    compile 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.0'
 }

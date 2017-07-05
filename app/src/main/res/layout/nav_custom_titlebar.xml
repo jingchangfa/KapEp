@@ -5,8 +5,6 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:clipToPadding="true">
-    <!--android:background="@color/Bank_Black_313131"-->
-    <!--&gt;-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -20,16 +18,45 @@
             android:background="@mipmap/nav_back"
             android:textColor="@android:color/darker_gray"
             android:textAllCaps="false"/>
-        <TextView
-            android:id="@+id/bar_button_title"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textColor="@color/Bank_White_ffffff"
-            android:text="KapEp"
-            android:textSize="@dimen/title_bar_title_textsize"/>
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/bar_image_title"
+                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/title_image_height"
+                android:layout_height="@dimen/title_image_height"
+                android:src="@mipmap/mine_placehold"
+                android:visibility="gone"/>
+            <FrameLayout
+                android:layout_width="@dimen/title_bar_insetx"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/bar_button_title"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/Bank_White_ffffff"
+                android:text="KapEp"
+                android:textSize="@dimen/title_bar_title_textsize"/>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+
+
         <Button
             android:id="@+id/bar_button_right"
             android:layout_gravity="center_vertical"

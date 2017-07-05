@@ -2,9 +2,11 @@ package com.example.jing.kapep.Activitys.OtherDetailActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+import android.view.View;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
+import com.example.jing.kapep.Helper.KapGlideHelper;
+import com.example.jing.kapep.HttpClient.KapHttpChildren.KapImageAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
 
@@ -13,6 +15,8 @@ import com.example.jing.kapep.R;
  */
 
 public class KapOtherDetailActivity extends ActivityBase {
+    public static final String  ExtraModelKey = "KapModelPeople";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +32,8 @@ public class KapOtherDetailActivity extends ActivityBase {
     }
     @Override
     protected void setController() {
-
+        this.rightButton.setBackgroundResource(R.mipmap.nav_more);
+        this.titleImage.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -39,8 +44,15 @@ public class KapOtherDetailActivity extends ActivityBase {
     @Override
     protected void getModel() {
         super.getModel();
-        KapModelPeople modelPeople = (KapModelPeople)getIntent().getSerializableExtra("KapModelPeople");
-        Toast.makeText(this, modelPeople.getName(), Toast.LENGTH_SHORT).show();
+        // nav 设置
+        KapModelPeople modelPeople = (KapModelPeople)getIntent().getSerializableExtra(ExtraModelKey);
+        this.titleTextView.setText(modelPeople.getName());
+        String imageURLString = KapImageAPIClient.UserHeaderImageURLStringWithString(modelPeople.getPortrait_url());
+        KapGlideHelper.CreatedGlide()
+                .load(imageURLString)
+                .placeholder(R.mipmap.mine_placehold)
+                .into(this.titleImage);
+        // 获取帖子列表
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,7 +28,9 @@ abstract public class ActivityBase extends AppCompatActivity {
     // 注意默认说有的 ActivityBase 都有 nav_custom_titlebar 这个布局，否则会运行失败，提示找不到控件
     @BindView(R.id.bar_button_left) protected Button leftButton;
     @BindView(R.id.bar_button_title) protected TextView titleTextView;
+    @BindView(R.id.bar_image_title) protected ImageView titleImage;
     @BindView(R.id.bar_button_right) protected Button rightButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

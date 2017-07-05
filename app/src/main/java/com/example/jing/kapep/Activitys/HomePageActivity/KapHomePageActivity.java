@@ -98,7 +98,7 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
                 }
                // 他人详情页
                 Intent intent = new Intent(KapHomePageActivity.this, KapOtherDetailActivity.class);
-                intent.putExtra("KapModelPeople",modelPeople);
+                intent.putExtra(KapOtherDetailActivity.ExtraModelKey,modelPeople);
                 startActivity(intent);
             }
             @Override
