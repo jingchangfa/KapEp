@@ -8,5 +8,6 @@
         android:id="@+id/popwindow_listview"
         android:layout_marginTop="@dimen/popwindow_listView_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="@null"/>
 </LinearLayout>

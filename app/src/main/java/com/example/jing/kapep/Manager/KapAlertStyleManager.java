@@ -6,5 +6,5 @@ package com.example.jing.kapep.Manager;
  */
 
 public class KapAlertStyleManager {
-    
+
 }

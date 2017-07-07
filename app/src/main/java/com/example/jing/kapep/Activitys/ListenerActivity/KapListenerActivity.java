@@ -14,6 +14,7 @@ import com.example.jing.kapep.HttpClient.KapHttpChildren.KapListenAPIClient;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.R;
 import com.example.jing.kapep.View.KapAddFriendButton;
+import com.example.jing.kapep.View.KapNoDataCommonShowView;
 
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
     BGARefreshLayout refreshView;
     @BindView(R.id.listener_listview)
     ListView listView;
+    KapNoDataCommonShowView noContentView;//无内容的view
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,7 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
             }
         });
         listView.setAdapter(adapter);
+        noContentView = new KapNoDataCommonShowView(this,listView);
     }
     @Override
     protected void getModel() {
@@ -87,6 +90,9 @@ public class KapListenerActivity extends ActivityBase implements BGARefreshLayou
                 KapListenerActivity.this.offset += limit;
                 modelsArray.addAll(modelList);
                 listViewEndRefreshingAndChangeData(true);
+                if (modelsArray.size() == 0){
+                    noContentView.showByType(KapNoDataCommonShowView.TYPE_EMPTY);
+                }
                 if (KapListenerActivity.this.offset > total){
                     refreshView.setIsShowLoadingMoreView(false);
                 }

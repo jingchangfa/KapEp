@@ -20,6 +20,7 @@ import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.HttpClient.BaseHttp.HttpClickBase;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapContentAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
+import com.example.jing.kapep.Manager.KapActivityInfoTransferManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
@@ -97,6 +98,13 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
                     return;
                 }
                // 他人详情页
+                KapActivityInfoTransferManager.BindChangeModel(KapHomePageActivity.this,
+                        new KapActivityInfoTransferManager.InfoTransferModelInterface<KapModelPeople>() {
+                    @Override
+                    public void changeUIByModel(KapModelPeople model) {// 删除的回调
+
+                    }
+                });
                 Intent intent = new Intent(KapHomePageActivity.this, KapOtherDetailActivity.class);
                 intent.putExtra(KapOtherDetailActivity.ExtraModelKey,modelPeople);
                 startActivity(intent);

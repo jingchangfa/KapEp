@@ -15,6 +15,10 @@ import java.util.Map;
  * 实时回调，startActivityForResult是等待上一个页面finish才会调用
  * */
 public class KapActivityInfoTransferManager {
+    /**
+     * InfoTransferModelInterface 不带tag的回调
+     * InfoTransferTagModelInterface 带tag的回调
+     * */
     public interface InfoTransferModelInterface<T>{
         void changeUIByModel(T model);
     }
@@ -23,7 +27,7 @@ public class KapActivityInfoTransferManager {
     private Map<String,InfoTransferModelInterface> hashMap = new HashMap<>();
     /**
      * BindChangeModel 上级页面注册回调
-     * PostChangeByModel 下级页面发起回调
+     * @param context 上级页面
      * */
     public static void BindChangeModel(Context context, InfoTransferModelInterface changeModel){
         String key = keyByContext(context);
@@ -32,6 +36,11 @@ public class KapActivityInfoTransferManager {
     public static void BindChangeModel(String activityName,InfoTransferModelInterface changeModel){
         BindAction(activityName,changeModel);
     }
+
+    /**
+     * PostChangeByModel 下级页面发起回调
+     * @param activityClass 上级页面的class
+     * */
     public static<T> void PostChangeByModel(T model,Class activityClass){
         String key = keyByContext(activityClass);
         PostAction(model,key);
@@ -39,6 +48,7 @@ public class KapActivityInfoTransferManager {
     public static<T> void PostChangeByModel(T model,String activityName) {
         PostAction(model,activityName);
     }
+
     /**
      * BindAction 上级页面注册回调
      * PostAction 下级页面发起回调
