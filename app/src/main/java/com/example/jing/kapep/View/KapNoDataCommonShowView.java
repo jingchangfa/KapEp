@@ -42,6 +42,7 @@ public class KapNoDataCommonShowView {
         mParentView = (ViewGroup) mContentView.getParent();
         initViews();
         hideAllViews();
+        showByType(TYPE_CONTENT);
     }
 
 //    @SuppressLint("InflateParams")
@@ -122,7 +123,6 @@ public class KapNoDataCommonShowView {
      */
     public void setContextView(ViewGroup contentView) {
         this.mType = TYPE_CONTENT;
-        showByType(mType);
     }
 
     /**

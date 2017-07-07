@@ -12,6 +12,7 @@ import com.example.jing.kapep.HttpClient.KapHttpChildren.KapFriendAPIClient;
 import com.example.jing.kapep.HttpClient.KapHttpChildren.KapUserAPIClient;
 import com.example.jing.kapep.Model.KapModelMessage;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.View.KapNoDataCommonShowView;
 import com.example.jing.kapep.View.KapPendingButton;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
     BGARefreshLayout refreshView;
     @BindView(R.id.message_listview)
     ListView listView;
+    KapNoDataCommonShowView noContentView;//无内容的view
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +83,7 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
             }
         });
         listView.setAdapter(adapter);
+        noContentView = new KapNoDataCommonShowView(this,listView);
     }
 
     @Override
@@ -101,6 +105,9 @@ public class KapMessageActivity extends ActivityBase implements BGARefreshLayout
                 KapMessageActivity.this.offset += limit;
                 modelsArray.addAll(modelList);
                 listViewEndRefreshingAndChangeData(true);
+                if (modelsArray.size() == 0){
+                    noContentView.showByType(KapNoDataCommonShowView.TYPE_EMPTY);
+                }
                 if (KapMessageActivity.this.offset > total){
                     refreshView.setIsShowLoadingMoreView(false);
                 }

@@ -24,6 +24,7 @@ import com.example.jing.kapep.Manager.KapActivityInfoTransferManager;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelPeople;
 import com.example.jing.kapep.Model.KapListenerAndFriend.KapModelUserDetail;
 import com.example.jing.kapep.R;
+import com.example.jing.kapep.View.KapNoDataCommonShowView;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
@@ -46,6 +47,8 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
 
     @BindView(R.id.home_recyclerView)
     RecyclerView recyclerView;
+    KapNoDataCommonShowView noContentView;//无内容的view
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +120,7 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
         });
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(adapter);
+        noContentView = new KapNoDataCommonShowView(this,recyclerView);
 
         writeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +149,9 @@ public class KapHomePageActivity extends ActivityBase implements BGARefreshLayou
                 KapHomePageActivity.this.offset += limit;
                 modelsArray.addAll(modelList);
                 listViewEndRefreshingAndChangeData(true);
+                if (modelsArray.size() == 0){
+                    noContentView.showByType(KapNoDataCommonShowView.TYPE_EMPTY);
+                }
                 if (KapHomePageActivity.this.offset > total){
                     refreshView.setIsShowLoadingMoreView(false);
                 }
