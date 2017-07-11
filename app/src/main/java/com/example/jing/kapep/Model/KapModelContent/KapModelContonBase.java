@@ -13,7 +13,7 @@ public abstract class KapModelContonBase extends KapModelBase {
     protected int ID;
 
     @SerializedName("created_at")
-    protected int createdTime;
+    protected long createdTime;
 
     @SerializedName("user")
     protected KapModelUserDetail userModel;
@@ -25,5 +25,5 @@ public abstract class KapModelContonBase extends KapModelBase {
     protected int likesCount;
 
     @SerializedName("is_like")
-    protected int isLike;
+    protected boolean isLike;
 }

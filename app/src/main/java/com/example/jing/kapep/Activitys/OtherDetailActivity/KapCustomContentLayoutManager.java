@@ -8,7 +8,7 @@ import android.view.View;
 
 /**
  * Created by jing on 2017/7/6.
- * 列表状态，堆叠的样式
+ * TODO 列表状态，堆叠的样式
  */
 
 public class KapCustomContentLayoutManager extends RecyclerView.LayoutManager {
@@ -35,7 +35,6 @@ public class KapCustomContentLayoutManager extends RecyclerView.LayoutManager {
         int offsetY = 0;
         totalHeight = 0;
         for (int i = 0; i < getItemCount(); i++) {
-
             //这里就是从缓存里面取出
             View view = recycler.getViewForPosition(i);
             //将View加入到RecyclerView中
@@ -139,7 +138,6 @@ public class KapCustomContentLayoutManager extends RecyclerView.LayoutManager {
             if (!Rect.intersects(displayFrame, childFrame)) {
                 //回收掉滑出屏幕的View
                 removeAndRecycleView(child, recycler);
-
             }
         }
         //重新显示需要出现在屏幕的子View
@@ -158,7 +156,6 @@ public class KapCustomContentLayoutManager extends RecyclerView.LayoutManager {
                         frame.top - verticalScrollOffset,
                         frame.right,
                         frame.bottom - verticalScrollOffset);
-
             }
         }
     }

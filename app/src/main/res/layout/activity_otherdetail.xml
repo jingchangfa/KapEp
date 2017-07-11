@@ -4,4 +4,18 @@
     android:layout_height="match_parent">
     <include layout="@layout/nav_custom_titlebar"/>
 
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/other_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/other_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/login_edittext_interval_v"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            />
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 </LinearLayout>
