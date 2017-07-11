@@ -115,7 +115,7 @@ public class KapOtherDetailActivity extends ActivityBase implements BGARefreshLa
         refreshView.setRefreshViewHolder(bgaRefreshViewHolder);
         adapter = new KapOtherAdapter(this,R.layout.list_iteam_content,modelsArray);
         KapCustomContentLayoutManager listLayoutManager = new KapCustomContentLayoutManager();
-        recyclerView.setLayoutManager(listLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         noContentView = new KapNoDataCommonShowView(this,recyclerView);
     }
