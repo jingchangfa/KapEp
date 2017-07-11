@@ -16,6 +16,14 @@ public class KapModelOtherConton extends KapModelContonBase {
     @SerializedName("audio")
     protected String audioURLString;
 
+    public List getImagesArray() {
+        return imagesArray;
+    }
+
+    public String getAudioURLString() {
+        return audioURLString;
+    }
+
     //KapModelOtherConton转化为KapModelMineServerContonModel
     public KapModelMineServerContonModel otherModelChangeMineModel(){
         // 所有的转化操作放在一起，装饰者类里面，比较好把

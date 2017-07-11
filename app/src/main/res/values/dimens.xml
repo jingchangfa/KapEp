@@ -20,6 +20,7 @@
     <dimen name="login_edittext_width">275dp</dimen>
     <dimen name="login_edittext_small_width">180dp</dimen>
 
+    <dimen name="login_edittext_interval_3_v">3dp</dimen>
     <dimen name="login_edittext_interval_5_v">5dp</dimen>
     <dimen name="login_edittext_interval_v">10dp</dimen>
     <dimen name="login_edittext_interval_small_v">15dp</dimen>

@@ -3,6 +3,7 @@ package com.example.jing.kapep.Activitys.OtherDetailActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -113,7 +114,8 @@ public class KapOtherDetailActivity extends ActivityBase implements BGARefreshLa
         BGANormalRefreshViewHolder bgaRefreshViewHolder = new BGANormalRefreshViewHolder(this,true);
         refreshView.setRefreshViewHolder(bgaRefreshViewHolder);
         adapter = new KapOtherAdapter(this,R.layout.list_iteam_content,modelsArray);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        KapCustomContentLayoutManager listLayoutManager = new KapCustomContentLayoutManager();
+        recyclerView.setLayoutManager(listLayoutManager);
         recyclerView.setAdapter(adapter);
         noContentView = new KapNoDataCommonShowView(this,recyclerView);
     }
