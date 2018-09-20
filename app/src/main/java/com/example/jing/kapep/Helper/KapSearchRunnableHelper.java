@@ -12,7 +12,7 @@ public class KapSearchRunnableHelper implements Runnable {
     public KapSearchRunnableHelper(Runnable able){
         runnable = able;
     }
-    private KapSearchRunnableHelper(){}//私有化
+    private KapSearchRunnableHelper(){}//私有化无参数的构造函数
     Handler handler = new Handler();
     public void pushKeyWord(){
         handler.removeCallbacks(this);// 移除请求

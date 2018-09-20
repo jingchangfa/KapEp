@@ -45,6 +45,7 @@ public class KapContentAPIClient extends HttpClickBase {
         HashMap parameters = this.urlParametersDictionary(null);
         parameters.put("page_size",pageSize);
         parameters.put("offset",offset);
+//        urlString = "http://niuba.ecshopv.com/app.php?m=Home&c=index&a=search";
         Log.d("主页","url:"+urlString+"\n"+parameters.toString());
         HTTPAPICallBack finishBlock = this.customFinishedBlock(new HTTPAPIFinishBack() {
             @Override

@@ -2,13 +2,11 @@ package com.example.jing.kapep.Activitys.OtherDetailActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.jing.kapep.Activitys.ActivityBase.ActivityBase;
-import com.example.jing.kapep.Activitys.HomePageActivity.HomePageAdapter;
 import com.example.jing.kapep.Activitys.HomePageActivity.KapHomePageActivity;
 import com.example.jing.kapep.Helper.KapFieldHelper;
 import com.example.jing.kapep.Helper.KapGlideHelper;

@@ -27,7 +27,7 @@ public class KapAttributedStringHelper {
         for(int i=0;i<selectedStrings.length;i++){
             String selectedString = selectedStrings[i];
             int startLocation = allString.indexOf(selectedString);
-            int endLocation = startLocation+selectedString.length()+1;
+            int endLocation = startLocation+selectedString.length();
             sb.setSpan(selectedColorSpan, startLocation, endLocation, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return sb;

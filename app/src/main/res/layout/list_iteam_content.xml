@@ -8,6 +8,6 @@
         android:layout_marginLeft="@dimen/login_edittext_interval_3_v"
         android:layout_marginRight="@dimen/login_edittext_interval_3_v"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:scaleType="centerCrop"/>
 </LinearLayout>

@@ -61,8 +61,8 @@ public class KapBigChangeButton extends FrameLayout {
         disableBackColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_backColor_disable);
 
         normalTextColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_textColor_normal);
-        selectTextColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_textColor_select);;
-        disableTextColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_textColor_disable);;
+        selectTextColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_textColor_select);
+        disableTextColor = AttributeSetingHelper.getReResourceId(a,R.styleable.KapBigChangeButton_custom_textColor_disable);
         a.recycle();
         setCurrentStatus(KapBigChangeButton_normal);
     }
